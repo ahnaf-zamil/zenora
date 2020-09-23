@@ -25,6 +25,8 @@ import typing
 from zenora.channels import GuildTextChannel, GuildVoiceChannel, DMTextChannel
 from zenora.base.mapper import ChannelMapper as BaseChannelMapper
 from zenora.errors import MissingAccess
+from zenora.base.mapper import BaseEmojiMapper
+from zenora.emojis import Emoji
 
 
 class ChannelMapper(BaseChannelMapper):
@@ -60,3 +62,25 @@ class ChannelMapper(BaseChannelMapper):
             return DMTextChannel(response, app)
         elif response["type"] == 2:
             return GuildVoiceChannel(response, app)
+
+
+class EmojiMapper(BaseEmojiMapper):
+    def map(response, app):
+        """
+        Implementation of the emoji mapper.
+
+        Maps emoji response to object.
+
+        Parameters
+        ----------
+        response: typing.Dict
+                API response from Discord
+        app: zenora.RESTAPI
+                Zenora REST API object
+
+        Returns
+        -------
+        zenora.emojis.Emoji
+                Zenora emoji object
+        """
+        return Emoji(response, app)

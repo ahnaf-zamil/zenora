@@ -194,3 +194,103 @@ class RESTAPI(abc.ABC):
         None
 
         """
+
+    @abc.abstractmethod
+    def get_emojis(self, snowflake):
+        """
+        Get list of all emojis for guild
+
+        Parameters
+        ----------
+
+        snowflake: int
+                The id of the guild
+
+        Returns
+        ------
+        :type [zenora.emojis.Emoji]
+                List of emoji's
+        """
+
+    @abc.abstractmethod
+    def get_emoji(self, snowflake, emoji_id):
+        """
+        Get emoji for guild by emoji_id
+
+
+        Parameters
+        ----------
+        snowflake: int
+            The id of the guild
+        emoji_id: int
+            The id of emoji
+
+        Returns
+        -------
+        zenora.emojis.Emoji
+            Zenora emoji object
+
+        """
+
+    @abc.abstractmethod
+    def post_emoji(self, snowflake, name, image_url, roles):
+        """
+        Add new emoji for guild
+
+
+        Parameters
+        ----------
+        snowflake: int
+            The id of the guild
+        name: str
+            Name of the emoji
+        image_url: str
+            Address of image that used for emoji
+        roles: [int]
+            Array of snowflakes
+
+        Returns
+        -------
+        zenora.emojis.Emoji
+            Zenora emoji object
+        """
+
+    @abc.abstractmethod
+    def patch_emoji(self, snowflake, name, roles):
+        """
+        Update emoji for guild
+
+
+        Parameters
+        ----------
+        snowflake: int
+            The id of the guild
+        name: str
+            Name of the emoji
+        roles: [int]
+            Array of snowflake
+
+        Returns
+        -------
+        zenora.emojis.Emoji
+            Zenora emoji object
+        """
+
+    @abc.abstractmethod
+    def delete_emoji(self, snowflake, emoji_id):
+        """
+        Delete emoji for guild
+
+
+        Parameters
+        ----------
+        snowflake: int
+            The id of the guild
+        emoji_id: int
+            The id of emoji
+
+        Returns
+        -------
+        zenora.emojis.Emoji
+            Zenora emoji object
+        """

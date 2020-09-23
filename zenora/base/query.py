@@ -103,3 +103,53 @@ class Query(abc.ABC):
         typing.Dict: A dictionary object that will be used to parse the data
             into objects
         """
+
+    @abc.abstractmethod
+    def get_emojis(self, snowflake):
+        """
+        Interface for the REST API query to get emojis for guild
+
+        Returns:
+        Dict: A dictionary object that will be used to parse the data
+            into objects
+        """
+
+    @abc.abstractmethod
+    def get_emoji(self, snowflake, emoji_id):
+        """
+        Interface for the RESt API query to get emoji for guild and emoji_id
+
+        Returns:
+        Dict: A dictionary object that will be used to parse the data
+            into objects
+        """
+
+    @abc.abstractmethod
+    def post_emoji(self, snowflake, name, image_url, roles):
+        """
+        Inerface for the RESt API query to add new emoji for guild
+
+        Returns:
+        Dict: A dictionary object that will be used to parse the data
+            into objects
+        """
+
+    @abc.abstractmethod
+    def patch_emoji(self, snowflake, name, roles):
+        """
+        Interface for the rest API query to update emoji for guild
+
+        Returns:
+        Dict: A dictionary object that will be used to parse the data
+            into objects
+        """
+
+    @abc.abstractmethod
+    def delete_emoji(self, snowflake, emoji_id):
+        """
+        Interface for the rest API query to delete emoji for guild
+
+        Returns:
+        code: int
+            Code for response status. Will return 204 on success
+        """

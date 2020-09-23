@@ -26,3 +26,23 @@ class ChannelMapper(abc.ABC):
         zenora.channels.DMTextChannel
                 Zenora DM text channel object
         """
+
+
+class BaseEmojiMapper(abc.ABC):
+    @abc.abstractmethod
+    def map(response, app):
+        """
+        Interface of emoji mapper
+
+        Maps emoji response to object.
+
+        Parameters
+        ----------
+        response: typing.Dict
+                API response from Discord
+
+        Returns
+        -------
+        zenora.emojis.Emoji
+                Zenora emoji object
+        """

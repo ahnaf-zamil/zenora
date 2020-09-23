@@ -37,6 +37,10 @@ FETCH_CURRENT_USER = "/users/@me"
 # Guilds
 GET_GUILD = "/guilds/{}"
 
+# Emojis
+EMOJI = "/emojis"
+EMOJI_ID = "/emojis/{}"
+
 """CDN Endpoints"""
 
 AVATAR_URL = "/avatars/{}/{}.png?size=1024"

@@ -30,9 +30,12 @@ from zenora.utils.endpoints import (
     DMS_LIST,
     FETCH_USER,
     GET_GUILD,
+    EMOJI,
+    EMOJI_ID,
 )
 from zenora.base.query import Query as QueryBase
 from zenora.errors import GuildError
+from zenora.file import File
 
 
 class Query(QueryBase):
@@ -195,3 +198,95 @@ class Query(QueryBase):
             params={"recipient_id": recipient_id},
         )
         return data
+
+    def get_emojis(self, snowflake):
+        """
+        Interface for the REST API query to get all emojis form guild
+
+        Returns:
+        Dict: A dictionary object that will be used to parse the data
+            into objects
+
+        """
+        data = fetch(
+            BASE_URL + GET_GUILD.format(snowflake) + EMOJI,
+            headers={
+                "Authorization": f"{self.token_type} {self.token}",
+                "Content-Type": "application/json",
+            },
+        )
+        return data
+
+    def get_emoji(self, snowflake, emoji_id):
+        """
+        Interface for the REST API query to get a emoji by emoji_id from guild
+
+        Returns:
+        Dict: A dictionary object that will be used to parse the data
+            into objects
+        """
+        data = fetch(
+            BASE_URL + GET_GUILD.format(snowflake) + EMOJI_ID.format(emoji_id),
+            headers={
+                "Authorization": f"{self.token_type} {self.token}",
+                "Content-Type": "application/json",
+            },
+        )
+        return data
+
+    def post_emoji(self, snowflake, name, image_url, roles):
+        """
+        Interface for the REST API query to add emoji to guild
+
+        Returns:
+        Dict: A dictionary object that will be used to parse the data
+            into objects
+        """
+        data = post(
+            BASE_URL + GET_GUILD.format(snowflake) + EMOJI,
+            headers={
+                "Authorization": f"{self.token_type} {self.token}",
+                "Content-Type": "application/json",
+            },
+            params={
+                "name": name,
+                "image": File(image_url).data,
+                "roles": roles,
+            },
+        )
+        return data
+
+    def patch_emoji(self, snowflake, emoji_id, name, roles):
+        """
+        Interface for the rest API query to update emoji for guild
+
+        Returns:
+        Dict: A dictionary object that will be used to parse the data
+            into objects
+        """
+        data = patch(
+            BASE_URL + GET_GUILD.format(snowflake) + EMOJI_ID.format(emoji_id),
+            headers={
+                "Authorization": f"{self.token_type} {self.token}",
+                "Content-Type": "application/json",
+            },
+            params={"name": name, "roles": roles},
+        )
+        return data
+
+    def delete_emoji(self, snowflake, emoji_id):
+        """
+        Interface for the rest API query to delete emoji form guild
+
+        Returns:
+        code: int
+            Code for response status. Will return 204 on success
+        """
+        data = delete(
+            BASE_URL + GET_GUILD.format(snowflake) + EMOJI_ID.format(emoji_id),
+            headers={
+                "Authorization": f"{self.token_type} {self.token}",
+                "Content-Type": "application/json",
+            },
+        )
+        return data.status_code

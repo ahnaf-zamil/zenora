@@ -312,3 +312,211 @@ class RESTAPI(REST):
         else:
             response = 204
         return response
+
+    def get_emojis(self, snowflake):
+        """
+        Get list of all emojis for guild
+
+        Parameters
+        ----------
+
+        snowflake: int
+            The id of the guild
+
+        Returns
+        ------
+        :type [zenora.emojis.Emoji]
+            List of emoji's
+        """
+        if not self.testing:
+            response = Query(self.token, self.token_type).get_emojis(snowflake)
+        else:
+            response = [
+                {
+                    "name": "test_emoji",
+                    "roles": [],
+                    "id": "758255225319981076",
+                    "require_colons": True,
+                    "managed": False,
+                    "animated": False,
+                    "available": True,
+                    "user": {
+                        "id": "592703489386348544",
+                        "username": "db",
+                        "avatar": "e07296d96c4f6c75b4fbbf25ec7d28b6",
+                        "discriminator": "3272",
+                        "public_flags": 0,
+                    },
+                },
+                {
+                    "name": "test_emoji2",
+                    "roles": [],
+                    "id": "758255421768335370",
+                    "require_colons": True,
+                    "managed": False,
+                    "animated": False,
+                    "available": True,
+                    "user": {
+                        "id": "592703489386348544",
+                        "username": "db",
+                        "avatar": "e07296d96c4f6c75b4fbbf25ec7d28b6",
+                        "discriminator": "3272",
+                        "public_flags": 0,
+                    },
+                },
+            ]
+        return model_factory.parse_emojis(response=response, app=self)
+
+    def get_emoji(self, snowflake, emoji_id):
+        """Get emoji for guild by emoji_id
+
+        Parameters
+        ----------
+        snowflake: int
+            The id of the guild
+        emoji_id: int
+            The id of emoji
+
+        Returns
+        -------
+        zenora.emojis.Emoji
+            Zenora emoji object
+
+        """
+        if not self.testing:
+            response = Query(self.token, self.token_type).get_emoji(
+                snowflake, emoji_id
+            )
+        else:
+            response = {
+                "name": "test_emoji",
+                "roles": [],
+                "id": "758255225319981076",
+                "require_colons": True,
+                "managed": False,
+                "animated": False,
+                "available": True,
+                "user": {
+                    "id": "592703489386348544",
+                    "username": "db",
+                    "avatar": "e07296d96c4f6c75b4fbbf25ec7d28b6",
+                    "discriminator": "3272",
+                    "public_flags": 0,
+                },
+            }
+        return model_factory.parse_emoji(response=response, app=self)
+
+    def post_emoji(self, snowflake, name, image_url, roles):
+        """
+        Add new emoji for guild
+
+
+        Parameters
+        ----------
+        snowflake: int
+            The id of the guild
+        name: str
+            Name of the emoji
+        image_url: str
+            Address of image that used for emoji
+        roles: [int]
+            Array of snowflakes
+
+        Returns
+        -------
+        zenora.emojis.Emoji
+            Zenora emoji object
+        """
+        if not self.testing:
+            response = Query(self.token, self.token_type).post_emoji(
+                snowflake, name, image_url, roles
+            )
+        else:
+            # Create new emoji object
+            response = {
+                "name": "test_emoji",
+                "roles": [],
+                "id": "758255225319981076",
+                "require_colons": True,
+                "managed": False,
+                "animated": False,
+                "available": True,
+                "user": {
+                    "id": "592703489386348544",
+                    "username": "db",
+                    "avatar": "e07296d96c4f6c75b4fbbf25ec7d28b6",
+                    "discriminator": "3272",
+                    "public_flags": 0,
+                },
+            }
+        return model_factory.parse_emoji(response=response, app=self)
+
+    def patch_emoji(self, snowflake, emoji_id, name, roles):
+        """
+        Update emoji for guild
+
+
+        Parameters
+        ----------
+        snowflake: int
+            The id of the guild
+        name: str
+            Name of the emoji
+        roles: [int]
+            Array of snowflake
+
+
+        Returns
+        -------
+        zenora.emojis.Emoji
+            Zenora emoji object
+        """
+        if not self.testing:
+            response = Query(self.token, self.token_type).patch_emoji(
+                snowflake, emoji_id, name, roles
+            )
+        else:
+            # Updated emoji name `test_emoji` to `new_test_emoji` for testing
+            response = {
+                "name": "new_test_emoji",
+                "roles": [],
+                "id": "758255225319981076",
+                "require_colons": True,
+                "managed": False,
+                "animated": False,
+                "available": True,
+                "user": {
+                    "id": "592703489386348544",
+                    "username": "db",
+                    "avatar": "e07296d96c4f6c75b4fbbf25ec7d28b6",
+                    "discriminator": "3272",
+                    "public_flags": 0,
+                },
+            }
+        return model_factory.parse_emoji(response=response, app=self)
+
+    def delete_emoji(self, snowflake, emoji_id):
+        """
+        Delete emoji for guild
+
+
+        Parameters
+        ----------
+        snowflake: int
+            The id of the guild
+        emoji_id: int
+            The id of emoji
+
+        Returns
+        -------
+        zenora.emojis.Emoji
+            Zenora emoji object
+        """
+        if not self.testing:
+            response = Query(self.token, self.token_type).delete_emoji(
+                snowflake,
+                emoji_id,
+            )
+        else:
+            response = 204
+        return response

@@ -1,4 +1,7 @@
 {
     "python.formatting.provider": "black",
-    "liveServer.settings.port": 5501
+    "liveServer.settings.port": 5501,
+    "python.linting.pylintEnabled": false,
+    "python.linting.flake8Enabled": true,
+    "python.linting.enabled": true
 }

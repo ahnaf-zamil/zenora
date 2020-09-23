@@ -1,4 +1,3 @@
-
 # Zenora, a modern Python API wrapper for the Discord REST API
 #
 # Copyright (c) 2020 K.M Ahnaf Zamil
@@ -25,7 +24,7 @@
 # asd asdasd  adasdasd
 
 import zenora
-from zenora.impl.mapper import ChannelMapper
+from zenora.impl.mapper import ChannelMapper, EmojiMapper
 import unittest
 
 
@@ -52,6 +51,30 @@ class testChannelMapper(unittest.TestCase):
     def test_map(self):
         c = ChannelMapper.map(self.response, self.app)
         self.assertTrue(int(c.id) == int(self.response["id"]))
+
+
+class TestEmojiMapper(unittest.TestCase):
+    def setUp(self):
+        self.response = {
+            "id": "41771983429993937",
+            "name": "LUL",
+            "roles": ["41771983429993000", "41771983429993111"],
+            "user": {
+                "username": "Luigi",
+                "discriminator": "0002",
+                "id": "96008815106887111",
+                "avatar": "5500909a3274e1812beb4e8de6631111",
+            },
+            "require_colons": True,
+            "managed": False,
+            "animated": False,
+        }
+        self.app = {}
+
+    def test_map(self):
+        e = EmojiMapper.map(self.response, self.app)
+        print(e)
+        self.assertTrue(int(e.id) == int(self.response["id"]))
 
 
 if __name__ == "__main__":

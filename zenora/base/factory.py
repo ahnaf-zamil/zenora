@@ -44,3 +44,40 @@ class Factory(abc.ABC):
                 Zenora user object
 
         """
+
+    @abc.abstractmethod
+    def parse_emojis(response, app):
+        """
+        Parse response data from Dicord API into list emoji objects
+
+        Parameters
+        ----------
+        response:
+                Discord API response as dictionary/JSON
+        snowflake: int
+                Snowflake ID of guild
+
+        Returns
+        -------
+        :type: [zenora.emojis.Emoji]
+                List of zenora emoji objects
+        """
+
+    @abc.abstractmethod
+    def parse_emoji(response, app):
+        """
+        Parse response data from Dicord API into emoji object
+
+        Parameters
+        ----------
+        response:
+                Discord API response as dictionary/JSON
+        snowflake: int
+                Snowflake ID of guild
+
+        Returns
+        -------
+        zenora.emojis.Emoji
+                Zenora emoji object
+
+        """
