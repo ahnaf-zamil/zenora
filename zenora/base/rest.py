@@ -121,6 +121,16 @@ class RESTAPI(abc.ABC):
                 Zenora user object
 
         """
+    @abc.abstractmethod
+    def get_channel_message(self, channel_id: int, msg_id: int) -> typing.Dict:
+        """Get a specific message from Discord channel
+        Parameters
+        ----------
+        channel_id : int
+                The snowflake ID of the channel.
+        msg_id : int
+                The snowflake ID of the message.
+        """
 
     @abc.abstractmethod
     def get_my_dms(self) -> typing.List[DMTextChannel]:

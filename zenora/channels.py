@@ -24,7 +24,7 @@
 import typing
 import datetime
 from zenora.users import User
-
+from zenora.messages import Message
 
 class GuildTextChannel:
 
@@ -97,6 +97,11 @@ class GuildTextChannel:
             if self.data["parent_id"] is not None
             else None
         )
+
+    def get_message(self, id: int) -> typing.Optional[Message]:
+        """Returns a channel message according to given ID."""
+
+        return self.app.get_channel_message(channel_id=self.id, msg_id=id)
 
     def modify(self, args) -> typing.Any:
         """Modify this channel
@@ -181,6 +186,11 @@ class DMTextChannel:
         :rtype: typing.List[User]
         """
         return [User(i, self.app) for i in self.data["recipients"]]
+
+    def get_message(self, id: int) -> typing.Optional[Message]:
+        """Returns a channel message according to given ID."""
+
+        return self.app.get_channel_message(channel_id=self.id, msg_id=id)
 
     def __str__(self):
         """String representation of the model."""

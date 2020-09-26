@@ -32,6 +32,7 @@ from zenora.utils.endpoints import (
     GET_GUILD,
     EMOJI,
     EMOJI_ID,
+    FETCH_MESSAGE
 )
 from zenora.base.query import Query as QueryBase
 from zenora.errors import GuildError
@@ -62,7 +63,24 @@ class Query(QueryBase):
         )
         error_checker(data)
         return data
-
+    def message(self, channel_id, msg_id) -> typing.Dict:
+        """Implementation for the REST API query to get message according to ID.
+        Parameters:
+        channel_id: int
+                The snowflake ID of a Discord channel
+        msg_id: int
+                The snowflake ID of a Discord message.
+        Returns:
+        typing.Dict: A dictionary object that will be used to parse the data
+            into objects
+        """
+        data = fetch(
+            BASE_URL
+            + FETCH_CHANNEL.format(channel_id)
+            + FETCH_MESSAGE.format(msg_id),
+            headers={"Authorization": f"{self.token_type} {self.token}"},
+        )
+        return data
     def user(self, snowflake: int) -> typing.Dict:
         """Implementation for the REST API query to get user.
 

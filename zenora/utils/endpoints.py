@@ -30,6 +30,10 @@ CDN_URL = "https://cdn.discordapp.com"
 FETCH_CHANNEL = "/channels/{}"
 DMS_LIST = "/users/@me/channels"
 
+# Messages
+
+FETCH_MESSAGE = "/messages/{}"
+
 # Users
 FETCH_USER = "/users/{}"
 FETCH_CURRENT_USER = "/users/@me"

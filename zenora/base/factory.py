@@ -81,3 +81,17 @@ class Factory(abc.ABC):
                 Zenora emoji object
 
         """
+    @abc.abstractmethod
+    def parse_message(response: typing.Dict, app) -> typing.Any:
+        """Interface of data parser for message object
+        Parameters
+        ----------
+        response: typing.Dict
+                Discord API response as dictionary/JSON
+        app: zenora.RESTAPI
+                Instance of the RESTAPI
+        Returns
+        -------
+        zenora.messages.Message
+                Zenora message object
+        """

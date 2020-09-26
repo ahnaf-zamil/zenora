@@ -44,6 +44,8 @@ class TestRESTAPI(unittest.TestCase):
             "id": 758255225319981076,
             "image_url": "https://cdn.pixabay.com/photo/2019/02/19/19/45/thumbs-up-4007573__340.png",
         }
+        self.message = {"id" : 759295917626359819, "type" : 0}
+
 
     def test_get_channel(self):
         """Testing the get_channel method with specific ID and expected data
@@ -53,6 +55,15 @@ class TestRESTAPI(unittest.TestCase):
         channel = api.get_channel(self.channel["id"])
         self.assertEqual(channel.id, self.channel["id"])
         self.assertEqual(channel.name, self.channel["name"])
+
+    def test_get_message(self):
+        """Testing the get_message method with specific ID and expected data
+        Note: Make sure the ID is of a server text message because we are mocking an API response with a guild text channel response.
+        """
+        channel = api.get_channel(self.channel["id"])
+        msg = channel.get_message(759295917626359819)
+        self.assertEqual(int(msg.id), self.message["id"])
+        self.assertEqual(channel.id, msg.channel.id)
 
     def test_get_user(self):
         """Testing the get_user method with specific ID and expected mock data"""

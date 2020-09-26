@@ -34,7 +34,19 @@ class Query(abc.ABC):
         typing.Dict: A dictionary object that will be used to parse the data
             into objects
         """
-
+    @abc.abstractmethod
+    def message(self, channel_id, msg_id) -> typing.Dict:
+        """Interface for the REST API query to get message according to ID.
+        Parameters:
+        channel_id: int
+                The snowflake ID of a Discord channel
+        msg_id: int
+                The snowflake ID of a Discord message.
+        Returns:
+        typing.Dict: A dictionary object that will be used to parse the data
+            into objects
+        """
+        
     @abc.abstractmethod
     def current_user(self) -> typing.Dict:
         """Interface for the REST API query to get current user.

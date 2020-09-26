@@ -4,7 +4,7 @@ import datetime
 from zenora.users import User
 from zenora.base.factory import Factory as BaseFactory
 from zenora.impl.mapper import ChannelMapper, EmojiMapper
-
+from zenora.messages import Message
 
 class Factory(BaseFactory):
     def parse_channel(response: typing.Dict, app):
@@ -89,3 +89,17 @@ class Factory(BaseFactory):
 
         """
         return EmojiMapper.map(response, app)
+    def parse_message(response: typing.Dict, app) -> typing.Any:
+        """Parses response data from Dicord API into message object
+        Parameters
+        ----------
+        response: typing.Dict
+                Discord API response as dictionary/JSON
+        snowflake: int
+                Snowflake ID of the message
+        Returns
+        -------
+        zenora.messages.Message
+                Zenora message object
+        """
+        return Message(response, app)
