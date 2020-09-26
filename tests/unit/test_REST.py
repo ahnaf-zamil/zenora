@@ -37,7 +37,7 @@ class TestRESTAPI(unittest.TestCase):
         self.user = {"id": 479287754400989217, "username": "Ahnaf"}
         self.me = {"id": 479287754400989217, "username": "Ahnaf"}
         self.leave_guild = 652717519848603658
-        self.message = {"id":759295917626359819, "type":0}
+        self.message = {"id" : 759295917626359819, "type" : 0}
 
     def test_get_channel(self):
         """Testing the get_channel method with specific ID and expected data
@@ -47,6 +47,7 @@ class TestRESTAPI(unittest.TestCase):
         channel = api.get_channel(self.channel["id"])
         self.assertEqual(channel.id, self.channel["id"])
         self.assertEqual(channel.name, self.channel["name"])
+
     def test_get_message(self):
         """Testing the get_message method with specific ID and expected data
 

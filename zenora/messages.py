@@ -2,7 +2,6 @@ import typing
 import datetime
 
 
-
 class Message:
 
     __slots__ = ["data", "app"]
@@ -62,6 +61,7 @@ class Message:
     @property
     def tts(self):
         return self.data['tts']
+
     @property
     def timestamp(self):
         return self.data["timestamp"]

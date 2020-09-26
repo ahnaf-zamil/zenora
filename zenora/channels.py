@@ -26,6 +26,7 @@ import datetime
 from zenora.users import User
 from zenora.messages import Message
 
+
 class GuildTextChannel:
 
     """A server text channel object
@@ -33,7 +34,6 @@ class GuildTextChannel:
     :return: Zenora Guild Text Channel object
     :rtype: zenora.channels.GuildTextChannel
     """
-
     __slots__ = ["data", "app"]
 
     def __init__(self, data, app) -> None:
