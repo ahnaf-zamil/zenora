@@ -125,9 +125,12 @@ class RESTAPI(REST):
         msg_id : int
                 The snowflake ID of the message.
         """
-        response = Query(self.token, self.token_type).message(
-            channel_id, msg_id
-        )
+        if self.testing:
+            response = {'id': '759295917626359819', 'type': 0, 'content': 'I got this', 'channel_id': '753859569859690509', 'author': {'id': '479287754400989217', 'username': 'Ahnaf', 'avatar': '487238817ae5a4b7184d91286b008f83', 'discriminator': '4346', 'public_flags': 128}, 'attachments': [], 'embeds': [], 'mentions': [], 'mention_roles': [], 'pinned': False, 'mention_everyone': False, 'tts': False, 'timestamp': '2020-09-26T06:10:53.798000+00:00', 'edited_timestamp': None, 'flags': 0}
+        else:
+            response = Query(self.token, self.token_type).message(
+                channel_id, msg_id
+            )
         return model_factory.parse_message(response=response, app=self)
 
     def get_user(self, snowflake: int) -> typing.Any:

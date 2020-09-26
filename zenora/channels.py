@@ -24,7 +24,7 @@
 import typing
 import datetime
 from zenora.users import User
-
+from zenora.messages import Message
 
 class GuildTextChannel:
 
@@ -98,7 +98,7 @@ class GuildTextChannel:
             else None
         )
 
-    def get_message(self, id: int) -> typing.Dict:
+    def get_message(self, id: int) -> typing.Optional[Message]:
         """Returns a channel message according to given ID."""
 
         return self.app.get_channel_message(channel_id=self.id, msg_id=id)
@@ -130,7 +130,7 @@ class GuildTextChannel:
         """Delete this channel"""
         return self.app.delete_channel(self.id)
 
-    def __str__(self):
+    def __repr__(self):
         """String representation of the model."""
         attrs = [
             ("id", self.id),
@@ -289,7 +289,7 @@ class GuildVoiceChannel:
         """Delete this channel"""
         return self.app.delete_channel(self.id)
 
-    def __str__(self):
+    def __repr__(self):
         """String representation of the model."""
         attrs = [
             ("id", self.id),

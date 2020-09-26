@@ -109,7 +109,7 @@ class User:
             else None
         )
 
-    def __str__(self) -> typing.Optional[str]:
+    def __repr__(self) -> typing.Optional[str]:
         """String representation of the model."""
         attrs = [
             ("id", self.id),

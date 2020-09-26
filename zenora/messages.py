@@ -32,17 +32,21 @@ class Message:
         return self.app.get_user(int(self.data["author"]["id"]))
 
     @property
+    def guild_id(self):
+        return int(self.channel.guild_id)
+
+    @property
     def attachments(self):
         return self.data["attachments"]
-    
+
     @property
     def embeds(self):
         return self.data["embeds"]
-    
+
     @property
     def mentions(self):
-        return self.data["mentions"]
-    
+        return [self.app.get_user(i['id']) for i in self.data["mentions"]]
+
     @property
     def mention_roles(self):
         return self.data["mention_roles"]
@@ -57,7 +61,7 @@ class Message:
 
     @property
     def tts(self):
-        return self.data['tts']    
+        return self.data['tts']
     @property
     def timestamp(self):
         return self.data["timestamp"]
@@ -70,17 +74,18 @@ class Message:
     def flags(self):
         return self.data["flags"]
 
-    def __str__(self):
+    def __repr__(self):
         """String representation of the model."""
         attrs = [
             ("id", self.id),
             ("type", self.type),
             ("content", self.content),
             ("channel", self.channel),
+            ("guild_id", self.guild_id),
             ("author", self.author),
             ("attachments", self.attachments),
             ("embeds", self.embeds),
-            ("metions", self.mentions),
+            ("mentions", self.mentions),
             ("metion_roles", self.mention_roles),
             ("pinned", self.pinned),
             ("mention_everyone", self.mention_everyone),
