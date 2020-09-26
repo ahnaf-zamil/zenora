@@ -26,6 +26,7 @@ import datetime
 from zenora.users import User
 from zenora.messages import Message
 
+
 class GuildTextChannel:
 
     """A server text channel object
