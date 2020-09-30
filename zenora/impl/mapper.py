@@ -26,7 +26,7 @@ from zenora.channels import GuildTextChannel, GuildVoiceChannel, DMTextChannel
 from zenora.base.mapper import ChannelMapper as BaseChannelMapper
 from zenora.errors import MissingAccess
 from zenora.base.mapper import BaseEmojiMapper
-from zenora.emojis import Emoji
+from zenora.emoji import Emoji
 
 
 class ChannelMapper(BaseChannelMapper):

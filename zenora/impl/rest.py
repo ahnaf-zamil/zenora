@@ -114,6 +114,7 @@ class RESTAPI(REST):
         """
         Query(self.token, self.token_type).delete_channel(snowflake)
         return None
+
     def get_channel_message(self, channel_id: int, msg_id: int) -> typing.Dict:
         """Get a specific message from Discord channel
         Parameters
@@ -124,12 +125,35 @@ class RESTAPI(REST):
                 The snowflake ID of the message.
         """
         if self.testing:
-            response = {'id': '759295917626359819', 'type': 0, 'content': 'I got this', 'channel_id': '753859569859690509', 'author': {'id': '479287754400989217', 'username': 'Ahnaf', 'avatar': '487238817ae5a4b7184d91286b008f83', 'discriminator': '4346', 'public_flags': 128}, 'attachments': [], 'embeds': [], 'mentions': [], 'mention_roles': [], 'pinned': False, 'mention_everyone': False, 'tts': False, 'timestamp': '2020-09-26T06:10:53.798000+00:00', 'edited_timestamp': None, 'flags': 0}
+            response = {
+                "id": "759295917626359819",
+                "type": 0,
+                "content": "I got this",
+                "channel_id": "753859569859690509",
+                "author": {
+                    "id": "479287754400989217",
+                    "username": "Ahnaf",
+                    "avatar": "487238817ae5a4b7184d91286b008f83",
+                    "discriminator": "4346",
+                    "public_flags": 128,
+                },
+                "attachments": [],
+                "embeds": [],
+                "mentions": [],
+                "mention_roles": [],
+                "pinned": False,
+                "mention_everyone": False,
+                "tts": False,
+                "timestamp": "2020-09-26T06:10:53.798000+00:00",
+                "edited_timestamp": None,
+                "flags": 0,
+            }
         else:
             response = Query(self.token, self.token_type).message(
                 channel_id, msg_id
             )
         return model_factory.parse_message(response=response, app=self)
+
     def get_user(self, snowflake: int) -> typing.Any:
         """Fetch Dicord User
 
@@ -328,153 +352,152 @@ class RESTAPI(REST):
             response = 204
         return response
 
-    def get_emojis(self, snowflake):
+    def get_guild_emoji(self, guild_id: int):
         """
-        Get list of all emojis for guild
+        Get list of all emoji for guild
 
         Parameters
         ----------
 
-        snowflake: int
+        guild_id: int
             The id of the guild
 
         Returns
         ------
-        :type [zenora.emojis.Emoji]
-            List of emoji's
+        :type [zenora.Emoji]
+            List of emoji
         """
         if not self.testing:
-            response = Query(self.token, self.token_type).get_emojis(snowflake)
+            response = Query(self.token, self.token_type).get_emojis(guild_id)
         else:
             response = [
                 {
-                    "name": "test_emoji",
+                    "name": "rooCry",
                     "roles": [],
-                    "id": "758255225319981076",
+                    "id": "760855501172375573",
                     "require_colons": True,
                     "managed": False,
                     "animated": False,
                     "available": True,
                     "user": {
-                        "id": "592703489386348544",
-                        "username": "db",
-                        "avatar": "e07296d96c4f6c75b4fbbf25ec7d28b6",
-                        "discriminator": "3272",
+                        "id": "737603839145934898",
+                        "username": "YouTube Test Bot",
+                        "avatar": None,
+                        "discriminator": "6224",
                         "public_flags": 0,
+                        "bot": True,
                     },
-                },
-                {
-                    "name": "test_emoji2",
-                    "roles": [],
-                    "id": "758255421768335370",
-                    "require_colons": True,
-                    "managed": False,
-                    "animated": False,
-                    "available": True,
-                    "user": {
-                        "id": "592703489386348544",
-                        "username": "db",
-                        "avatar": "e07296d96c4f6c75b4fbbf25ec7d28b6",
-                        "discriminator": "3272",
-                        "public_flags": 0,
-                    },
-                },
+                }
             ]
-        return model_factory.parse_emojis(response=response, app=self)
+        return [
+            model_factory.parse_emoji(response=i, app=self) for i in response
+        ]
 
-    def get_emoji(self, snowflake, emoji_id):
-        """Get emoji for guild by emoji_id
+    def get_emoji(self, guild_id, emoji_id):
+        """Get emoji for guild by ID
 
         Parameters
         ----------
-        snowflake: int
-            The id of the guild
+        guild_id: int
+            The ID of the guild
         emoji_id: int
-            The id of emoji
+            The ID of emoji
 
         Returns
         -------
-        zenora.emojis.Emoji
+        zenora.Emoji
             Zenora emoji object
 
         """
         if not self.testing:
             response = Query(self.token, self.token_type).get_emoji(
-                snowflake, emoji_id
+                guild_id, emoji_id
             )
         else:
             response = {
-                "name": "test_emoji",
+                "name": "rooCry",
                 "roles": [],
-                "id": "758255225319981076",
+                "id": "760855501172375573",
                 "require_colons": True,
                 "managed": False,
                 "animated": False,
                 "available": True,
                 "user": {
-                    "id": "592703489386348544",
-                    "username": "db",
-                    "avatar": "e07296d96c4f6c75b4fbbf25ec7d28b6",
-                    "discriminator": "3272",
+                    "id": "737603839145934898",
+                    "username": "YouTube Test Bot",
+                    "avatar": None,
+                    "discriminator": "6224",
                     "public_flags": 0,
+                    "bot": True,
                 },
             }
         return model_factory.parse_emoji(response=response, app=self)
 
-    def post_emoji(self, snowflake, name, image_url, roles):
+    def create_emoji(
+        self, guild_id: int, name: str, image_url: str, roles: list = None
+    ):
         """
         Add new emoji for guild
 
 
         Parameters
         ----------
-        snowflake: int
-            The id of the guild
+        guild_id: int
+            The ID of the guild
         name: str
             Name of the emoji
         image_url: str
             Address of image that used for emoji
         roles: [int]
-            Array of snowflakes
+            Array of snowflakes for the roles for which this emoji will be whitelisted
 
         Returns
         -------
-        zenora.emojis.Emoji
+        zenora.Emoji
             Zenora emoji object
         """
         if not self.testing:
-            response = Query(self.token, self.token_type).post_emoji(
-                snowflake, name, image_url, roles
+            response = Query(self.token, self.token_type).create_emoji(
+                guild_id, name, image_url, roles if roles else []
             )
         else:
             # Create new emoji object
             response = {
-                "name": "test_emoji",
+                "name": "rooCry",
                 "roles": [],
-                "id": "758255225319981076",
+                "id": "760855501172375573",
                 "require_colons": True,
                 "managed": False,
                 "animated": False,
                 "available": True,
                 "user": {
-                    "id": "592703489386348544",
-                    "username": "db",
-                    "avatar": "e07296d96c4f6c75b4fbbf25ec7d28b6",
-                    "discriminator": "3272",
+                    "id": "737603839145934898",
+                    "username": "YouTube Test Bot",
+                    "avatar": None,
+                    "discriminator": "6224",
                     "public_flags": 0,
+                    "bot": True,
                 },
             }
         return model_factory.parse_emoji(response=response, app=self)
 
-    def patch_emoji(self, snowflake, emoji_id, name, roles):
+    def update_emoji(
+        self,
+        guild_id: int,
+        emoji_id: int,
+        name: str = None,
+        roles: list = None,
+    ):
         """
         Update emoji for guild
 
 
         Parameters
         ----------
-        snowflake: int
-            The id of the guild
+        guild_id: int
+            The ID of the guild
+        emoji_id: int
+            The ID of the emoji
         name: str
             Name of the emoji
         roles: [int]
@@ -483,53 +506,55 @@ class RESTAPI(REST):
 
         Returns
         -------
-        zenora.emojis.Emoji
+        zenora.Emoji
             Zenora emoji object
         """
         if not self.testing:
-            response = Query(self.token, self.token_type).patch_emoji(
-                snowflake, emoji_id, name, roles
+            response = Query(self.token, self.token_type).update_emoji(
+                guild_id, emoji_id, name, roles
             )
         else:
             # Updated emoji name `test_emoji` to `new_test_emoji` for testing
             response = {
-                "name": "new_test_emoji",
+                "name": "rooCry",
                 "roles": [],
-                "id": "758255225319981076",
+                "id": "760855501172375573",
                 "require_colons": True,
                 "managed": False,
                 "animated": False,
                 "available": True,
                 "user": {
-                    "id": "592703489386348544",
-                    "username": "db",
-                    "avatar": "e07296d96c4f6c75b4fbbf25ec7d28b6",
-                    "discriminator": "3272",
+                    "id": "737603839145934898",
+                    "username": "YouTube Test Bot",
+                    "avatar": None,
+                    "discriminator": "6224",
                     "public_flags": 0,
+                    "bot": True,
                 },
             }
+
         return model_factory.parse_emoji(response=response, app=self)
 
-    def delete_emoji(self, snowflake, emoji_id):
+    def delete_emoji(self, guild_id: int, emoji_id: int):
         """
         Delete emoji for guild
 
 
         Parameters
         ----------
-        snowflake: int
-            The id of the guild
+        guild_id: int
+            The ID of the guild
         emoji_id: int
-            The id of emoji
+            The ID of emoji
 
         Returns
         -------
-        zenora.emojis.Emoji
+        zenora.Emoji
             Zenora emoji object
         """
         if not self.testing:
             response = Query(self.token, self.token_type).delete_emoji(
-                snowflake,
+                guild_id,
                 emoji_id,
             )
         else:

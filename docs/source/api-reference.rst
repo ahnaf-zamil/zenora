@@ -3,26 +3,10 @@ API Reference
 =============
 
 
-Class Implementations
+REST API
 =====================
 
 .. automodule:: zenora.impl.rest
-    :members:
-    :member-order: groupwise
-    :show-inheritance:
-
-.. automodule:: zenora.impl.factory
-    :members:
-    :member-order: groupwise
-    :show-inheritance:
-
-
-.. automodule:: zenora.impl.mapper
-    :members:
-    :member-order: groupwise
-    :show-inheritance:
-
-.. automodule:: zenora.impl.query
     :members:
     :member-order: groupwise
     :show-inheritance:
@@ -45,6 +29,22 @@ Users
 
 -----
 
+Message
+=======
+.. automodule:: zenora.messages
+    :members:
+    :member-order: groupwise
+
+-----
+
+Emoji
+=====
+.. automodule:: zenora.emoji
+    :members:
+    :member-order: groupwise
+
+-----
+
 Files
 =====
 .. automodule:: zenora.file
@@ -59,22 +59,3 @@ Errors
     :members:
     :member-order: groupwise
 
-----
-
-Base Classes
-============
-.. automodule:: zenora.base.rest
-    :members:
-    :member-order: groupwise
-
-.. automodule:: zenora.base.factory
-    :members:
-    :member-order: groupwise
-
-.. automodule:: zenora.base.mapper
-    :members:
-    :member-order: groupwise
-
-.. automodule:: zenora.base.query
-    :members:
-    :member-order: groupwise

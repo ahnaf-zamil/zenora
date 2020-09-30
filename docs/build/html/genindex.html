@@ -1,5 +1,6 @@
 
 
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
@@ -7,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Index &mdash; Zenora 0.0.33 documentation</title>
+  <title>Index &mdash; Zenora 0.0.34 documentation</title>
   
 
   
@@ -26,10 +27,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/language_data.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -59,7 +60,7 @@
             
             
               <div class="version">
-                0.0.33
+                0.0.34
               </div>
             
           
@@ -167,7 +168,6 @@
  | <a href="#M"><strong>M</strong></a>
  | <a href="#N"><strong>N</strong></a>
  | <a href="#P"><strong>P</strong></a>
- | <a href="#Q"><strong>Q</strong></a>
  | <a href="#R"><strong>R</strong></a>
  | <a href="#T"><strong>T</strong></a>
  | <a href="#U"><strong>U</strong></a>
@@ -178,10 +178,16 @@
 <h2 id="A">A</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api-reference.html#zenora.users.User.avatar_url">avatar_url() (zenora.users.User property)</a>
+      <li><a href="api-reference.html#zenora.emoji.Emoji.animated">animated() (zenora.emoji.Emoji property)</a>
+</li>
+      <li><a href="api-reference.html#zenora.messages.Message.attachments">attachments() (zenora.messages.Message property)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api-reference.html#zenora.messages.Message.author">author() (zenora.messages.Message property)</a>
+</li>
+      <li><a href="api-reference.html#zenora.users.User.avatar_url">avatar_url() (zenora.users.User property)</a>
+</li>
       <li><a href="api-reference.html#zenora.errors.AvatarError">AvatarError</a>
 </li>
   </ul></td>
@@ -208,42 +214,16 @@
         <li><a href="api-reference.html#zenora.channels.GuildVoiceChannel.category_id">(zenora.channels.GuildVoiceChannel property)</a>
 </li>
       </ul></li>
-      <li><a href="api-reference.html#zenora.base.query.Query.channel">channel() (zenora.base.query.Query method)</a>
-
-      <ul>
-        <li><a href="api-reference.html#zenora.impl.query.Query.channel">(zenora.impl.query.Query method)</a>
+      <li><a href="api-reference.html#zenora.messages.Message.channel">channel() (zenora.messages.Message property)</a>
 </li>
-      </ul></li>
-      <li><a href="api-reference.html#zenora.base.mapper.ChannelMapper">ChannelMapper (class in zenora.base.mapper)</a>
-
-      <ul>
-        <li><a href="api-reference.html#zenora.impl.mapper.ChannelMapper">(class in zenora.impl.mapper)</a>
-</li>
-      </ul></li>
-      <li><a href="api-reference.html#zenora.base.query.Query.create_dm">create_dm() (zenora.base.query.Query method)</a>
-
-      <ul>
-        <li><a href="api-reference.html#zenora.base.rest.RESTAPI.create_dm">(zenora.base.rest.RESTAPI method)</a>
-</li>
-        <li><a href="api-reference.html#zenora.impl.query.Query.create_dm">(zenora.impl.query.Query method)</a>
-</li>
-        <li><a href="api-reference.html#zenora.impl.rest.RESTAPI.create_dm">(zenora.impl.rest.RESTAPI method)</a>
-</li>
-      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api-reference.html#zenora.base.query.Query.current_user">current_user() (zenora.base.query.Query method)</a>
-
-      <ul>
-        <li><a href="api-reference.html#zenora.impl.query.Query.current_user">(zenora.impl.query.Query method)</a>
+      <li><a href="api-reference.html#zenora.messages.Message.content">content() (zenora.messages.Message property)</a>
 </li>
-      </ul></li>
-      <li><a href="api-reference.html#zenora.base.query.Query.current_user_dms">current_user_dms() (zenora.base.query.Query method)</a>
-
-      <ul>
-        <li><a href="api-reference.html#zenora.impl.query.Query.current_user_dms">(zenora.impl.query.Query method)</a>
+      <li><a href="api-reference.html#zenora.impl.rest.RESTAPI.create_dm">create_dm() (zenora.impl.rest.RESTAPI method)</a>
 </li>
-      </ul></li>
+      <li><a href="api-reference.html#zenora.impl.rest.RESTAPI.create_emoji">create_emoji() (zenora.impl.rest.RESTAPI method)</a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -256,18 +236,12 @@
         <li><a href="api-reference.html#zenora.channels.GuildVoiceChannel.delete">(zenora.channels.GuildVoiceChannel method)</a>
 </li>
       </ul></li>
-      <li><a href="api-reference.html#zenora.base.query.Query.delete_channel">delete_channel() (zenora.base.query.Query method)</a>
-
-      <ul>
-        <li><a href="api-reference.html#zenora.base.rest.RESTAPI.delete_channel">(zenora.base.rest.RESTAPI method)</a>
+      <li><a href="api-reference.html#zenora.impl.rest.RESTAPI.delete_channel">delete_channel() (zenora.impl.rest.RESTAPI method)</a>
 </li>
-        <li><a href="api-reference.html#zenora.impl.query.Query.delete_channel">(zenora.impl.query.Query method)</a>
-</li>
-        <li><a href="api-reference.html#zenora.impl.rest.RESTAPI.delete_channel">(zenora.impl.rest.RESTAPI method)</a>
-</li>
-      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api-reference.html#zenora.impl.rest.RESTAPI.delete_emoji">delete_emoji() (zenora.impl.rest.RESTAPI method)</a>
+</li>
       <li><a href="api-reference.html#zenora.users.User.discriminator">discriminator() (zenora.users.User property)</a>
 </li>
       <li><a href="api-reference.html#zenora.channels.DMTextChannel">DMTextChannel (class in zenora.channels)</a>
@@ -281,55 +255,59 @@
       <li><a href="api-reference.html#zenora.users.User.email">email() (zenora.users.User property)</a>
 </li>
   </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api-reference.html#zenora.emoji.Emoji">Emoji (class in zenora.emoji)</a>
+</li>
+  </ul></td>
 </tr></table>
 
 <h2 id="F">F</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api-reference.html#zenora.base.factory.Factory">Factory (class in zenora.base.factory)</a>
-
-      <ul>
-        <li><a href="api-reference.html#zenora.impl.factory.Factory">(class in zenora.impl.factory)</a>
-</li>
-      </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api-reference.html#zenora.file.File">File (class in zenora.file)</a>
 </li>
-      <li><a href="api-reference.html#zenora.users.User.flags">flags() (zenora.users.User property)</a>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api-reference.html#zenora.messages.Message.flags">flags() (zenora.messages.Message property)</a>
+
+      <ul>
+        <li><a href="api-reference.html#zenora.users.User.flags">(zenora.users.User property)</a>
 </li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
 <h2 id="G">G</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api-reference.html#zenora.base.rest.RESTAPI.get_channel">get_channel() (zenora.base.rest.RESTAPI method)</a>
-
-      <ul>
-        <li><a href="api-reference.html#zenora.impl.rest.RESTAPI.get_channel">(zenora.impl.rest.RESTAPI method)</a>
+      <li><a href="api-reference.html#zenora.impl.rest.RESTAPI.get_channel">get_channel() (zenora.impl.rest.RESTAPI method)</a>
 </li>
-      </ul></li>
+      <li><a href="api-reference.html#zenora.impl.rest.RESTAPI.get_channel_message">get_channel_message() (zenora.impl.rest.RESTAPI method)</a>
+</li>
       <li><a href="api-reference.html#zenora.impl.rest.RESTAPI.get_current_user">get_current_user() (zenora.impl.rest.RESTAPI method)</a>
 </li>
-      <li><a href="api-reference.html#zenora.base.rest.RESTAPI.get_my_dms">get_my_dms() (zenora.base.rest.RESTAPI method)</a>
-
-      <ul>
-        <li><a href="api-reference.html#zenora.impl.rest.RESTAPI.get_my_dms">(zenora.impl.rest.RESTAPI method)</a>
+      <li><a href="api-reference.html#zenora.impl.rest.RESTAPI.get_emoji">get_emoji() (zenora.impl.rest.RESTAPI method)</a>
 </li>
-      </ul></li>
-      <li><a href="api-reference.html#zenora.base.rest.RESTAPI.get_user">get_user() (zenora.base.rest.RESTAPI method)</a>
+      <li><a href="api-reference.html#zenora.impl.rest.RESTAPI.get_guild_emoji">get_guild_emoji() (zenora.impl.rest.RESTAPI method)</a>
+</li>
+      <li><a href="api-reference.html#zenora.channels.DMTextChannel.get_message">get_message() (zenora.channels.DMTextChannel method)</a>
 
       <ul>
-        <li><a href="api-reference.html#zenora.impl.rest.RESTAPI.get_user">(zenora.impl.rest.RESTAPI method)</a>
+        <li><a href="api-reference.html#zenora.channels.GuildTextChannel.get_message">(zenora.channels.GuildTextChannel method)</a>
 </li>
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api-reference.html#zenora.impl.rest.RESTAPI.get_my_dms">get_my_dms() (zenora.impl.rest.RESTAPI method)</a>
+</li>
+      <li><a href="api-reference.html#zenora.impl.rest.RESTAPI.get_user">get_user() (zenora.impl.rest.RESTAPI method)</a>
+</li>
       <li><a href="api-reference.html#zenora.channels.GuildTextChannel.guild_id">guild_id() (zenora.channels.GuildTextChannel property)</a>
 
       <ul>
         <li><a href="api-reference.html#zenora.channels.GuildVoiceChannel.guild_id">(zenora.channels.GuildVoiceChannel property)</a>
+</li>
+        <li><a href="api-reference.html#zenora.messages.Message.guild_id">(zenora.messages.Message property)</a>
 </li>
       </ul></li>
       <li><a href="api-reference.html#zenora.errors.GuildError">GuildError</a>
@@ -350,6 +328,10 @@
         <li><a href="api-reference.html#zenora.channels.GuildTextChannel.id">(zenora.channels.GuildTextChannel property)</a>
 </li>
         <li><a href="api-reference.html#zenora.channels.GuildVoiceChannel.id">(zenora.channels.GuildVoiceChannel property)</a>
+</li>
+        <li><a href="api-reference.html#zenora.emoji.Emoji.id">(zenora.emoji.Emoji property)</a>
+</li>
+        <li><a href="api-reference.html#zenora.messages.Message.id">(zenora.messages.Message property)</a>
 </li>
         <li><a href="api-reference.html#zenora.users.User.id">(zenora.users.User property)</a>
 </li>
@@ -380,18 +362,10 @@
         <li><a href="api-reference.html#zenora.channels.GuildTextChannel.last_message_id">(zenora.channels.GuildTextChannel property)</a>
 </li>
       </ul></li>
-      <li><a href="api-reference.html#zenora.base.query.Query.leave_guild">leave_guild() (zenora.base.query.Query method)</a>
-
-      <ul>
-        <li><a href="api-reference.html#zenora.base.rest.RESTAPI.leave_guild">(zenora.base.rest.RESTAPI method)</a>
-</li>
-        <li><a href="api-reference.html#zenora.impl.query.Query.leave_guild">(zenora.impl.query.Query method)</a>
-</li>
-        <li><a href="api-reference.html#zenora.impl.rest.RESTAPI.leave_guild">(zenora.impl.rest.RESTAPI method)</a>
-</li>
-      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api-reference.html#zenora.impl.rest.RESTAPI.leave_guild">leave_guild() (zenora.impl.rest.RESTAPI method)</a>
+</li>
       <li><a href="api-reference.html#zenora.users.User.locale">locale() (zenora.users.User property)</a>
 </li>
   </ul></td>
@@ -400,14 +374,20 @@
 <h2 id="M">M</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api-reference.html#zenora.base.mapper.ChannelMapper.map">map() (zenora.base.mapper.ChannelMapper method)</a>
-
-      <ul>
-        <li><a href="api-reference.html#zenora.impl.mapper.ChannelMapper.map">(zenora.impl.mapper.ChannelMapper method)</a>
+      <li><a href="api-reference.html#zenora.emoji.Emoji.managed">managed() (zenora.emoji.Emoji property)</a>
 </li>
-      </ul></li>
       <li><a href="api-reference.html#zenora.users.User.mention">mention() (zenora.users.User property)</a>
 </li>
+      <li><a href="api-reference.html#zenora.messages.Message.mention_everyone">mention_everyone() (zenora.messages.Message property)</a>
+</li>
+      <li><a href="api-reference.html#zenora.messages.Message.mention_roles">mention_roles() (zenora.messages.Message property)</a>
+</li>
+      <li><a href="api-reference.html#zenora.messages.Message.mentions">mentions() (zenora.messages.Message property)</a>
+</li>
+      <li><a href="api-reference.html#zenora.messages.Message">Message (class in zenora.messages)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api-reference.html#zenora.users.User.mfa_enabled">mfa_enabled() (zenora.users.User property)</a>
 </li>
       <li><a href="api-reference.html#zenora.errors.MissingAccess">MissingAccess</a>
@@ -418,59 +398,10 @@
         <li><a href="api-reference.html#zenora.channels.GuildVoiceChannel.modify">(zenora.channels.GuildVoiceChannel method)</a>
 </li>
       </ul></li>
-      <li><a href="api-reference.html#zenora.base.query.Query.modify_channel">modify_channel() (zenora.base.query.Query method)</a>
-
-      <ul>
-        <li><a href="api-reference.html#zenora.base.rest.RESTAPI.modify_channel">(zenora.base.rest.RESTAPI method)</a>
+      <li><a href="api-reference.html#zenora.impl.rest.RESTAPI.modify_channel">modify_channel() (zenora.impl.rest.RESTAPI method)</a>
 </li>
-        <li><a href="api-reference.html#zenora.impl.query.Query.modify_channel">(zenora.impl.query.Query method)</a>
+      <li><a href="api-reference.html#zenora.impl.rest.RESTAPI.modify_current_user">modify_current_user() (zenora.impl.rest.RESTAPI method)</a>
 </li>
-        <li><a href="api-reference.html#zenora.impl.rest.RESTAPI.modify_channel">(zenora.impl.rest.RESTAPI method)</a>
-</li>
-      </ul></li>
-      <li><a href="api-reference.html#zenora.base.rest.RESTAPI.modify_current_user">modify_current_user() (zenora.base.rest.RESTAPI method)</a>
-
-      <ul>
-        <li><a href="api-reference.html#zenora.impl.rest.RESTAPI.modify_current_user">(zenora.impl.rest.RESTAPI method)</a>
-</li>
-      </ul></li>
-      <li><a href="api-reference.html#zenora.base.query.Query.modify_me">modify_me() (zenora.base.query.Query method)</a>
-
-      <ul>
-        <li><a href="api-reference.html#zenora.impl.query.Query.modify_me">(zenora.impl.query.Query method)</a>
-</li>
-      </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li>
-    module
-
-      <ul>
-        <li><a href="api-reference.html#module-zenora.base.factory">zenora.base.factory</a>
-</li>
-        <li><a href="api-reference.html#module-zenora.base.mapper">zenora.base.mapper</a>
-</li>
-        <li><a href="api-reference.html#module-zenora.base.query">zenora.base.query</a>
-</li>
-        <li><a href="api-reference.html#module-zenora.base.rest">zenora.base.rest</a>
-</li>
-        <li><a href="api-reference.html#module-zenora.channels">zenora.channels</a>
-</li>
-        <li><a href="api-reference.html#module-zenora.errors">zenora.errors</a>
-</li>
-        <li><a href="api-reference.html#module-zenora.file">zenora.file</a>
-</li>
-        <li><a href="api-reference.html#module-zenora.impl.factory">zenora.impl.factory</a>
-</li>
-        <li><a href="api-reference.html#module-zenora.impl.mapper">zenora.impl.mapper</a>
-</li>
-        <li><a href="api-reference.html#module-zenora.impl.query">zenora.impl.query</a>
-</li>
-        <li><a href="api-reference.html#module-zenora.impl.rest">zenora.impl.rest</a>
-</li>
-        <li><a href="api-reference.html#module-zenora.users">zenora.users</a>
-</li>
-      </ul></li>
   </ul></td>
 </tr></table>
 
@@ -482,6 +413,8 @@
       <ul>
         <li><a href="api-reference.html#zenora.channels.GuildVoiceChannel.name">(zenora.channels.GuildVoiceChannel property)</a>
 </li>
+        <li><a href="api-reference.html#zenora.emoji.Emoji.name">(zenora.emoji.Emoji property)</a>
+</li>
       </ul></li>
   </ul></td>
 </tr></table>
@@ -489,26 +422,16 @@
 <h2 id="P">P</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api-reference.html#zenora.base.factory.Factory.parse_channel">parse_channel() (zenora.base.factory.Factory method)</a>
-
-      <ul>
-        <li><a href="api-reference.html#zenora.impl.factory.Factory.parse_channel">(zenora.impl.factory.Factory method)</a>
-</li>
-      </ul></li>
-      <li><a href="api-reference.html#zenora.base.factory.Factory.parse_user">parse_user() (zenora.base.factory.Factory method)</a>
-
-      <ul>
-        <li><a href="api-reference.html#zenora.impl.factory.Factory.parse_user">(zenora.impl.factory.Factory method)</a>
-</li>
-      </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api-reference.html#zenora.channels.GuildTextChannel.permission_overwrites">permission_overwrites() (zenora.channels.GuildTextChannel property)</a>
 
       <ul>
         <li><a href="api-reference.html#zenora.channels.GuildVoiceChannel.permission_overwrites">(zenora.channels.GuildVoiceChannel property)</a>
 </li>
       </ul></li>
+      <li><a href="api-reference.html#zenora.messages.Message.pinned">pinned() (zenora.messages.Message property)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api-reference.html#zenora.channels.GuildTextChannel.position">position() (zenora.channels.GuildTextChannel property)</a>
 
       <ul>
@@ -517,18 +440,6 @@
       </ul></li>
       <li><a href="api-reference.html#zenora.users.User.premium_type">premium_type() (zenora.users.User property)</a>
 </li>
-  </ul></td>
-</tr></table>
-
-<h2 id="Q">Q</h2>
-<table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api-reference.html#zenora.base.query.Query">Query (class in zenora.base.query)</a>
-
-      <ul>
-        <li><a href="api-reference.html#zenora.impl.query.Query">(class in zenora.impl.query)</a>
-</li>
-      </ul></li>
   </ul></td>
 </tr></table>
 
@@ -541,19 +452,27 @@
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api-reference.html#zenora.base.rest.RESTAPI">RESTAPI (class in zenora.base.rest)</a>
-
-      <ul>
-        <li><a href="api-reference.html#zenora.impl.rest.RESTAPI">(class in zenora.impl.rest)</a>
+      <li><a href="api-reference.html#zenora.emoji.Emoji.require_colons">require_colons() (zenora.emoji.Emoji property)</a>
 </li>
-      </ul></li>
+      <li><a href="api-reference.html#zenora.impl.rest.RESTAPI">RESTAPI (class in zenora.impl.rest)</a>
+</li>
+      <li><a href="api-reference.html#zenora.emoji.Emoji.roles">roles() (zenora.emoji.Emoji property)</a>
+</li>
   </ul></td>
 </tr></table>
 
 <h2 id="T">T</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api-reference.html#zenora.messages.Message.timestamp">timestamp() (zenora.messages.Message property)</a>
+</li>
       <li><a href="api-reference.html#zenora.channels.GuildTextChannel.topic">topic() (zenora.channels.GuildTextChannel property)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api-reference.html#zenora.messages.Message.tts">tts() (zenora.messages.Message property)</a>
+</li>
+      <li><a href="api-reference.html#zenora.messages.Message.type">type() (zenora.messages.Message property)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -561,16 +480,14 @@
 <h2 id="U">U</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api-reference.html#zenora.impl.rest.RESTAPI.update_emoji">update_emoji() (zenora.impl.rest.RESTAPI method)</a>
+</li>
       <li><a href="api-reference.html#zenora.users.User">User (class in zenora.users)</a>
 </li>
-      <li><a href="api-reference.html#zenora.base.query.Query.user">user() (zenora.base.query.Query method)</a>
-
-      <ul>
-        <li><a href="api-reference.html#zenora.impl.query.Query.user">(zenora.impl.query.Query method)</a>
-</li>
-      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api-reference.html#zenora.emoji.Emoji.user">user() (zenora.emoji.Emoji property)</a>
+</li>
       <li><a href="api-reference.html#zenora.channels.GuildVoiceChannel.user_limit">user_limit() (zenora.channels.GuildVoiceChannel property)</a>
 </li>
       <li><a href="api-reference.html#zenora.users.User.username">username() (zenora.users.User property)</a>
@@ -589,92 +506,22 @@
 <h2 id="Z">Z</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li>
-    zenora.base.factory
-
-      <ul>
-        <li><a href="api-reference.html#module-zenora.base.factory">module</a>
+      <li><a href="api-reference.html#module-zenora.channels">zenora.channels (module)</a>
 </li>
-      </ul></li>
-      <li>
-    zenora.base.mapper
-
-      <ul>
-        <li><a href="api-reference.html#module-zenora.base.mapper">module</a>
+      <li><a href="api-reference.html#module-zenora.emoji">zenora.emoji (module)</a>
 </li>
-      </ul></li>
-      <li>
-    zenora.base.query
-
-      <ul>
-        <li><a href="api-reference.html#module-zenora.base.query">module</a>
+      <li><a href="api-reference.html#module-zenora.errors">zenora.errors (module)</a>
 </li>
-      </ul></li>
-      <li>
-    zenora.base.rest
-
-      <ul>
-        <li><a href="api-reference.html#module-zenora.base.rest">module</a>
-</li>
-      </ul></li>
-      <li>
-    zenora.channels
-
-      <ul>
-        <li><a href="api-reference.html#module-zenora.channels">module</a>
-</li>
-      </ul></li>
-      <li>
-    zenora.errors
-
-      <ul>
-        <li><a href="api-reference.html#module-zenora.errors">module</a>
-</li>
-      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li>
-    zenora.file
-
-      <ul>
-        <li><a href="api-reference.html#module-zenora.file">module</a>
+      <li><a href="api-reference.html#module-zenora.file">zenora.file (module)</a>
 </li>
-      </ul></li>
-      <li>
-    zenora.impl.factory
-
-      <ul>
-        <li><a href="api-reference.html#module-zenora.impl.factory">module</a>
+      <li><a href="api-reference.html#module-zenora.impl.rest">zenora.impl.rest (module)</a>
 </li>
-      </ul></li>
-      <li>
-    zenora.impl.mapper
-
-      <ul>
-        <li><a href="api-reference.html#module-zenora.impl.mapper">module</a>
+      <li><a href="api-reference.html#module-zenora.messages">zenora.messages (module)</a>
 </li>
-      </ul></li>
-      <li>
-    zenora.impl.query
-
-      <ul>
-        <li><a href="api-reference.html#module-zenora.impl.query">module</a>
+      <li><a href="api-reference.html#module-zenora.users">zenora.users (module)</a>
 </li>
-      </ul></li>
-      <li>
-    zenora.impl.rest
-
-      <ul>
-        <li><a href="api-reference.html#module-zenora.impl.rest">module</a>
-</li>
-      </ul></li>
-      <li>
-    zenora.users
-
-      <ul>
-        <li><a href="api-reference.html#module-zenora.users">module</a>
-</li>
-      </ul></li>
   </ul></td>
 </tr></table>
 

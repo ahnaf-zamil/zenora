@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>zenora.base.rest &mdash; Zenora 0.0.33 documentation</title>
+  <title>zenora.base.rest &mdash; Zenora 0.0.34 documentation</title>
   
 
   
@@ -26,10 +26,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script src="../../../_static/jquery.js"></script>
-        <script src="../../../_static/underscore.js"></script>
-        <script src="../../../_static/doctools.js"></script>
-        <script src="../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                0.0.33
+                0.0.34
               </div>
             
           
@@ -177,8 +177,8 @@
 
 <span class="kn">import</span> <span class="nn">typing</span>
 <span class="kn">import</span> <span class="nn">abc</span>
-<span class="kn">from</span> <span class="nn">..channels</span> <span class="kn">import</span> <span class="n">DMTextChannel</span><span class="p">,</span> <span class="n">GuildTextChannel</span><span class="p">,</span> <span class="n">GuildVoiceChannel</span>
-<span class="kn">from</span> <span class="nn">..users</span> <span class="kn">import</span> <span class="n">User</span>
+<span class="kn">from</span> <span class="nn">..channels</span> <span class="k">import</span> <span class="n">DMTextChannel</span><span class="p">,</span> <span class="n">GuildTextChannel</span><span class="p">,</span> <span class="n">GuildVoiceChannel</span>
+<span class="kn">from</span> <span class="nn">..users</span> <span class="k">import</span> <span class="n">User</span>
 
 
 <div class="viewcode-block" id="RESTAPI"><a class="viewcode-back" href="../../../api-reference.html#zenora.base.rest.RESTAPI">[docs]</a><span class="k">class</span> <span class="nc">RESTAPI</span><span class="p">(</span><span class="n">abc</span><span class="o">.</span><span class="n">ABC</span><span class="p">):</span>
@@ -186,7 +186,7 @@
 
     <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;token&quot;</span><span class="p">,</span> <span class="s2">&quot;token_type&quot;</span><span class="p">,</span> <span class="s2">&quot;testing&quot;</span><span class="p">]</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">token</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">token_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">testing</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">token</span> <span class="o">=</span> <span class="n">token</span>
@@ -276,6 +276,17 @@
 
 <span class="sd">        &quot;&quot;&quot;</span></div>
 
+<div class="viewcode-block" id="RESTAPI.get_channel_message"><a class="viewcode-back" href="../../../api-reference.html#zenora.base.rest.RESTAPI.get_channel_message">[docs]</a>    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
+    <span class="k">def</span> <span class="nf">get_channel_message</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">msg_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Dict</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Get a specific message from Discord channel</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        channel_id : int</span>
+<span class="sd">                The snowflake ID of the channel.</span>
+<span class="sd">        msg_id : int</span>
+<span class="sd">                The snowflake ID of the message.</span>
+<span class="sd">        &quot;&quot;&quot;</span></div>
+
 <div class="viewcode-block" id="RESTAPI.get_my_dms"><a class="viewcode-back" href="../../../api-reference.html#zenora.base.rest.RESTAPI.get_my_dms">[docs]</a>    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
     <span class="k">def</span> <span class="nf">get_my_dms</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">List</span><span class="p">[</span><span class="n">DMTextChannel</span><span class="p">]:</span>
         <span class="sd">&quot;&quot;&quot;Fetch the current Dicord user&#39;s DM channels</span>
@@ -347,6 +358,108 @@
 <span class="sd">        -------</span>
 <span class="sd">        None</span>
 
+<span class="sd">        &quot;&quot;&quot;</span></div>
+
+<div class="viewcode-block" id="RESTAPI.get_guild_emoji"><a class="viewcode-back" href="../../../api-reference.html#zenora.base.rest.RESTAPI.get_guild_emoji">[docs]</a>    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
+    <span class="k">def</span> <span class="nf">get_guild_emoji</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">guild_id</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get list of all emoji for guild</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+
+<span class="sd">        guild_id: int</span>
+<span class="sd">                The id of the guild</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        ------</span>
+<span class="sd">        :type [zenora.emojis.Emoji]</span>
+<span class="sd">                List of emoji&#39;s</span>
+<span class="sd">        &quot;&quot;&quot;</span></div>
+
+<div class="viewcode-block" id="RESTAPI.get_emoji"><a class="viewcode-back" href="../../../api-reference.html#zenora.base.rest.RESTAPI.get_emoji">[docs]</a>    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
+    <span class="k">def</span> <span class="nf">get_emoji</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">guild_id</span><span class="p">,</span> <span class="n">emoji_id</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get emoji for guild by ID</span>
+
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        guild_id: int</span>
+<span class="sd">            The ID of the guild</span>
+<span class="sd">        emoji_id: int</span>
+<span class="sd">            The ID of emoji</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        zenora.emojis.Emoji</span>
+<span class="sd">            Zenora emoji object</span>
+
+<span class="sd">        &quot;&quot;&quot;</span></div>
+
+<div class="viewcode-block" id="RESTAPI.create_emoji"><a class="viewcode-back" href="../../../api-reference.html#zenora.base.rest.RESTAPI.create_emoji">[docs]</a>    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
+    <span class="k">def</span> <span class="nf">create_emoji</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">guild_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">image_url</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">roles</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add new emoji for guild</span>
+
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        guild_id: int</span>
+<span class="sd">            The ID of the guild</span>
+<span class="sd">        name: str</span>
+<span class="sd">            Name of the emoji</span>
+<span class="sd">        image_url: str</span>
+<span class="sd">            Address of image that used for emoji</span>
+<span class="sd">        roles: [int]</span>
+<span class="sd">            Array of snowflakes for the roles for which this emoji will be whitelisted</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        zenora.Emoji</span>
+<span class="sd">            Zenora emoji object</span>
+<span class="sd">        &quot;&quot;&quot;</span></div>
+
+<div class="viewcode-block" id="RESTAPI.update_emoji"><a class="viewcode-back" href="../../../api-reference.html#zenora.base.rest.RESTAPI.update_emoji">[docs]</a>    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
+    <span class="k">def</span> <span class="nf">update_emoji</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">guild_id</span><span class="p">,</span> <span class="n">emoji_id</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">roles</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Update emoji for guild</span>
+
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        guild_id: int</span>
+<span class="sd">            The ID of the guild</span>
+<span class="sd">        emoji_id: int</span>
+<span class="sd">            The ID of the emoji</span>
+<span class="sd">        name: str</span>
+<span class="sd">            Name of the emoji</span>
+<span class="sd">        roles: [int]</span>
+<span class="sd">            Array of snowflake</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        zenora.emojis.Emoji</span>
+<span class="sd">            Zenora emoji object</span>
+<span class="sd">        &quot;&quot;&quot;</span></div>
+
+<div class="viewcode-block" id="RESTAPI.delete_emoji"><a class="viewcode-back" href="../../../api-reference.html#zenora.base.rest.RESTAPI.delete_emoji">[docs]</a>    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
+    <span class="k">def</span> <span class="nf">delete_emoji</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">guild_id</span><span class="p">,</span> <span class="n">emoji_id</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Delete emoji for guild</span>
+
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        guild_id: int</span>
+<span class="sd">            The ID of the guild</span>
+<span class="sd">        emoji_id: int</span>
+<span class="sd">            The ID of emoji</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        zenora.emojis.Emoji</span>
+<span class="sd">            Zenora emoji object</span>
 <span class="sd">        &quot;&quot;&quot;</span></div></div>
 </pre></div>
 

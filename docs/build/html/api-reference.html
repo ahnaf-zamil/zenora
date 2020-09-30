@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>API Reference &mdash; Zenora 0.0.33 documentation</title>
+  <title>API Reference &mdash; Zenora 0.0.34 documentation</title>
   
 
   
@@ -26,10 +26,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/language_data.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                0.0.33
+                0.0.34
               </div>
             
           
@@ -89,12 +89,13 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">API Reference</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#module-zenora.impl.rest">Class Implementations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-zenora.impl.rest">REST API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-zenora.channels">Channels</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-zenora.users">Users</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-zenora.messages">Message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-zenora.emoji">Emoji</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-zenora.file">Files</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-zenora.errors">Errors</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-zenora.base.rest">Base Classes</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
@@ -166,14 +167,14 @@
   <div class="section" id="api-reference">
 <h1>API Reference<a class="headerlink" href="#api-reference" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="module-zenora.impl.rest">
-<span id="class-implementations"></span><h2>Class Implementations<a class="headerlink" href="#module-zenora.impl.rest" title="Permalink to this headline">¶</a></h2>
-<dl class="py class">
+<span id="rest-api"></span><h2>REST API<a class="headerlink" href="#module-zenora.impl.rest" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
 <dt id="zenora.impl.rest.RESTAPI">
-<em class="property">class </em><code class="sig-prename descclassname">zenora.impl.rest.</code><code class="sig-name descname">RESTAPI</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">token</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">token_type</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">testing</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/zenora/impl/rest.html#RESTAPI"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.impl.rest.RESTAPI" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#zenora.base.rest.RESTAPI" title="zenora.base.rest.RESTAPI"><code class="xref py py-class docutils literal notranslate"><span class="pre">zenora.base.rest.RESTAPI</span></code></a></p>
-<dl class="py method">
+<em class="property">class </em><code class="sig-prename descclassname">zenora.impl.rest.</code><code class="sig-name descname">RESTAPI</code><span class="sig-paren">(</span><em class="sig-param">token: str</em>, <em class="sig-param">token_type: str</em>, <em class="sig-param">testing: bool = False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/zenora/impl/rest.html#RESTAPI"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.impl.rest.RESTAPI" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">zenora.base.rest.RESTAPI</span></code></p>
+<dl class="method">
 <dt id="zenora.impl.rest.RESTAPI.create_dm">
-<code class="sig-name descname">create_dm</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">recipient_id</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#zenora.channels.DMTextChannel" title="zenora.channels.DMTextChannel">zenora.channels.DMTextChannel</a><a class="reference internal" href="_modules/zenora/impl/rest.html#RESTAPI.create_dm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.impl.rest.RESTAPI.create_dm" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">create_dm</code><span class="sig-paren">(</span><em class="sig-param">recipient_id: int</em><span class="sig-paren">)</span> &#x2192; zenora.channels.DMTextChannel<a class="reference internal" href="_modules/zenora/impl/rest.html#RESTAPI.create_dm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.impl.rest.RESTAPI.create_dm" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates DM text channel with a specified user according to snowflake ID</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -188,9 +189,31 @@
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
+<dt id="zenora.impl.rest.RESTAPI.create_emoji">
+<code class="sig-name descname">create_emoji</code><span class="sig-paren">(</span><em class="sig-param">guild_id: int</em>, <em class="sig-param">name: str</em>, <em class="sig-param">image_url: str</em>, <em class="sig-param">roles: list = None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/zenora/impl/rest.html#RESTAPI.create_emoji"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.impl.rest.RESTAPI.create_emoji" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add new emoji for guild</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>guild_id</strong> (<em>int</em>) – The ID of the guild</p></li>
+<li><p><strong>name</strong> (<em>str</em>) – Name of the emoji</p></li>
+<li><p><strong>image_url</strong> (<em>str</em>) – Address of image that used for emoji</p></li>
+<li><p><strong>roles</strong> (<em>[</em><em>int</em><em>]</em>) – Array of snowflakes for the roles for which this emoji will be whitelisted</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Zenora emoji object</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>zenora.Emoji</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="zenora.impl.rest.RESTAPI.delete_channel">
-<code class="sig-name descname">delete_channel</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">snowflake</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; Any<a class="reference internal" href="_modules/zenora/impl/rest.html#RESTAPI.delete_channel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.impl.rest.RESTAPI.delete_channel" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">delete_channel</code><span class="sig-paren">(</span><em class="sig-param">snowflake: int</em><span class="sig-paren">)</span> &#x2192; Any<a class="reference internal" href="_modules/zenora/impl/rest.html#RESTAPI.delete_channel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.impl.rest.RESTAPI.delete_channel" title="Permalink to this definition">¶</a></dt>
 <dd><p>Delete Discord Guild Channel</p>
 <p>The snowflake parameter has to be the channel snowflake ID</p>
 <dl class="field-list simple">
@@ -200,9 +223,29 @@
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
+<dt id="zenora.impl.rest.RESTAPI.delete_emoji">
+<code class="sig-name descname">delete_emoji</code><span class="sig-paren">(</span><em class="sig-param">guild_id: int</em>, <em class="sig-param">emoji_id: int</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/zenora/impl/rest.html#RESTAPI.delete_emoji"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.impl.rest.RESTAPI.delete_emoji" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete emoji for guild</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>guild_id</strong> (<em>int</em>) – The ID of the guild</p></li>
+<li><p><strong>emoji_id</strong> (<em>int</em>) – The ID of emoji</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Zenora emoji object</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>zenora.Emoji</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="zenora.impl.rest.RESTAPI.get_channel">
-<code class="sig-name descname">get_channel</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">snowflake</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; Any<a class="reference internal" href="_modules/zenora/impl/rest.html#RESTAPI.get_channel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.impl.rest.RESTAPI.get_channel" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_channel</code><span class="sig-paren">(</span><em class="sig-param">snowflake: int</em><span class="sig-paren">)</span> &#x2192; Any<a class="reference internal" href="_modules/zenora/impl/rest.html#RESTAPI.get_channel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.impl.rest.RESTAPI.get_channel" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fetch Dicord Channel</p>
 <p>This has to be the channel snowflake ID</p>
 <dl class="field-list simple">
@@ -220,7 +263,17 @@
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
+<dt id="zenora.impl.rest.RESTAPI.get_channel_message">
+<code class="sig-name descname">get_channel_message</code><span class="sig-paren">(</span><em class="sig-param">channel_id: int</em>, <em class="sig-param">msg_id: int</em><span class="sig-paren">)</span> &#x2192; Dict<a class="reference internal" href="_modules/zenora/impl/rest.html#RESTAPI.get_channel_message"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.impl.rest.RESTAPI.get_channel_message" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a specific message from Discord channel
+:param channel_id: The snowflake ID of the channel.
+:type channel_id: int
+:param msg_id: The snowflake ID of the message.
+:type msg_id: int</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="zenora.impl.rest.RESTAPI.get_current_user">
 <code class="sig-name descname">get_current_user</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Any<a class="reference internal" href="_modules/zenora/impl/rest.html#RESTAPI.get_current_user"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.impl.rest.RESTAPI.get_current_user" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fetch the current Dicord User</p>
@@ -234,7 +287,44 @@
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
+<dt id="zenora.impl.rest.RESTAPI.get_emoji">
+<code class="sig-name descname">get_emoji</code><span class="sig-paren">(</span><em class="sig-param">guild_id</em>, <em class="sig-param">emoji_id</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/zenora/impl/rest.html#RESTAPI.get_emoji"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.impl.rest.RESTAPI.get_emoji" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get emoji for guild by ID</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>guild_id</strong> (<em>int</em>) – The ID of the guild</p></li>
+<li><p><strong>emoji_id</strong> (<em>int</em>) – The ID of emoji</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Zenora emoji object</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>zenora.Emoji</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="zenora.impl.rest.RESTAPI.get_guild_emoji">
+<code class="sig-name descname">get_guild_emoji</code><span class="sig-paren">(</span><em class="sig-param">guild_id: int</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/zenora/impl/rest.html#RESTAPI.get_guild_emoji"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.impl.rest.RESTAPI.get_guild_emoji" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get list of all emoji for guild</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>guild_id</strong> (<em>int</em>) – The id of the guild</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List of emoji</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>type [zenora.Emoji]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="zenora.impl.rest.RESTAPI.get_my_dms">
 <code class="sig-name descname">get_my_dms</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List<a class="reference internal" href="_modules/zenora/impl/rest.html#RESTAPI.get_my_dms"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.impl.rest.RESTAPI.get_my_dms" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fetch the current Dicord user’s DM channels</p>
@@ -248,9 +338,9 @@
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="zenora.impl.rest.RESTAPI.get_user">
-<code class="sig-name descname">get_user</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">snowflake</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; Any<a class="reference internal" href="_modules/zenora/impl/rest.html#RESTAPI.get_user"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.impl.rest.RESTAPI.get_user" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_user</code><span class="sig-paren">(</span><em class="sig-param">snowflake: int</em><span class="sig-paren">)</span> &#x2192; Any<a class="reference internal" href="_modules/zenora/impl/rest.html#RESTAPI.get_user"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.impl.rest.RESTAPI.get_user" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fetch Dicord User</p>
 <p>This has to be the user’s snowflake ID</p>
 <dl class="field-list simple">
@@ -266,9 +356,9 @@
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="zenora.impl.rest.RESTAPI.leave_guild">
-<code class="sig-name descname">leave_guild</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">snowflake</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/zenora/impl/rest.html#RESTAPI.leave_guild"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.impl.rest.RESTAPI.leave_guild" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">leave_guild</code><span class="sig-paren">(</span><em class="sig-param">snowflake: int</em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/zenora/impl/rest.html#RESTAPI.leave_guild"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.impl.rest.RESTAPI.leave_guild" title="Permalink to this definition">¶</a></dt>
 <dd><p>Leave a Discord server (current user)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -283,9 +373,9 @@
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="zenora.impl.rest.RESTAPI.modify_channel">
-<code class="sig-name descname">modify_channel</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">snowflake</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">params</span><span class="p">:</span> <span class="n">Dict</span></em><span class="sig-paren">)</span> &#x2192; Any<a class="reference internal" href="_modules/zenora/impl/rest.html#RESTAPI.modify_channel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.impl.rest.RESTAPI.modify_channel" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">modify_channel</code><span class="sig-paren">(</span><em class="sig-param">snowflake: int</em>, <em class="sig-param">params: Dict</em><span class="sig-paren">)</span> &#x2192; Any<a class="reference internal" href="_modules/zenora/impl/rest.html#RESTAPI.modify_channel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.impl.rest.RESTAPI.modify_channel" title="Permalink to this definition">¶</a></dt>
 <dd><p>Modify Discord Guild Channel</p>
 <p>The snowflake parameter has to be the channel snowflake ID</p>
 <dl class="field-list simple">
@@ -299,9 +389,9 @@ link for all the changes applicable <a class="reference external" href="https://
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="zenora.impl.rest.RESTAPI.modify_current_user">
-<code class="sig-name descname">modify_current_user</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">args</span><span class="p">:</span> <span class="n">dict</span></em><span class="sig-paren">)</span> &#x2192; Any<a class="reference internal" href="_modules/zenora/impl/rest.html#RESTAPI.modify_current_user"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.impl.rest.RESTAPI.modify_current_user" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">modify_current_user</code><span class="sig-paren">(</span><em class="sig-param">args: dict</em><span class="sig-paren">)</span> &#x2192; Any<a class="reference internal" href="_modules/zenora/impl/rest.html#RESTAPI.modify_current_user"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.impl.rest.RESTAPI.modify_current_user" title="Permalink to this definition">¶</a></dt>
 <dd><p>Modify current discord User</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -325,201 +415,26 @@ their username, avatar or both</p>
 </dl>
 </dd></dl>
 
-</dd></dl>
-
-<span class="target" id="module-zenora.impl.factory"></span><dl class="py class">
-<dt id="zenora.impl.factory.Factory">
-<em class="property">class </em><code class="sig-prename descclassname">zenora.impl.factory.</code><code class="sig-name descname">Factory</code><a class="reference internal" href="_modules/zenora/impl/factory.html#Factory"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.impl.factory.Factory" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#zenora.base.factory.Factory" title="zenora.base.factory.Factory"><code class="xref py py-class docutils literal notranslate"><span class="pre">zenora.base.factory.Factory</span></code></a></p>
-<dl class="py method">
-<dt id="zenora.impl.factory.Factory.parse_channel">
-<code class="sig-name descname">parse_channel</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">app</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/zenora/impl/factory.html#Factory.parse_channel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.impl.factory.Factory.parse_channel" title="Permalink to this definition">¶</a></dt>
-<dd><p>Parses response data from Dicord API into channel objects</p>
+<dl class="method">
+<dt id="zenora.impl.rest.RESTAPI.update_emoji">
+<code class="sig-name descname">update_emoji</code><span class="sig-paren">(</span><em class="sig-param">guild_id: int</em>, <em class="sig-param">emoji_id: int</em>, <em class="sig-param">name: str = None</em>, <em class="sig-param">roles: list = None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/zenora/impl/rest.html#RESTAPI.update_emoji"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.impl.rest.RESTAPI.update_emoji" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update emoji for guild</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>response</strong> (<em>typing.Dict</em>) – Discord API response as dictionary/JSON</p></li>
-<li><p><strong>app</strong> (<em>zenora.RESTAPI</em>) – Zenora REST API object</p></li>
+<li><p><strong>guild_id</strong> (<em>int</em>) – The ID of the guild</p></li>
+<li><p><strong>emoji_id</strong> (<em>int</em>) – The ID of the emoji</p></li>
+<li><p><strong>name</strong> (<em>str</em>) – Name of the emoji</p></li>
+<li><p><strong>roles</strong> (<em>[</em><em>int</em><em>]</em>) – Array of snowflake</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><ul class="simple">
-<li><p><em>zenora.channels.GuildTextChannel</em> – Zenora guild text channel object</p></li>
-<li><p><em>zenora.channels.GuildVoiceChannel</em> – Zenora guild voice channel object</p></li>
-<li><p><em>zenora.channels.DMTextChannel</em> – Zenora DM text channel object</p></li>
-</ul>
-</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="zenora.impl.factory.Factory.parse_user">
-<code class="sig-name descname">parse_user</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">app</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/zenora/impl/factory.html#Factory.parse_user"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.impl.factory.Factory.parse_user" title="Permalink to this definition">¶</a></dt>
-<dd><p>Parses response data from Dicord API into user objects</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>response</strong> (<em>typing.Dict</em>) – Discord API response as dictionary/JSON</p></li>
-<li><p><strong>snowflake</strong> (<em>int</em>) – Snowflake ID of the user</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Zenora user object</p>
+<dd class="field-even"><p>Zenora emoji object</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="#zenora.users.User" title="zenora.users.User">zenora.users.User</a></p>
+<dd class="field-odd"><p>zenora.Emoji</p>
 </dd>
 </dl>
-</dd></dl>
-
-</dd></dl>
-
-<span class="target" id="module-zenora.impl.mapper"></span><dl class="py class">
-<dt id="zenora.impl.mapper.ChannelMapper">
-<em class="property">class </em><code class="sig-prename descclassname">zenora.impl.mapper.</code><code class="sig-name descname">ChannelMapper</code><a class="reference internal" href="_modules/zenora/impl/mapper.html#ChannelMapper"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.impl.mapper.ChannelMapper" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#zenora.base.mapper.ChannelMapper" title="zenora.base.mapper.ChannelMapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">zenora.base.mapper.ChannelMapper</span></code></a></p>
-<dl class="py method">
-<dt id="zenora.impl.mapper.ChannelMapper.map">
-<code class="sig-name descname">map</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">app</span></em><span class="sig-paren">)</span> &#x2192; Any<a class="reference internal" href="_modules/zenora/impl/mapper.html#ChannelMapper.map"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.impl.mapper.ChannelMapper.map" title="Permalink to this definition">¶</a></dt>
-<dd><p>Implementation of the channel mapper.</p>
-<p>Maps channel response to object according to channel type.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>response</strong> (<em>typing.Dict</em>) – API response from Discord</p></li>
-<li><p><strong>app</strong> (<em>zenora.RESTAPI</em>) – Zenora REST API object</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><ul class="simple">
-<li><p><em>zenora.channels.GuildTextChannel</em> – Zenora guild text channel object</p></li>
-<li><p><em>zenora.channels.GuildVoiceChannel</em> – Zenora guild voice channel object</p></li>
-<li><p><em>zenora.channels.DMTextChannel</em> – Zenora DM text channel object</p></li>
-</ul>
-</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<span class="target" id="module-zenora.impl.query"></span><dl class="py class">
-<dt id="zenora.impl.query.Query">
-<em class="property">class </em><code class="sig-prename descclassname">zenora.impl.query.</code><code class="sig-name descname">Query</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">token</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">token_type</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/zenora/impl/query.html#Query"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.impl.query.Query" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#zenora.base.query.Query" title="zenora.base.query.Query"><code class="xref py py-class docutils literal notranslate"><span class="pre">zenora.base.query.Query</span></code></a></p>
-<dl class="py method">
-<dt id="zenora.impl.query.Query.channel">
-<code class="sig-name descname">channel</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">snowflake</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; Dict<a class="reference internal" href="_modules/zenora/impl/query.html#Query.channel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.impl.query.Query.channel" title="Permalink to this definition">¶</a></dt>
-<dd><p>Implementation for the REST API query to get channels.</p>
-<p>Parameters:
-snowflake: int</p>
-<blockquote>
-<div><p>The channel ID of a Discord channel</p>
-</div></blockquote>
-<p>Returns:
-typing.Dict: A dictionary object that will be used to parse the data</p>
-<blockquote>
-<div><p>into objects</p>
-</div></blockquote>
-</dd></dl>
-
-<dl class="py method">
-<dt id="zenora.impl.query.Query.create_dm">
-<code class="sig-name descname">create_dm</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">recipient_id</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; Dict<a class="reference internal" href="_modules/zenora/impl/query.html#Query.create_dm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.impl.query.Query.create_dm" title="Permalink to this definition">¶</a></dt>
-<dd><p>Implementation for the REST API query to create a DM with a specific user according to ID</p>
-<p>Returns:
-typing.Dict: A dictionary object that will be used to parse the data</p>
-<blockquote>
-<div><p>into objects</p>
-</div></blockquote>
-</dd></dl>
-
-<dl class="py method">
-<dt id="zenora.impl.query.Query.current_user">
-<code class="sig-name descname">current_user</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Dict<a class="reference internal" href="_modules/zenora/impl/query.html#Query.current_user"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.impl.query.Query.current_user" title="Permalink to this definition">¶</a></dt>
-<dd><p>Implementation for the REST API query to get current user.</p>
-<p>Returns:
-typing.Dict: A dictionary object that will be used to parse the data</p>
-<blockquote>
-<div><p>into objects</p>
-</div></blockquote>
-</dd></dl>
-
-<dl class="py method">
-<dt id="zenora.impl.query.Query.current_user_dms">
-<code class="sig-name descname">current_user_dms</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Dict<a class="reference internal" href="_modules/zenora/impl/query.html#Query.current_user_dms"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.impl.query.Query.current_user_dms" title="Permalink to this definition">¶</a></dt>
-<dd><p>Implementation for the REST API query to fetch current user’s DMs list</p>
-<p>Returns:
-typing.Dict: A dictionary object that will be used to parse the data</p>
-<blockquote>
-<div><p>into objects</p>
-</div></blockquote>
-</dd></dl>
-
-<dl class="py method">
-<dt id="zenora.impl.query.Query.delete_channel">
-<code class="sig-name descname">delete_channel</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">channel_id</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/zenora/impl/query.html#Query.delete_channel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.impl.query.Query.delete_channel" title="Permalink to this definition">¶</a></dt>
-<dd><p>Implementation for the REST API query to delete guild channel.</p>
-<p>Returns:
-channel_id: int</p>
-<blockquote>
-<div><p>The snowflake ID of the channel.</p>
-</div></blockquote>
-</dd></dl>
-
-<dl class="py method">
-<dt id="zenora.impl.query.Query.leave_guild">
-<code class="sig-name descname">leave_guild</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">snowflake</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/zenora/impl/query.html#Query.leave_guild"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.impl.query.Query.leave_guild" title="Permalink to this definition">¶</a></dt>
-<dd><p>Implementation for the REST API query to leave a guild.</p>
-<p>Returns:
-code: int</p>
-<blockquote>
-<div><p>Code for response status. Will return 204 on success</p>
-</div></blockquote>
-</dd></dl>
-
-<dl class="py method">
-<dt id="zenora.impl.query.Query.modify_channel">
-<code class="sig-name descname">modify_channel</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">channel_id</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">args</span><span class="p">:</span> <span class="n">Dict</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/zenora/impl/query.html#Query.modify_channel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.impl.query.Query.modify_channel" title="Permalink to this definition">¶</a></dt>
-<dd><p>Implementation for the REST API query to modify guild channel.</p>
-<p>Returns:
-channel_id: int</p>
-<blockquote>
-<div><p>The snowflake ID of the channel.</p>
-</div></blockquote>
-<dl class="simple">
-<dt>typing.Dict:</dt><dd><p>A dictionary object that will be used to parse the data
-into objects</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="zenora.impl.query.Query.modify_me">
-<code class="sig-name descname">modify_me</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">args</span><span class="p">:</span> <span class="n">dict</span></em><span class="sig-paren">)</span> &#x2192; Dict<a class="reference internal" href="_modules/zenora/impl/query.html#Query.modify_me"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.impl.query.Query.modify_me" title="Permalink to this definition">¶</a></dt>
-<dd><p>Implementation for the REST API query to modify current user.</p>
-<p>Returns:
-typing.Dict: A dictionary object that will be used to parse the data</p>
-<blockquote>
-<div><p>into objects</p>
-</div></blockquote>
-</dd></dl>
-
-<dl class="py method">
-<dt id="zenora.impl.query.Query.user">
-<code class="sig-name descname">user</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">snowflake</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; Dict<a class="reference internal" href="_modules/zenora/impl/query.html#Query.user"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.impl.query.Query.user" title="Permalink to this definition">¶</a></dt>
-<dd><p>Implementation for the REST API query to get user.</p>
-<p>Parameters:
-snowflake: int</p>
-<blockquote>
-<div><p>The ID of a Discord user</p>
-</div></blockquote>
-<p>Returns:
-typing.Dict: A dictionary object that will be used to parse the data</p>
-<blockquote>
-<div><p>into objects</p>
-</div></blockquote>
 </dd></dl>
 
 </dd></dl>
@@ -528,31 +443,37 @@ typing.Dict: A dictionary object that will be used to parse the data</p>
 <hr class="docutils" />
 <div class="section" id="module-zenora.channels">
 <span id="channels"></span><h2>Channels<a class="headerlink" href="#module-zenora.channels" title="Permalink to this headline">¶</a></h2>
-<dl class="py class">
+<dl class="class">
 <dt id="zenora.channels.DMTextChannel">
-<em class="property">class </em><code class="sig-prename descclassname">zenora.channels.</code><code class="sig-name descname">DMTextChannel</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">app</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/zenora/channels.html#DMTextChannel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.channels.DMTextChannel" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">zenora.channels.</code><code class="sig-name descname">DMTextChannel</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">app</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/zenora/channels.html#DMTextChannel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.channels.DMTextChannel" title="Permalink to this definition">¶</a></dt>
 <dd><p>A DM/Private message text channel object</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>Zenora DM text channel object</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p>zenora.channel.DMTextChannel</p>
+<dd class="field-even"><p>zenora.DMTextChannel</p>
 </dd>
 </dl>
-<dl class="py method">
+<dl class="method">
+<dt id="zenora.channels.DMTextChannel.get_message">
+<code class="sig-name descname">get_message</code><span class="sig-paren">(</span><em class="sig-param">id: int</em><span class="sig-paren">)</span> &#x2192; Optional[zenora.messages.Message]<a class="reference internal" href="_modules/zenora/channels.html#DMTextChannel.get_message"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.channels.DMTextChannel.get_message" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a channel message according to given ID.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="zenora.channels.DMTextChannel.id">
 <em class="property">property </em><code class="sig-name descname">id</code><a class="headerlink" href="#zenora.channels.DMTextChannel.id" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns The snowflake ID of the channel.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="zenora.channels.DMTextChannel.last_message_id">
 <em class="property">property </em><code class="sig-name descname">last_message_id</code><a class="headerlink" href="#zenora.channels.DMTextChannel.last_message_id" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns The last message ID of the channel.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="zenora.channels.DMTextChannel.recipients">
 <em class="property">property </em><code class="sig-name descname">recipients</code><a class="headerlink" href="#zenora.channels.DMTextChannel.recipients" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns The recipients of the channel.</p>
@@ -568,27 +489,33 @@ typing.Dict: A dictionary object that will be used to parse the data</p>
 
 </dd></dl>
 
-<dl class="py class">
+<dl class="class">
 <dt id="zenora.channels.GuildTextChannel">
-<em class="property">class </em><code class="sig-prename descclassname">zenora.channels.</code><code class="sig-name descname">GuildTextChannel</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">app</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/zenora/channels.html#GuildTextChannel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.channels.GuildTextChannel" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">zenora.channels.</code><code class="sig-name descname">GuildTextChannel</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">app</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/zenora/channels.html#GuildTextChannel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.channels.GuildTextChannel" title="Permalink to this definition">¶</a></dt>
 <dd><p>A server text channel object</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>Zenora Guild Text Channel object</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference internal" href="#zenora.channels.GuildTextChannel" title="zenora.channels.GuildTextChannel">zenora.channels.GuildTextChannel</a></p>
+<dd class="field-even"><p>zenora.GuildTextChannel</p>
 </dd>
 </dl>
-<dl class="py method">
+<dl class="method">
 <dt id="zenora.channels.GuildTextChannel.delete">
 <code class="sig-name descname">delete</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Any<a class="reference internal" href="_modules/zenora/channels.html#GuildTextChannel.delete"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.channels.GuildTextChannel.delete" title="Permalink to this definition">¶</a></dt>
 <dd><p>Delete this channel</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
+<dt id="zenora.channels.GuildTextChannel.get_message">
+<code class="sig-name descname">get_message</code><span class="sig-paren">(</span><em class="sig-param">id: int</em><span class="sig-paren">)</span> &#x2192; Optional[zenora.messages.Message]<a class="reference internal" href="_modules/zenora/channels.html#GuildTextChannel.get_message"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.channels.GuildTextChannel.get_message" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a channel message according to given ID.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="zenora.channels.GuildTextChannel.modify">
-<code class="sig-name descname">modify</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">args</span></em><span class="sig-paren">)</span> &#x2192; Any<a class="reference internal" href="_modules/zenora/channels.html#GuildTextChannel.modify"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.channels.GuildTextChannel.modify" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">modify</code><span class="sig-paren">(</span><em class="sig-param">args</em><span class="sig-paren">)</span> &#x2192; Any<a class="reference internal" href="_modules/zenora/channels.html#GuildTextChannel.modify"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.channels.GuildTextChannel.modify" title="Permalink to this definition">¶</a></dt>
 <dd><p>Modify this channel</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -597,70 +524,70 @@ link for all the changes applicable <a class="reference external" href="https://
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><ul class="simple">
-<li><p><em>zenora.channels.GuildTextChannel</em> – Zenora guild text channel object</p></li>
-<li><p><em>zenora.channels.GuildVoiceChannel</em> – Zenora guild voice channel object</p></li>
-<li><p><em>zenora.channels.DMTextChannel</em> – Zenora DM text channel object</p></li>
+<li><p><em>zenora.GuildTextChannel</em> – Zenora guild text channel object</p></li>
+<li><p><em>zenora.GuildVoiceChannel</em> – Zenora guild voice channel object</p></li>
+<li><p><em>zenora.DMTextChannel</em> – Zenora DM text channel object</p></li>
 </ul>
 </p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="zenora.channels.GuildTextChannel.category_id">
 <em class="property">property </em><code class="sig-name descname">category_id</code><a class="headerlink" href="#zenora.channels.GuildTextChannel.category_id" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the snowflake ID of the parant category of the channel.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="zenora.channels.GuildTextChannel.guild_id">
 <em class="property">property </em><code class="sig-name descname">guild_id</code><a class="headerlink" href="#zenora.channels.GuildTextChannel.guild_id" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the snowflake ID of the channel’s guild.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="zenora.channels.GuildTextChannel.id">
 <em class="property">property </em><code class="sig-name descname">id</code><a class="headerlink" href="#zenora.channels.GuildTextChannel.id" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns The snowflake ID of the channel.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="zenora.channels.GuildTextChannel.is_nsfw">
 <em class="property">property </em><code class="sig-name descname">is_nsfw</code><a class="headerlink" href="#zenora.channels.GuildTextChannel.is_nsfw" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns if the channel is NSFW or not.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="zenora.channels.GuildTextChannel.last_message_id">
 <em class="property">property </em><code class="sig-name descname">last_message_id</code><a class="headerlink" href="#zenora.channels.GuildTextChannel.last_message_id" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the snowflake ID of the last message of the channel.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="zenora.channels.GuildTextChannel.name">
 <em class="property">property </em><code class="sig-name descname">name</code><a class="headerlink" href="#zenora.channels.GuildTextChannel.name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the name of the channel.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="zenora.channels.GuildTextChannel.permission_overwrites">
 <em class="property">property </em><code class="sig-name descname">permission_overwrites</code><a class="headerlink" href="#zenora.channels.GuildTextChannel.permission_overwrites" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the permission overwrites of the channel.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="zenora.channels.GuildTextChannel.position">
 <em class="property">property </em><code class="sig-name descname">position</code><a class="headerlink" href="#zenora.channels.GuildTextChannel.position" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the position of the channel.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="zenora.channels.GuildTextChannel.rate_limit_per_user">
 <em class="property">property </em><code class="sig-name descname">rate_limit_per_user</code><a class="headerlink" href="#zenora.channels.GuildTextChannel.rate_limit_per_user" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the rate limit per user of the channel.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="zenora.channels.GuildTextChannel.topic">
 <em class="property">property </em><code class="sig-name descname">topic</code><a class="headerlink" href="#zenora.channels.GuildTextChannel.topic" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the topic of the channel.</p>
@@ -668,27 +595,27 @@ link for all the changes applicable <a class="reference external" href="https://
 
 </dd></dl>
 
-<dl class="py class">
+<dl class="class">
 <dt id="zenora.channels.GuildVoiceChannel">
-<em class="property">class </em><code class="sig-prename descclassname">zenora.channels.</code><code class="sig-name descname">GuildVoiceChannel</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/zenora/channels.html#GuildVoiceChannel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.channels.GuildVoiceChannel" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">zenora.channels.</code><code class="sig-name descname">GuildVoiceChannel</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/zenora/channels.html#GuildVoiceChannel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.channels.GuildVoiceChannel" title="Permalink to this definition">¶</a></dt>
 <dd><p>A guild voice channel object</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>Zenora guild voice channel object</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p>zenora.channel.GuildVoiceChannel</p>
+<dd class="field-even"><p>zenora.GuildVoiceChannel</p>
 </dd>
 </dl>
-<dl class="py method">
+<dl class="method">
 <dt id="zenora.channels.GuildVoiceChannel.delete">
 <code class="sig-name descname">delete</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Any<a class="reference internal" href="_modules/zenora/channels.html#GuildVoiceChannel.delete"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.channels.GuildVoiceChannel.delete" title="Permalink to this definition">¶</a></dt>
 <dd><p>Delete this channel</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="zenora.channels.GuildVoiceChannel.modify">
-<code class="sig-name descname">modify</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">args</span></em><span class="sig-paren">)</span> &#x2192; Any<a class="reference internal" href="_modules/zenora/channels.html#GuildVoiceChannel.modify"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.channels.GuildVoiceChannel.modify" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">modify</code><span class="sig-paren">(</span><em class="sig-param">args</em><span class="sig-paren">)</span> &#x2192; Any<a class="reference internal" href="_modules/zenora/channels.html#GuildVoiceChannel.modify"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.channels.GuildVoiceChannel.modify" title="Permalink to this definition">¶</a></dt>
 <dd><p>Modify this channel</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -697,64 +624,64 @@ link for all the changes applicable <a class="reference external" href="https://
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><ul class="simple">
-<li><p><em>zenora.channels.GuildTextChannel</em> – Zenora guild text channel object</p></li>
-<li><p><em>zenora.channels.GuildVoiceChannel</em> – Zenora guild voice channel object</p></li>
-<li><p><em>zenora.channels.DMTextChannel</em> – Zenora DM text channel object</p></li>
+<li><p><em>zenora.GuildTextChannel</em> – Zenora guild text channel object</p></li>
+<li><p><em>zenora.GuildVoiceChannel</em> – Zenora guild voice channel object</p></li>
+<li><p><em>zenora.DMTextChannel</em> – Zenora DM text channel object</p></li>
 </ul>
 </p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="zenora.channels.GuildVoiceChannel.bitrate">
 <em class="property">property </em><code class="sig-name descname">bitrate</code><a class="headerlink" href="#zenora.channels.GuildVoiceChannel.bitrate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the bitrate of the channel.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="zenora.channels.GuildVoiceChannel.category_id">
 <em class="property">property </em><code class="sig-name descname">category_id</code><a class="headerlink" href="#zenora.channels.GuildVoiceChannel.category_id" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the snowflake ID of the parant category of the channel.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="zenora.channels.GuildVoiceChannel.guild_id">
 <em class="property">property </em><code class="sig-name descname">guild_id</code><a class="headerlink" href="#zenora.channels.GuildVoiceChannel.guild_id" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the snowflake ID of the channel’s guild.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="zenora.channels.GuildVoiceChannel.id">
 <em class="property">property </em><code class="sig-name descname">id</code><a class="headerlink" href="#zenora.channels.GuildVoiceChannel.id" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns The snowflake ID of the channel.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="zenora.channels.GuildVoiceChannel.is_nsfw">
 <em class="property">property </em><code class="sig-name descname">is_nsfw</code><a class="headerlink" href="#zenora.channels.GuildVoiceChannel.is_nsfw" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns if the channel is NSFW or not.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="zenora.channels.GuildVoiceChannel.name">
 <em class="property">property </em><code class="sig-name descname">name</code><a class="headerlink" href="#zenora.channels.GuildVoiceChannel.name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the name of the channel.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="zenora.channels.GuildVoiceChannel.permission_overwrites">
 <em class="property">property </em><code class="sig-name descname">permission_overwrites</code><a class="headerlink" href="#zenora.channels.GuildVoiceChannel.permission_overwrites" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the permission overwrites of the channel.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="zenora.channels.GuildVoiceChannel.position">
 <em class="property">property </em><code class="sig-name descname">position</code><a class="headerlink" href="#zenora.channels.GuildVoiceChannel.position" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the position of the channel.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="zenora.channels.GuildVoiceChannel.user_limit">
 <em class="property">property </em><code class="sig-name descname">user_limit</code><a class="headerlink" href="#zenora.channels.GuildVoiceChannel.user_limit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the user limit of the channel.</p>
@@ -766,9 +693,9 @@ link for all the changes applicable <a class="reference external" href="https://
 <hr class="docutils" />
 <div class="section" id="module-zenora.users">
 <span id="users"></span><h2>Users<a class="headerlink" href="#module-zenora.users" title="Permalink to this headline">¶</a></h2>
-<dl class="py class">
+<dl class="class">
 <dt id="zenora.users.User">
-<em class="property">class </em><code class="sig-prename descclassname">zenora.users.</code><code class="sig-name descname">User</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">app</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/zenora/users.html#User"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.users.User" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">zenora.users.</code><code class="sig-name descname">User</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">app</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/zenora/users.html#User"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.users.User" title="Permalink to this definition">¶</a></dt>
 <dd><p>A user object for API response.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -778,79 +705,79 @@ link for all the changes applicable <a class="reference external" href="https://
 <dd class="field-even"><p><a class="reference internal" href="#zenora.users.User" title="zenora.users.User">zenora.users.User</a></p>
 </dd>
 </dl>
-<dl class="py method">
+<dl class="method">
 <dt id="zenora.users.User.avatar_url">
 <em class="property">property </em><code class="sig-name descname">avatar_url</code><a class="headerlink" href="#zenora.users.User.avatar_url" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the user’s avatar url</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="zenora.users.User.bot">
 <em class="property">property </em><code class="sig-name descname">bot</code><a class="headerlink" href="#zenora.users.User.bot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the user’s mention (optional)</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="zenora.users.User.discriminator">
 <em class="property">property </em><code class="sig-name descname">discriminator</code><a class="headerlink" href="#zenora.users.User.discriminator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the user’s discriminator.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="zenora.users.User.email">
 <em class="property">property </em><code class="sig-name descname">email</code><a class="headerlink" href="#zenora.users.User.email" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the user’s email (optional)</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="zenora.users.User.flags">
 <em class="property">property </em><code class="sig-name descname">flags</code><a class="headerlink" href="#zenora.users.User.flags" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the user’s public flags</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="zenora.users.User.id">
 <em class="property">property </em><code class="sig-name descname">id</code><a class="headerlink" href="#zenora.users.User.id" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns The snowflake ID of the user.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="zenora.users.User.is_system">
 <em class="property">property </em><code class="sig-name descname">is_system</code><a class="headerlink" href="#zenora.users.User.is_system" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns if the user is a Discord System user or not (optional)</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="zenora.users.User.locale">
 <em class="property">property </em><code class="sig-name descname">locale</code><a class="headerlink" href="#zenora.users.User.locale" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the user’s chosen language option (optional)</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="zenora.users.User.mention">
 <em class="property">property </em><code class="sig-name descname">mention</code><a class="headerlink" href="#zenora.users.User.mention" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the user’s mention</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="zenora.users.User.mfa_enabled">
 <em class="property">property </em><code class="sig-name descname">mfa_enabled</code><a class="headerlink" href="#zenora.users.User.mfa_enabled" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns whether the user has two factor enabled on their account (optional)</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="zenora.users.User.premium_type">
 <em class="property">property </em><code class="sig-name descname">premium_type</code><a class="headerlink" href="#zenora.users.User.premium_type" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the type of Nitro subscription on a user’s account (optional)</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="zenora.users.User.username">
 <em class="property">property </em><code class="sig-name descname">username</code><a class="headerlink" href="#zenora.users.User.username" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the username of the user.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="zenora.users.User.verified">
 <em class="property">property </em><code class="sig-name descname">verified</code><a class="headerlink" href="#zenora.users.User.verified" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns whether the email on this account has been verified (optional)</p>
@@ -860,11 +787,165 @@ link for all the changes applicable <a class="reference external" href="https://
 
 </div>
 <hr class="docutils" />
+<div class="section" id="module-zenora.messages">
+<span id="message"></span><h2>Message<a class="headerlink" href="#module-zenora.messages" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="zenora.messages.Message">
+<em class="property">class </em><code class="sig-prename descclassname">zenora.messages.</code><code class="sig-name descname">Message</code><span class="sig-paren">(</span><em class="sig-param">data: Dict</em>, <em class="sig-param">app</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/zenora/messages.html#Message"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.messages.Message" title="Permalink to this definition">¶</a></dt>
+<dd><p>An object representing a Discord message</p>
+<dl class="method">
+<dt id="zenora.messages.Message.attachments">
+<em class="property">property </em><code class="sig-name descname">attachments</code><a class="headerlink" href="#zenora.messages.Message.attachments" title="Permalink to this definition">¶</a></dt>
+<dd><p>Any attachments that came with the message</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="zenora.messages.Message.author">
+<em class="property">property </em><code class="sig-name descname">author</code><a class="headerlink" href="#zenora.messages.Message.author" title="Permalink to this definition">¶</a></dt>
+<dd><p>A user object representing the message’s author</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="zenora.messages.Message.channel">
+<em class="property">property </em><code class="sig-name descname">channel</code><a class="headerlink" href="#zenora.messages.Message.channel" title="Permalink to this definition">¶</a></dt>
+<dd><p>A channel object representing the message’s channel</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="zenora.messages.Message.content">
+<em class="property">property </em><code class="sig-name descname">content</code><a class="headerlink" href="#zenora.messages.Message.content" title="Permalink to this definition">¶</a></dt>
+<dd><p>The message’s content</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="zenora.messages.Message.flags">
+<em class="property">property </em><code class="sig-name descname">flags</code><a class="headerlink" href="#zenora.messages.Message.flags" title="Permalink to this definition">¶</a></dt>
+<dd><p>Message flags</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="zenora.messages.Message.guild_id">
+<em class="property">property </em><code class="sig-name descname">guild_id</code><a class="headerlink" href="#zenora.messages.Message.guild_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>The guild ID of the message</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="zenora.messages.Message.id">
+<em class="property">property </em><code class="sig-name descname">id</code><a class="headerlink" href="#zenora.messages.Message.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>The ID of the Discord message</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="zenora.messages.Message.mention_everyone">
+<em class="property">property </em><code class="sig-name descname">mention_everyone</code><a class="headerlink" href="#zenora.messages.Message.mention_everyone" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether the message has mentioned everyone in the server</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="zenora.messages.Message.mention_roles">
+<em class="property">property </em><code class="sig-name descname">mention_roles</code><a class="headerlink" href="#zenora.messages.Message.mention_roles" title="Permalink to this definition">¶</a></dt>
+<dd><p>All of the roles mentioned in the message</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="zenora.messages.Message.mentions">
+<em class="property">property </em><code class="sig-name descname">mentions</code><a class="headerlink" href="#zenora.messages.Message.mentions" title="Permalink to this definition">¶</a></dt>
+<dd><p>All of the mentions or pings in the message content</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="zenora.messages.Message.pinned">
+<em class="property">property </em><code class="sig-name descname">pinned</code><a class="headerlink" href="#zenora.messages.Message.pinned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether the message is pinned or not</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="zenora.messages.Message.timestamp">
+<em class="property">property </em><code class="sig-name descname">timestamp</code><a class="headerlink" href="#zenora.messages.Message.timestamp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Timestamp of when the message was sent</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="zenora.messages.Message.tts">
+<em class="property">property </em><code class="sig-name descname">tts</code><a class="headerlink" href="#zenora.messages.Message.tts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if it’s a text-to-speech message</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="zenora.messages.Message.type">
+<em class="property">property </em><code class="sig-name descname">type</code><a class="headerlink" href="#zenora.messages.Message.type" title="Permalink to this definition">¶</a></dt>
+<dd><p>The type of message</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<hr class="docutils" />
+<div class="section" id="module-zenora.emoji">
+<span id="emoji"></span><h2>Emoji<a class="headerlink" href="#module-zenora.emoji" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="zenora.emoji.Emoji">
+<em class="property">class </em><code class="sig-prename descclassname">zenora.emoji.</code><code class="sig-name descname">Emoji</code><span class="sig-paren">(</span><em class="sig-param">data: Dict</em>, <em class="sig-param">app</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/zenora/emoji.html#Emoji"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.emoji.Emoji" title="Permalink to this definition">¶</a></dt>
+<dd><p>A n emoji object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Zenora emoji object</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>zenora.Emoji</p>
+</dd>
+</dl>
+<dl class="method">
+<dt id="zenora.emoji.Emoji.animated">
+<em class="property">property </em><code class="sig-name descname">animated</code><a class="headerlink" href="#zenora.emoji.Emoji.animated" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether this emoji is animated</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="zenora.emoji.Emoji.id">
+<em class="property">property </em><code class="sig-name descname">id</code><a class="headerlink" href="#zenora.emoji.Emoji.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Snowflake ID of the emoji</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="zenora.emoji.Emoji.managed">
+<em class="property">property </em><code class="sig-name descname">managed</code><a class="headerlink" href="#zenora.emoji.Emoji.managed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether this emoji is managed</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="zenora.emoji.Emoji.name">
+<em class="property">property </em><code class="sig-name descname">name</code><a class="headerlink" href="#zenora.emoji.Emoji.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>The emoji’s name</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="zenora.emoji.Emoji.require_colons">
+<em class="property">property </em><code class="sig-name descname">require_colons</code><a class="headerlink" href="#zenora.emoji.Emoji.require_colons" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether this emoji must be wrapped in colons</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="zenora.emoji.Emoji.roles">
+<em class="property">property </em><code class="sig-name descname">roles</code><a class="headerlink" href="#zenora.emoji.Emoji.roles" title="Permalink to this definition">¶</a></dt>
+<dd><p>The roles this emoji is whitelisted to</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="zenora.emoji.Emoji.user">
+<em class="property">property </em><code class="sig-name descname">user</code><a class="headerlink" href="#zenora.emoji.Emoji.user" title="Permalink to this definition">¶</a></dt>
+<dd><p>The user that created this emoji</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<hr class="docutils" />
 <div class="section" id="module-zenora.file">
 <span id="files"></span><h2>Files<a class="headerlink" href="#module-zenora.file" title="Permalink to this headline">¶</a></h2>
-<dl class="py class">
+<dl class="class">
 <dt id="zenora.file.File">
-<em class="property">class </em><code class="sig-prename descclassname">zenora.file.</code><code class="sig-name descname">File</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">url</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/zenora/file.html#File"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.file.File" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">zenora.file.</code><code class="sig-name descname">File</code><span class="sig-paren">(</span><em class="sig-param">url</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/zenora/file.html#File"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.file.File" title="Permalink to this definition">¶</a></dt>
 <dd><p>File object for sending file data to Discord in data URI scheme</p>
 </dd></dl>
 
@@ -872,7 +953,7 @@ link for all the changes applicable <a class="reference external" href="https://
 <hr class="docutils" />
 <div class="section" id="module-zenora.errors">
 <span id="errors"></span><h2>Errors<a class="headerlink" href="#module-zenora.errors" title="Permalink to this headline">¶</a></h2>
-<dl class="py exception">
+<dl class="exception">
 <dt id="zenora.errors.AvatarError">
 <em class="property">exception </em><code class="sig-prename descclassname">zenora.errors.</code><code class="sig-name descname">AvatarError</code><a class="reference internal" href="_modules/zenora/errors.html#AvatarError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.errors.AvatarError" title="Permalink to this definition">¶</a></dt>
 <dd><p>Raised when current user is changing avatar very fast.</p>
@@ -880,7 +961,7 @@ link for all the changes applicable <a class="reference external" href="https://
 </dl>
 </dd></dl>
 
-<dl class="py exception">
+<dl class="exception">
 <dt id="zenora.errors.GuildError">
 <em class="property">exception </em><code class="sig-prename descclassname">zenora.errors.</code><code class="sig-name descname">GuildError</code><a class="reference internal" href="_modules/zenora/errors.html#GuildError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.errors.GuildError" title="Permalink to this definition">¶</a></dt>
 <dd><p>Raised when the specified guild is either invalid or the user doesn’t have access to it.</p>
@@ -888,7 +969,7 @@ link for all the changes applicable <a class="reference external" href="https://
 </dl>
 </dd></dl>
 
-<dl class="py exception">
+<dl class="exception">
 <dt id="zenora.errors.InvalidSnowflake">
 <em class="property">exception </em><code class="sig-prename descclassname">zenora.errors.</code><code class="sig-name descname">InvalidSnowflake</code><a class="reference internal" href="_modules/zenora/errors.html#InvalidSnowflake"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.errors.InvalidSnowflake" title="Permalink to this definition">¶</a></dt>
 <dd><p>Raised when snowflake ID for accessing API is not valid.</p>
@@ -896,7 +977,7 @@ link for all the changes applicable <a class="reference external" href="https://
 </dl>
 </dd></dl>
 
-<dl class="py exception">
+<dl class="exception">
 <dt id="zenora.errors.InvalidUser">
 <em class="property">exception </em><code class="sig-prename descclassname">zenora.errors.</code><code class="sig-name descname">InvalidUser</code><a class="reference internal" href="_modules/zenora/errors.html#InvalidUser"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.errors.InvalidUser" title="Permalink to this definition">¶</a></dt>
 <dd><p>Raised when user with specified snowflake does not exist.</p>
@@ -904,355 +985,12 @@ link for all the changes applicable <a class="reference external" href="https://
 </dl>
 </dd></dl>
 
-<dl class="py exception">
+<dl class="exception">
 <dt id="zenora.errors.MissingAccess">
 <em class="property">exception </em><code class="sig-prename descclassname">zenora.errors.</code><code class="sig-name descname">MissingAccess</code><a class="reference internal" href="_modules/zenora/errors.html#MissingAccess"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.errors.MissingAccess" title="Permalink to this definition">¶</a></dt>
 <dd><p>Raised when user/bot does not have access to specified channel.</p>
 <dl class="field-list simple">
 </dl>
-</dd></dl>
-
-</div>
-<hr class="docutils" />
-<div class="section" id="module-zenora.base.rest">
-<span id="base-classes"></span><h2>Base Classes<a class="headerlink" href="#module-zenora.base.rest" title="Permalink to this headline">¶</a></h2>
-<dl class="py class">
-<dt id="zenora.base.rest.RESTAPI">
-<em class="property">class </em><code class="sig-prename descclassname">zenora.base.rest.</code><code class="sig-name descname">RESTAPI</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">token</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">token_type</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">testing</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/zenora/base/rest.html#RESTAPI"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.base.rest.RESTAPI" title="Permalink to this definition">¶</a></dt>
-<dd><p>Base interface for the implementation of the REST API.</p>
-<dl class="py method">
-<dt id="zenora.base.rest.RESTAPI.create_dm">
-<em class="property">abstract </em><code class="sig-name descname">create_dm</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">recipient_id</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; Optional<span class="p">[</span><a class="reference internal" href="#zenora.channels.DMTextChannel" title="zenora.channels.DMTextChannel">zenora.channels.DMTextChannel</a><span class="p">]</span><a class="reference internal" href="_modules/zenora/base/rest.html#RESTAPI.create_dm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.base.rest.RESTAPI.create_dm" title="Permalink to this definition">¶</a></dt>
-<dd><p>Creates DM text channel with a specified user according to snowflake ID</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>recipient_id</strong> (<em>int</em>) – The snowflake ID of the user with whom the DM would be opened</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Zenora DM Text channel object</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="#zenora.channels.DMTextChannel" title="zenora.channels.DMTextChannel">zenora.channels.DMTextChannel</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="zenora.base.rest.RESTAPI.delete_channel">
-<em class="property">abstract </em><code class="sig-name descname">delete_channel</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">snowflake</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; Any<a class="reference internal" href="_modules/zenora/base/rest.html#RESTAPI.delete_channel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.base.rest.RESTAPI.delete_channel" title="Permalink to this definition">¶</a></dt>
-<dd><p>Delete Discord Guild Channel</p>
-<p>The snowflake parameter has to be the channel snowflake ID</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>snowflake</strong> (<em>int</em>) – The snowflake ID of the channel.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="zenora.base.rest.RESTAPI.get_channel">
-<em class="property">abstract </em><code class="sig-name descname">get_channel</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">snowflake</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; Any<a class="reference internal" href="_modules/zenora/base/rest.html#RESTAPI.get_channel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.base.rest.RESTAPI.get_channel" title="Permalink to this definition">¶</a></dt>
-<dd><p>Fetch Dicord Channel</p>
-<p>This has to be the channel snowflake ID</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>snowflake</strong> (<em>int</em>) – The channel ID of the specific channel you want to fetch</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><ul class="simple">
-<li><p><em>zenora.channels.GuildTextChannel</em> – Zenora guild text channel object</p></li>
-<li><p><em>zenora.channels.GuildVoiceChannel</em> – Zenora guild voice channel object</p></li>
-<li><p><em>zenora.channels.DMTextChannel</em> – Zenora DM text channel object</p></li>
-</ul>
-</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="zenora.base.rest.RESTAPI.get_my_dms">
-<em class="property">abstract </em><code class="sig-name descname">get_my_dms</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span><a class="reference internal" href="#zenora.channels.DMTextChannel" title="zenora.channels.DMTextChannel">zenora.channels.DMTextChannel</a><span class="p">]</span><a class="reference internal" href="_modules/zenora/base/rest.html#RESTAPI.get_my_dms"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.base.rest.RESTAPI.get_my_dms" title="Permalink to this definition">¶</a></dt>
-<dd><p>Fetch the current Dicord user’s DM channels</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>List of Zenora DMTextChannel objects</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>typing.List</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="zenora.base.rest.RESTAPI.get_user">
-<em class="property">abstract </em><code class="sig-name descname">get_user</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">snowflake</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; Optional<span class="p">[</span><a class="reference internal" href="#zenora.users.User" title="zenora.users.User">zenora.users.User</a><span class="p">]</span><a class="reference internal" href="_modules/zenora/base/rest.html#RESTAPI.get_user"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.base.rest.RESTAPI.get_user" title="Permalink to this definition">¶</a></dt>
-<dd><p>Fetch Dicord User</p>
-<p>This has to be the user’s snowflake ID</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>snowflake</strong> (<em>int</em>) – The ID of the Discord User</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Zenora user object</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="#zenora.users.User" title="zenora.users.User">zenora.users.User</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="zenora.base.rest.RESTAPI.leave_guild">
-<em class="property">abstract </em><code class="sig-name descname">leave_guild</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">snowflake</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/zenora/base/rest.html#RESTAPI.leave_guild"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.base.rest.RESTAPI.leave_guild" title="Permalink to this definition">¶</a></dt>
-<dd><p>Leave a Discord server (current user)</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>snowflake</strong> (<em>int</em>) – The ID of the Discord Server</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>None</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="zenora.base.rest.RESTAPI.modify_channel">
-<em class="property">abstract </em><code class="sig-name descname">modify_channel</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">snowflake</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">params</span><span class="p">:</span> <span class="n">Dict</span></em><span class="sig-paren">)</span> &#x2192; Any<a class="reference internal" href="_modules/zenora/base/rest.html#RESTAPI.modify_channel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.base.rest.RESTAPI.modify_channel" title="Permalink to this definition">¶</a></dt>
-<dd><p>Modify Discord Guild Channel</p>
-<p>The snowflake parameter has to be the channel snowflake ID</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>snowflake</strong> (<em>int</em>) – The channel ID of the specific channel you want to fetch</p></li>
-<li><p><strong>snowflake</strong> – The snowflake ID of the channel.</p></li>
-<li><p><strong>args</strong> (<em>typing.Dict</em>) – A dictionary containing the changes to the current channel. Check this
-link for all the changes applicable <a class="reference external" href="https://discord.com/developers/docs/resources/channel#modify-channel">https://discord.com/developers/docs/resources/channel#modify-channel</a></p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="zenora.base.rest.RESTAPI.modify_current_user">
-<em class="property">abstract </em><code class="sig-name descname">modify_current_user</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">args</span><span class="p">:</span> <span class="n">dict</span></em><span class="sig-paren">)</span> &#x2192; Optional<span class="p">[</span><a class="reference internal" href="#zenora.users.User" title="zenora.users.User">zenora.users.User</a><span class="p">]</span><a class="reference internal" href="_modules/zenora/base/rest.html#RESTAPI.modify_current_user"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.base.rest.RESTAPI.modify_current_user" title="Permalink to this definition">¶</a></dt>
-<dd><p>Modify current discord User</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>args</strong> (<em>typing.Dict</em>) – A dictionary containing the changes to the current user. This has to be either
-their username, avatar or both</p>
-</dd>
-</dl>
-<p class="rubric">Example</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">some_api_instance</span><span class="o">.</span><span class="n">modify_current_user</span><span class="p">({</span><span class="s1">&#39;username&#39;</span> <span class="p">:</span> <span class="s1">&#39;FroggyMan&#39;</span><span class="p">,</span> <span class="s1">&#39;avatar&#39;</span> <span class="p">:</span> <span class="s1">&#39;https://cdn.discordapp.com/avatars/753561575532658738/0cf89f88a3ba4e226c6f1c72a9242dd8.png&#39;</span><span class="p">})</span>
-<span class="go">User(id=753561575532658738, username=FroggyMan, discriminator=6423, avatar_url=https://cdn.discordapp.com/avatars/753561575532658738/380c68e7a6752e347ed875c2e11a05c4.png?size=1024,</span>
-<span class="go">flags=0, mention=&lt;@753561575532658738&gt;, bot=True, mfa_enabled=True, locale=en-US, verified=True,)</span>
-</pre></div>
-</div>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>Zenora user object</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference internal" href="#zenora.users.User" title="zenora.users.User">zenora.users.User</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<span class="target" id="module-zenora.base.factory"></span><dl class="py class">
-<dt id="zenora.base.factory.Factory">
-<em class="property">class </em><code class="sig-prename descclassname">zenora.base.factory.</code><code class="sig-name descname">Factory</code><a class="reference internal" href="_modules/zenora/base/factory.html#Factory"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.base.factory.Factory" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="py method">
-<dt id="zenora.base.factory.Factory.parse_channel">
-<em class="property">abstract </em><code class="sig-name descname">parse_channel</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">response</span><span class="p">:</span> <span class="n">Dict</span></em>, <em class="sig-param"><span class="n">snowflake</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; Any<a class="reference internal" href="_modules/zenora/base/factory.html#Factory.parse_channel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.base.factory.Factory.parse_channel" title="Permalink to this definition">¶</a></dt>
-<dd><p>Parses response data from Dicord API into channel objects</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>response</strong> (<em>typing.Dict</em>) – Discord API response as dictionary/JSON</p></li>
-<li><p><strong>app</strong> (<em>zenora.RESTAPI</em>) – Zenora REST API object</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><ul class="simple">
-<li><p><em>zenora.channels.GuildTextChannel</em> – Zenora guild text channel object</p></li>
-<li><p><em>zenora.channels.GuildVoiceChannel</em> – Zenora guild voice channel object</p></li>
-<li><p><em>zenora.channels.DMTextChannel</em> – Zenora DM text channel object</p></li>
-</ul>
-</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="zenora.base.factory.Factory.parse_user">
-<em class="property">abstract </em><code class="sig-name descname">parse_user</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">response</span><span class="p">:</span> <span class="n">Dict</span></em>, <em class="sig-param"><span class="n">snowflake</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; Any<a class="reference internal" href="_modules/zenora/base/factory.html#Factory.parse_user"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.base.factory.Factory.parse_user" title="Permalink to this definition">¶</a></dt>
-<dd><p>Interface of data parser for user object</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>response</strong> (<em>typing.Dict</em>) – Discord API response as dictionary/JSON</p></li>
-<li><p><strong>snowflake</strong> (<em>int</em>) – Snowflake ID of the user</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Zenora user object</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="#zenora.users.User" title="zenora.users.User">zenora.users.User</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<span class="target" id="module-zenora.base.mapper"></span><dl class="py class">
-<dt id="zenora.base.mapper.ChannelMapper">
-<em class="property">class </em><code class="sig-prename descclassname">zenora.base.mapper.</code><code class="sig-name descname">ChannelMapper</code><a class="reference internal" href="_modules/zenora/base/mapper.html#ChannelMapper"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.base.mapper.ChannelMapper" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="py method">
-<dt id="zenora.base.mapper.ChannelMapper.map">
-<em class="property">abstract </em><code class="sig-name descname">map</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">response</span></em><span class="sig-paren">)</span> &#x2192; Any<a class="reference internal" href="_modules/zenora/base/mapper.html#ChannelMapper.map"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.base.mapper.ChannelMapper.map" title="Permalink to this definition">¶</a></dt>
-<dd><p>Interface of channel mapper</p>
-<p>Maps channel response to object according to channel type.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>response</strong> (<em>typing.Dict</em>) – API response from Discord</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><ul class="simple">
-<li><p><em>zenora.channels.GuildTextChannel</em> – Zenora guild text channel object</p></li>
-<li><p><em>zenora.channels.GuildVoiceChannel</em> – Zenora guild voice channel object</p></li>
-<li><p><em>zenora.channels.DMTextChannel</em> – Zenora DM text channel object</p></li>
-</ul>
-</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<span class="target" id="module-zenora.base.query"></span><dl class="py class">
-<dt id="zenora.base.query.Query">
-<em class="property">class </em><code class="sig-prename descclassname">zenora.base.query.</code><code class="sig-name descname">Query</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">token</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">token_type</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/zenora/base/query.html#Query"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.base.query.Query" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="py method">
-<dt id="zenora.base.query.Query.channel">
-<em class="property">abstract </em><code class="sig-name descname">channel</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">snonwflake</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; Dict<a class="reference internal" href="_modules/zenora/base/query.html#Query.channel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.base.query.Query.channel" title="Permalink to this definition">¶</a></dt>
-<dd><p>Interface for the REST API query to get channels.</p>
-<p>Parameters:
-snowflake: int</p>
-<blockquote>
-<div><p>The channel ID of a Discord channel</p>
-</div></blockquote>
-<p>Returns:
-typing.Dict: A dictionary object that will be used to parse the data</p>
-<blockquote>
-<div><p>into objects</p>
-</div></blockquote>
-</dd></dl>
-
-<dl class="py method">
-<dt id="zenora.base.query.Query.create_dm">
-<em class="property">abstract </em><code class="sig-name descname">create_dm</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">recipient_id</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; Dict<a class="reference internal" href="_modules/zenora/base/query.html#Query.create_dm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.base.query.Query.create_dm" title="Permalink to this definition">¶</a></dt>
-<dd><p>Interface for the REST API query to create a DM with a specific user according to ID</p>
-<p>Returns:
-typing.Dict: A dictionary object that will be used to parse the data</p>
-<blockquote>
-<div><p>into objects</p>
-</div></blockquote>
-</dd></dl>
-
-<dl class="py method">
-<dt id="zenora.base.query.Query.current_user">
-<em class="property">abstract </em><code class="sig-name descname">current_user</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Dict<a class="reference internal" href="_modules/zenora/base/query.html#Query.current_user"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.base.query.Query.current_user" title="Permalink to this definition">¶</a></dt>
-<dd><p>Interface for the REST API query to get current user.</p>
-<p>Returns:
-typing.Dict: A dictionary object that will be used to parse the data</p>
-<blockquote>
-<div><p>into objects</p>
-</div></blockquote>
-</dd></dl>
-
-<dl class="py method">
-<dt id="zenora.base.query.Query.current_user_dms">
-<em class="property">abstract </em><code class="sig-name descname">current_user_dms</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Dict<a class="reference internal" href="_modules/zenora/base/query.html#Query.current_user_dms"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.base.query.Query.current_user_dms" title="Permalink to this definition">¶</a></dt>
-<dd><p>Interface for the REST API query to fetch current user’s DMs list</p>
-<p>Returns:
-typing.Dict: A dictionary object that will be used to parse the data</p>
-<blockquote>
-<div><p>into objects</p>
-</div></blockquote>
-</dd></dl>
-
-<dl class="py method">
-<dt id="zenora.base.query.Query.delete_channel">
-<em class="property">abstract </em><code class="sig-name descname">delete_channel</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">channel_id</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/zenora/base/query.html#Query.delete_channel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.base.query.Query.delete_channel" title="Permalink to this definition">¶</a></dt>
-<dd><p>Interface for the REST API query to delete guild channel.</p>
-<p>Returns:
-channel_id: int</p>
-<blockquote>
-<div><p>The snowflake ID of the channel.</p>
-</div></blockquote>
-</dd></dl>
-
-<dl class="py method">
-<dt id="zenora.base.query.Query.leave_guild">
-<em class="property">abstract </em><code class="sig-name descname">leave_guild</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">snowflake</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/zenora/base/query.html#Query.leave_guild"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.base.query.Query.leave_guild" title="Permalink to this definition">¶</a></dt>
-<dd><p>Interface for the REST API query to leave a guild.</p>
-<p>Returns:
-code: int</p>
-<blockquote>
-<div><p>Code for response status. Will return 204 on success</p>
-</div></blockquote>
-</dd></dl>
-
-<dl class="py method">
-<dt id="zenora.base.query.Query.modify_channel">
-<em class="property">abstract </em><code class="sig-name descname">modify_channel</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">channel_id</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">args</span><span class="p">:</span> <span class="n">Dict</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/zenora/base/query.html#Query.modify_channel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.base.query.Query.modify_channel" title="Permalink to this definition">¶</a></dt>
-<dd><p>Interface for the REST API query to modify guild channel.</p>
-<p>Returns:
-channel_id: int</p>
-<blockquote>
-<div><p>The snowflake ID of the channel.</p>
-</div></blockquote>
-<dl class="simple">
-<dt>typing.Dict:</dt><dd><p>A dictionary object that will be used to parse the data
-into objects</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="zenora.base.query.Query.modify_me">
-<em class="property">abstract </em><code class="sig-name descname">modify_me</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">args</span><span class="p">:</span> <span class="n">dict</span></em><span class="sig-paren">)</span> &#x2192; Dict<a class="reference internal" href="_modules/zenora/base/query.html#Query.modify_me"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.base.query.Query.modify_me" title="Permalink to this definition">¶</a></dt>
-<dd><p>Interface for the REST API query to modify current user.</p>
-<p>Returns:
-typing.Dict:</p>
-<blockquote>
-<div><p>A dictionary object that will be used to parse the data
-into objects</p>
-</div></blockquote>
-</dd></dl>
-
-<dl class="py method">
-<dt id="zenora.base.query.Query.user">
-<em class="property">abstract </em><code class="sig-name descname">user</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">snowflake</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; Dict<a class="reference internal" href="_modules/zenora/base/query.html#Query.user"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#zenora.base.query.Query.user" title="Permalink to this definition">¶</a></dt>
-<dd><p>Interface for the REST API query to get user.</p>
-<p>Parameters:
-snowflake: int</p>
-<blockquote>
-<div><p>The ID of a Discord User</p>
-</div></blockquote>
-<p>Returns:
-typing.Dict: A dictionary object that will be used to parse the data</p>
-<blockquote>
-<div><p>into objects</p>
-</div></blockquote>
-</dd></dl>
-
 </dd></dl>
 
 </div>

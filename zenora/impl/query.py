@@ -22,7 +22,7 @@
 
 
 import typing
-from zenora.utils.helpers import fetch, error_checker, patch, delete, post
+from zenora.utils.http import fetch, error_checker, patch, delete, post
 from zenora.utils.endpoints import (
     BASE_URL,
     FETCH_CHANNEL,
@@ -32,7 +32,7 @@ from zenora.utils.endpoints import (
     GET_GUILD,
     EMOJI,
     EMOJI_ID,
-    FETCH_MESSAGE
+    FETCH_MESSAGE,
 )
 from zenora.base.query import Query as QueryBase
 from zenora.errors import GuildError
@@ -63,6 +63,7 @@ class Query(QueryBase):
         )
         error_checker(data)
         return data
+
     def message(self, channel_id, msg_id) -> typing.Dict:
         """Implementation for the REST API query to get message according to ID.
         Parameters:
@@ -81,6 +82,7 @@ class Query(QueryBase):
             headers={"Authorization": f"{self.token_type} {self.token}"},
         )
         return data
+
     def user(self, snowflake: int) -> typing.Dict:
         """Implementation for the REST API query to get user.
 
@@ -219,7 +221,7 @@ class Query(QueryBase):
 
     def get_emojis(self, snowflake):
         """
-        Interface for the REST API query to get all emojis form guild
+        Implementation for the REST API query to get all emojis form guild
 
         Returns:
         Dict: A dictionary object that will be used to parse the data
@@ -252,9 +254,9 @@ class Query(QueryBase):
         )
         return data
 
-    def post_emoji(self, snowflake, name, image_url, roles):
+    def create_emoji(self, snowflake, name, image_url, roles):
         """
-        Interface for the REST API query to add emoji to guild
+        Implementation for the REST API query to add emoji to guild
 
         Returns:
         Dict: A dictionary object that will be used to parse the data
@@ -274,7 +276,7 @@ class Query(QueryBase):
         )
         return data
 
-    def patch_emoji(self, snowflake, emoji_id, name, roles):
+    def update_emoji(self, snowflake, emoji_id, name, roles):
         """
         Interface for the rest API query to update emoji for guild
 

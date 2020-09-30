@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="zenora",
-    version="0.0.33",
+    version="0.0.34",
     author="K.M Ahnaf Zamil",
     author_email="ahnafzamil@protonmail.com",
     description="A modern Discord REST API wrapper that allows you to access the data without running a bot.",

@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Getting Started &mdash; Zenora 0.0.33 documentation</title>
+  <title>Getting Started &mdash; Zenora 0.0.34 documentation</title>
   
 
   
@@ -26,10 +26,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/language_data.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                0.0.33
+                0.0.34
               </div>
             
           
@@ -174,7 +174,7 @@ versions that Requests also supports.</p>
 <span class="kn">import</span> <span class="nn">zenora</span>
 
 <span class="c1"># Instantiate a REST API instance</span>
-<span class="n">api</span> <span class="o">=</span> <span class="n">zenora</span><span class="o">.</span><span class="n">RESTAPI</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="s2">&quot;your_token_here&quot;</span><span class="p">)</span>
+<span class="n">api</span> <span class="o">=</span> <span class="n">zenora</span><span class="o">.</span><span class="n">REST</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="s2">&quot;your_token_here&quot;</span><span class="p">,</span> <span class="n">token_type</span><span class="o">=</span><span class="s2">&quot;Your token type&quot;</span><span class="p">)</span>
 
 <span class="c1"># Query API for getting the current user&#39;s info</span>
 <span class="c1"># Zenora parses API response into Python objects for accessing data</span>

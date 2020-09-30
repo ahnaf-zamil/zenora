@@ -121,6 +121,7 @@ class RESTAPI(abc.ABC):
                 Zenora user object
 
         """
+
     @abc.abstractmethod
     def get_channel_message(self, channel_id: int, msg_id: int) -> typing.Dict:
         """Get a specific message from Discord channel
@@ -206,14 +207,14 @@ class RESTAPI(abc.ABC):
         """
 
     @abc.abstractmethod
-    def get_emojis(self, snowflake):
+    def get_guild_emoji(self, guild_id):
         """
-        Get list of all emojis for guild
+        Get list of all emoji for guild
 
         Parameters
         ----------
 
-        snowflake: int
+        guild_id: int
                 The id of the guild
 
         Returns
@@ -223,17 +224,17 @@ class RESTAPI(abc.ABC):
         """
 
     @abc.abstractmethod
-    def get_emoji(self, snowflake, emoji_id):
+    def get_emoji(self, guild_id, emoji_id):
         """
-        Get emoji for guild by emoji_id
+        Get emoji for guild by ID
 
 
         Parameters
         ----------
-        snowflake: int
-            The id of the guild
+        guild_id: int
+            The ID of the guild
         emoji_id: int
-            The id of emoji
+            The ID of emoji
 
         Returns
         -------
@@ -243,38 +244,40 @@ class RESTAPI(abc.ABC):
         """
 
     @abc.abstractmethod
-    def post_emoji(self, snowflake, name, image_url, roles):
+    def create_emoji(self, guild_id: int, name: str, image_url: str, roles):
         """
         Add new emoji for guild
 
 
         Parameters
         ----------
-        snowflake: int
-            The id of the guild
+        guild_id: int
+            The ID of the guild
         name: str
             Name of the emoji
         image_url: str
             Address of image that used for emoji
         roles: [int]
-            Array of snowflakes
+            Array of snowflakes for the roles for which this emoji will be whitelisted
 
         Returns
         -------
-        zenora.emojis.Emoji
+        zenora.Emoji
             Zenora emoji object
         """
 
     @abc.abstractmethod
-    def patch_emoji(self, snowflake, name, roles):
+    def update_emoji(self, guild_id, emoji_id, name, roles):
         """
         Update emoji for guild
 
 
         Parameters
         ----------
-        snowflake: int
-            The id of the guild
+        guild_id: int
+            The ID of the guild
+        emoji_id: int
+            The ID of the emoji
         name: str
             Name of the emoji
         roles: [int]
@@ -287,17 +290,17 @@ class RESTAPI(abc.ABC):
         """
 
     @abc.abstractmethod
-    def delete_emoji(self, snowflake, emoji_id):
+    def delete_emoji(self, guild_id, emoji_id):
         """
         Delete emoji for guild
 
 
         Parameters
         ----------
-        snowflake: int
-            The id of the guild
+        guild_id: int
+            The ID of the guild
         emoji_id: int
-            The id of emoji
+            The ID of emoji
 
         Returns
         -------

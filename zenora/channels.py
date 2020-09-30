@@ -32,7 +32,7 @@ class GuildTextChannel:
     """A server text channel object
 
     :return: Zenora Guild Text Channel object
-    :rtype: zenora.channels.GuildTextChannel
+    :rtype: zenora.GuildTextChannel
     """
 
     __slots__ = ["data", "app"]
@@ -116,13 +116,13 @@ class GuildTextChannel:
 
         Returns
         -------
-        zenora.channels.GuildTextChannel
+        zenora.GuildTextChannel
                 Zenora guild text channel object
 
-        zenora.channels.GuildVoiceChannel
+        zenora.GuildVoiceChannel
                 Zenora guild voice channel object
 
-        zenora.channels.DMTextChannel
+        zenora.DMTextChannel
                 Zenora DM text channel object
         """
         return self.app.modify_channel(self.id, args)
@@ -131,7 +131,7 @@ class GuildTextChannel:
         """Delete this channel"""
         return self.app.delete_channel(self.id)
 
-    def __str__(self):
+    def __repr__(self):
         """String representation of the model."""
         attrs = [
             ("id", self.id),
@@ -156,7 +156,7 @@ class DMTextChannel:
 
 
     :return: Zenora DM text channel object
-    :rtype: zenora.channel.DMTextChannel
+    :rtype: zenora.DMTextChannel
     """
 
     __slots__ = ["data", "app"]
@@ -193,7 +193,7 @@ class DMTextChannel:
 
         return self.app.get_channel_message(channel_id=self.id, msg_id=id)
 
-    def __str__(self):
+    def __repr__(self):
         """String representation of the model."""
         attrs = [
             ("id", self.id),
@@ -211,7 +211,7 @@ class GuildVoiceChannel:
 
 
     :return: Zenora guild voice channel object
-    :rtype: zenora.channel.GuildVoiceChannel
+    :rtype: zenora.GuildVoiceChannel
     """
 
     __slots__ = ["data"]
@@ -280,13 +280,13 @@ class GuildVoiceChannel:
 
         Returns
         -------
-        zenora.channels.GuildTextChannel
+        zenora.GuildTextChannel
                 Zenora guild text channel object
 
-        zenora.channels.GuildVoiceChannel
+        zenora.GuildVoiceChannel
                 Zenora guild voice channel object
 
-        zenora.channels.DMTextChannel
+        zenora.DMTextChannel
                 Zenora DM text channel object
         """
         return self.app.modify_channel(self.id, args)
@@ -295,7 +295,7 @@ class GuildVoiceChannel:
         """Delete this channel"""
         return self.app.delete_channel(self.id)
 
-    def __str__(self):
+    def __repr__(self):
         """String representation of the model."""
         attrs = [
             ("id", self.id),

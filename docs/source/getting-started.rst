@@ -21,7 +21,7 @@ Your first API usage can be written in just a few lines of code:
     import zenora
 
     # Instantiate a REST API instance
-    api = zenora.RESTAPI(token="your_token_here")
+    api = zenora.REST(token="your_token_here", token_type="Your token type")
 
     # Query API for getting the current user's info
     # Zenora parses API response into Python objects for accessing data

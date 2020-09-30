@@ -1,3 +1,25 @@
+# Zenora, a modern Python API wrapper for the Discord REST API
+#
+# Copyright (c) 2020 K.M Ahnaf Zamil
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+
 import abc
 import typing
 
@@ -34,6 +56,7 @@ class Query(abc.ABC):
         typing.Dict: A dictionary object that will be used to parse the data
             into objects
         """
+
     @abc.abstractmethod
     def message(self, channel_id, msg_id) -> typing.Dict:
         """Interface for the REST API query to get message according to ID.
@@ -46,7 +69,7 @@ class Query(abc.ABC):
         typing.Dict: A dictionary object that will be used to parse the data
             into objects
         """
-        
+
     @abc.abstractmethod
     def current_user(self) -> typing.Dict:
         """Interface for the REST API query to get current user.
@@ -122,7 +145,7 @@ class Query(abc.ABC):
         Interface for the REST API query to get emojis for guild
 
         Returns:
-        Dict: A dictionary object that will be used to parse the data
+        typing.Dict: A dictionary object that will be used to parse the data
             into objects
         """
 
@@ -132,22 +155,22 @@ class Query(abc.ABC):
         Interface for the RESt API query to get emoji for guild and emoji_id
 
         Returns:
-        Dict: A dictionary object that will be used to parse the data
+        typing.Dict: A dictionary object that will be used to parse the data
             into objects
         """
 
     @abc.abstractmethod
-    def post_emoji(self, snowflake, name, image_url, roles):
+    def create_emoji(self, snowflake, name, image_url, roles):
         """
-        Inerface for the RESt API query to add new emoji for guild
+        Inerface for the REST API query to add new emoji to a guild
 
         Returns:
-        Dict: A dictionary object that will be used to parse the data
+        typing.Dict: A dictionary object that will be used to parse the data
             into objects
         """
 
     @abc.abstractmethod
-    def patch_emoji(self, snowflake, name, roles):
+    def update_emoji(self, snowflake, name, roles):
         """
         Interface for the rest API query to update emoji for guild
 

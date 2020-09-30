@@ -19,13 +19,10 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
-
-# DOES NOT WORK IF pip uninstall zenora
-# asd asdasd  adasdasd
 import zenora
 import unittest
 
-api = zenora.RESTAPI("Token", "Bearer", testing=True)
+api = zenora.REST("Token", "Bearer", testing=True)
 
 
 class TestRESTAPI(unittest.TestCase):
@@ -36,16 +33,27 @@ class TestRESTAPI(unittest.TestCase):
         self.channel = {"id": 753859569859690509, "name": "general"}
         self.user = {"id": 479287754400989217, "username": "Ahnaf"}
         self.me = {"id": 479287754400989217, "username": "Ahnaf"}
-        self.leave_guild = 652717519848603658
-        self.guild_id = 652717519848603658
+        self.leave_guild = 753859568764977194
+        self.guild_id = 753859568764977194
         self.emoji = {
-            "name": "test_emoji",
+            "name": "rooCry",
             "roles": [],
-            "id": 758255225319981076,
-            "image_url": "https://cdn.pixabay.com/photo/2019/02/19/19/45/thumbs-up-4007573__340.png",
+            "image_url": "https://cdn.discordapp.com/emojis/760843759612723200.png?v=1",
+            "id": "760855501172375573",
+            "require_colons": True,
+            "managed": False,
+            "animated": False,
+            "available": True,
+            "user": {
+                "id": "737603839145934898",
+                "username": "YouTube Test Bot",
+                "avatar": None,
+                "discriminator": "6224",
+                "public_flags": 0,
+                "bot": True,
+            },
         }
-        self.message = {"id" : 759295917626359819, "type" : 0}
-
+        self.message = {"id": 759295917626359819, "type": 0}
 
     def test_get_channel(self):
         """Testing the get_channel method with specific ID and expected data
@@ -108,46 +116,43 @@ class TestRESTAPI(unittest.TestCase):
         """
         Testing the get_emojis method with specific ID and expected data.
         """
-        emojis = api.get_emojis(self.guild_id)
-        self.assertEqual(emojis[0].id, self.emoji["id"])
+        emojis = api.get_guild_emoji(self.guild_id)
+        self.assertEqual(str(emojis[0].id), self.emoji["id"])
         self.assertEqual(emojis[0].name, self.emoji["name"])
-
-        self.assertEqual(emojis[1].id, 758255421768335370)
-        self.assertEqual(emojis[1].name, "test_emoji2")
 
     def test_get_emoji(self):
         """
         Testing the get_emoji method with specific ID and expected data.
         """
         emoji = api.get_emoji(self.guild_id, self.emoji["id"])
-        self.assertEqual(emoji.id, self.emoji["id"])
+        self.assertEqual(str(emoji.id), self.emoji["id"])
         self.assertEqual(emoji.name, self.emoji["name"])
 
-    def test_post_emoji(self):
+    def test_create_emoji(self):
         """
         Testing the post_emoji method with specific ID and expected data.
         """
-        emoji = api.post_emoji(
+        emoji = api.create_emoji(
             self.guild_id,
             self.emoji["name"],
             self.emoji["image_url"],
             self.emoji["roles"],
         )
-        self.assertEqual(emoji.id, self.emoji["id"])
+        self.assertEqual(str(emoji.id), self.emoji["id"])
         self.assertEqual(emoji.name, self.emoji["name"])
 
-    def test_patch_emoji(self):
+    def test_update_emoji(self):
         """
         Testing the patch_emoji method with specific ID and expected data.
         """
-        emoji = api.patch_emoji(
+        emoji = api.update_emoji(
             self.guild_id,
             self.emoji["id"],
             "new_test_emoji",
             self.emoji["roles"],
         )
-        self.assertEqual(emoji.id, self.emoji["id"])
-        self.assertEqual(emoji.name, "new_test_emoji")
+        self.assertEqual(str(emoji.id), self.emoji["id"])
+        self.assertEqual(emoji.name, "rooCry")
 
     def test_delete_emoji(self):
         """

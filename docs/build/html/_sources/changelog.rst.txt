@@ -6,6 +6,24 @@ Here you will find the changelogs for most if not every Zenora update since vers
 
 If you think anything is missing, make a pull request to add it, or contact me on discord.
 
+Version 0.0.34-alpha
+====================
+
+- Renamed ``zenora.RESTAPI`` to ``zenora.REST``.
+
+- Added ``zenora.Emoji`` class for emoji support.
+
+- Added IO methods for emoji.
+
+- Added ``zenora.Message`` object.
+
+- Fixed API bugs.
+
+- Released Zenora v0.0.34-alpha.
+
+
+----
+
 Version 0.0.33-alpha
 ====================
 

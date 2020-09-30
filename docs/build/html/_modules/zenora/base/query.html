@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>zenora.base.query &mdash; Zenora 0.0.33 documentation</title>
+  <title>zenora.base.query &mdash; Zenora 0.0.34 documentation</title>
   
 
   
@@ -26,10 +26,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script src="../../../_static/jquery.js"></script>
-        <script src="../../../_static/underscore.js"></script>
-        <script src="../../../_static/doctools.js"></script>
-        <script src="../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                0.0.33
+                0.0.34
               </div>
             
           
@@ -159,7 +159,7 @@
 <div class="viewcode-block" id="Query"><a class="viewcode-back" href="../../../api-reference.html#zenora.base.query.Query">[docs]</a><span class="k">class</span> <span class="nc">Query</span><span class="p">(</span><span class="n">abc</span><span class="o">.</span><span class="n">ABC</span><span class="p">):</span>
     <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;token&quot;</span><span class="p">,</span> <span class="s2">&quot;token_type&quot;</span><span class="p">]</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">token</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">token_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">token</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">token_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">token</span> <span class="o">=</span> <span class="n">token</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">token_type</span> <span class="o">=</span> <span class="n">token_type</span>
 
@@ -188,7 +188,19 @@
 <span class="sd">        typing.Dict: A dictionary object that will be used to parse the data</span>
 <span class="sd">            into objects</span>
 <span class="sd">        &quot;&quot;&quot;</span></div>
-
+<div class="viewcode-block" id="Query.message"><a class="viewcode-back" href="../../../api-reference.html#zenora.base.query.Query.message">[docs]</a>    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
+    <span class="k">def</span> <span class="nf">message</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel_id</span><span class="p">,</span> <span class="n">msg_id</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Dict</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Interface for the REST API query to get message according to ID.</span>
+<span class="sd">        Parameters:</span>
+<span class="sd">        channel_id: int</span>
+<span class="sd">                The snowflake ID of a Discord channel</span>
+<span class="sd">        msg_id: int</span>
+<span class="sd">                The snowflake ID of a Discord message.</span>
+<span class="sd">        Returns:</span>
+<span class="sd">        typing.Dict: A dictionary object that will be used to parse the data</span>
+<span class="sd">            into objects</span>
+<span class="sd">        &quot;&quot;&quot;</span></div>
+        
 <div class="viewcode-block" id="Query.current_user"><a class="viewcode-back" href="../../../api-reference.html#zenora.base.query.Query.current_user">[docs]</a>    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
     <span class="k">def</span> <span class="nf">current_user</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Dict</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Interface for the REST API query to get current user.</span>
@@ -256,6 +268,56 @@
 <span class="sd">        Returns:</span>
 <span class="sd">        typing.Dict: A dictionary object that will be used to parse the data</span>
 <span class="sd">            into objects</span>
+<span class="sd">        &quot;&quot;&quot;</span></div>
+
+<div class="viewcode-block" id="Query.get_emojis"><a class="viewcode-back" href="../../../api-reference.html#zenora.base.query.Query.get_emojis">[docs]</a>    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
+    <span class="k">def</span> <span class="nf">get_emojis</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">snowflake</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Interface for the REST API query to get emojis for guild</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">        typing.Dict: A dictionary object that will be used to parse the data</span>
+<span class="sd">            into objects</span>
+<span class="sd">        &quot;&quot;&quot;</span></div>
+
+<div class="viewcode-block" id="Query.get_emoji"><a class="viewcode-back" href="../../../api-reference.html#zenora.base.query.Query.get_emoji">[docs]</a>    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
+    <span class="k">def</span> <span class="nf">get_emoji</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">snowflake</span><span class="p">,</span> <span class="n">emoji_id</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Interface for the RESt API query to get emoji for guild and emoji_id</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">        typing.Dict: A dictionary object that will be used to parse the data</span>
+<span class="sd">            into objects</span>
+<span class="sd">        &quot;&quot;&quot;</span></div>
+
+<div class="viewcode-block" id="Query.create_emoji"><a class="viewcode-back" href="../../../api-reference.html#zenora.base.query.Query.create_emoji">[docs]</a>    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
+    <span class="k">def</span> <span class="nf">create_emoji</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">snowflake</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">image_url</span><span class="p">,</span> <span class="n">roles</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Inerface for the REST API query to add new emoji to a guild</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">        typing.Dict: A dictionary object that will be used to parse the data</span>
+<span class="sd">            into objects</span>
+<span class="sd">        &quot;&quot;&quot;</span></div>
+
+<div class="viewcode-block" id="Query.update_emoji"><a class="viewcode-back" href="../../../api-reference.html#zenora.base.query.Query.update_emoji">[docs]</a>    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
+    <span class="k">def</span> <span class="nf">update_emoji</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">snowflake</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">roles</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Interface for the rest API query to update emoji for guild</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">        Dict: A dictionary object that will be used to parse the data</span>
+<span class="sd">            into objects</span>
+<span class="sd">        &quot;&quot;&quot;</span></div>
+
+<div class="viewcode-block" id="Query.delete_emoji"><a class="viewcode-back" href="../../../api-reference.html#zenora.base.query.Query.delete_emoji">[docs]</a>    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
+    <span class="k">def</span> <span class="nf">delete_emoji</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">snowflake</span><span class="p">,</span> <span class="n">emoji_id</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Interface for the rest API query to delete emoji for guild</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">        code: int</span>
+<span class="sd">            Code for response status. Will return 204 on success</span>
 <span class="sd">        &quot;&quot;&quot;</span></div></div>
 </pre></div>
 
