@@ -166,6 +166,16 @@ class RESTAPI(REST):
         snowflake: int
                 The ID of the Discord User
 
+        Example
+        -------
+        .. code-block:: python
+
+
+            >>> some_api_instance.get_user(753561575532658738)
+            User(id=753561575532658738, username=Zenora, discriminator=6423, avatar_url=https://cdn.discordapp.com/avatars/753561575532658738/380c68e7a6752e347ed875c2e11a05c4.png?size=1024,
+            flags=0, mention=<@753561575532658738>, bot=True, mfa_enabled=True, locale=en-US, verified=True,)
+
+
         Returns
         -------
         zenora.users.User
@@ -270,7 +280,7 @@ class RESTAPI(REST):
 
 
             >>> some_api_instance.modify_current_user({'username' : 'FroggyMan', 'avatar' : 'https://cdn.discordapp.com/avatars/753561575532658738/0cf89f88a3ba4e226c6f1c72a9242dd8.png'})
-            User(id=753561575532658738, username=Zenora, discriminator=6423, avatar_url=https://cdn.discordapp.com/avatars/753561575532658738/380c68e7a6752e347ed875c2e11a05c4.png?size=1024,
+            User(id=753561575532658738, username=FroggyMan, discriminator=6423, avatar_url=https://cdn.discordapp.com/avatars/753561575532658738/380c68e7a6752e347ed875c2e11a05c4.png?size=1024,
             flags=0, mention=<@753561575532658738>, bot=True, mfa_enabled=True, locale=en-US, verified=True,)
 
 

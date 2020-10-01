@@ -40,6 +40,8 @@ already exists for your bug or feature.
 
 - `Hjacobs#9441 <https://github.com/MaksymKarunos>`_
 
+- `db#3272 <https://github.com/gauravndabhade>`_
+
 - `Starryguy#5682 <https://github.com/StarrMan303/>`_
 
 
@@ -47,11 +49,12 @@ already exists for your bug or feature.
 **Index:**
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
 
    getting-started
    api-reference
    changelog
+   
 
 * :ref:`genindex`
 

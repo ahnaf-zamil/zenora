@@ -30,3 +30,7 @@ Your first API usage can be written in just a few lines of code:
     # Use the data
     print(user.name)
 
+.. note::
+    There are two types of tokens used by the Discord API. Those are the ``Bearer`` and ``Bot`` tokens.
+    The ``Bearer`` token is used for Oauth2 applications while the ``Bot`` token is used for bot applications
+    and scripts.

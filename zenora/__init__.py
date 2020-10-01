@@ -26,6 +26,7 @@ from zenora.utils.misc import print_welcome
 from zenora.channels import *
 from zenora.errors import *
 from zenora.messages import *
+from zenora.users import *
 from zenora.file import File
 from zenora.emoji import Emoji
 

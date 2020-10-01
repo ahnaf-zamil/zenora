@@ -21,8 +21,7 @@
 # SOFTWARE.
 
 import typing
-import zenora
-from zenora.utils.endpoints import DEFAULT_AVATAR_URL, CDN_URL, AVATAR_URL
+from .utils.endpoints import DEFAULT_AVATAR_URL, CDN_URL, AVATAR_URL
 
 
 class User:

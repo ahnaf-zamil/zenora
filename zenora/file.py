@@ -31,8 +31,12 @@ class File:
 
     def __init__(self, url):
         file = get_file(url)
-        path = url.split("?")
-        encoded_body = base64.b64encode(file.content)
-        self.data = "data:{};base64,{}".format(
-            mimetypes.guess_type(path[0]), encoded_body.decode()
+        self.path = url.split("?")
+        self.encoded_body = base64.b64encode(file.content)
+
+    @property
+    def data(self):
+        """File data in the form of base64 data schema"""
+        return "data:{};base64,{}".format(
+            mimetypes.guess_type(self.path[0]), self.encoded_body.decode()
         )

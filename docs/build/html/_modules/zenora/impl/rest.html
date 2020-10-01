@@ -320,6 +320,16 @@
 <span class="sd">        snowflake: int</span>
 <span class="sd">                The ID of the Discord User</span>
 
+<span class="sd">        Example</span>
+<span class="sd">        -------</span>
+<span class="sd">        .. code-block:: python</span>
+
+
+<span class="sd">            &gt;&gt;&gt; some_api_instance.get_user(753561575532658738)</span>
+<span class="sd">            User(id=753561575532658738, username=Zenora, discriminator=6423, avatar_url=https://cdn.discordapp.com/avatars/753561575532658738/380c68e7a6752e347ed875c2e11a05c4.png?size=1024,</span>
+<span class="sd">            flags=0, mention=&lt;@753561575532658738&gt;, bot=True, mfa_enabled=True, locale=en-US, verified=True,)</span>
+
+
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        zenora.users.User</span>
@@ -424,7 +434,7 @@
 
 
 <span class="sd">            &gt;&gt;&gt; some_api_instance.modify_current_user({&#39;username&#39; : &#39;FroggyMan&#39;, &#39;avatar&#39; : &#39;https://cdn.discordapp.com/avatars/753561575532658738/0cf89f88a3ba4e226c6f1c72a9242dd8.png&#39;})</span>
-<span class="sd">            User(id=753561575532658738, username=Zenora, discriminator=6423, avatar_url=https://cdn.discordapp.com/avatars/753561575532658738/380c68e7a6752e347ed875c2e11a05c4.png?size=1024,</span>
+<span class="sd">            User(id=753561575532658738, username=FroggyMan, discriminator=6423, avatar_url=https://cdn.discordapp.com/avatars/753561575532658738/380c68e7a6752e347ed875c2e11a05c4.png?size=1024,</span>
 <span class="sd">            flags=0, mention=&lt;@753561575532658738&gt;, bot=True, mfa_enabled=True, locale=en-US, verified=True,)</span>
 
 
