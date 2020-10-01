@@ -37,7 +37,7 @@ __email__ = "ahnafzamil@protonmail.com"
 __issue_tracker__ = "https://github.com/ahnaf-zamil/zenora/issues"
 __license__ = "MIT"
 __url__ = "https://github.com/ahnaf-zamil/zenora/"
-__version__ = "0.0.33"
+__version__ = "0.0.34"
 __git_sha1__ = "HEAD"
 
 
