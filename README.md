@@ -31,7 +31,7 @@ python -m pip install zenora
 import zenora
 
 # Instantiate a REST API instance
-api = zenora.RESTAPI(token="your_token_here", token_type="token_type")
+api = zenora.REST(token="your_token_here", token_type="token_type")
 
 # Query API for getting the current user's info
 # Zenora parses API response into Python objects for accessing data
