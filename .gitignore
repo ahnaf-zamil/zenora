@@ -1,5 +1,5 @@
 test_zen.py
-*__pycache__/
+__pycache__/
 *.pyc
 test_config.py
 zenora.egg-info/
