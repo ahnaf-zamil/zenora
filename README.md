@@ -61,7 +61,7 @@ Join the official Discord server [here.](https://discord.gg/2Buh3N9)
 
 [MIT](https://choosealicense.com/licenses/mit/) License
 
-Copyright (c) 2020 K.M Ahnaf Zamil
+Copyright (c) 2020 K.M Ahnaf Zamil and Maksym Karunos
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
