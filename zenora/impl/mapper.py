@@ -58,12 +58,16 @@ class ChannelMapper(BaseChannelMapper):
             raise MissingAccess("You don't have access to this channel")
 
         if response["type"] == 0:
-            return GuildTextChannel(app=app,**response)
+            return GuildTextChannel(app=app, **response)
         elif response["type"] == 1:
-            response['recipients'] = [User(app=app, **i) for i in response['recipients']] if 'recipients' in response else None
-            return DMTextChannel(app=app,**response)
+            response["recipients"] = (
+                [User(app=app, **i) for i in response["recipients"]]
+                if "recipients" in response
+                else None
+            )
+            return DMTextChannel(app=app, **response)
         elif response["type"] == 2:
-            response['app'] = app
+            response["app"] = app
             return GuildVoiceChannel(**response)
 
 
@@ -86,5 +90,9 @@ class EmojiMapper(BaseEmojiMapper):
         zenora.emojis.Emoji
                 Zenora emoji object
         """
-        response['app'] = app
-        return Emoji(**response)
+        response["user"] = (
+            app.get_user(response["user"]["id"])
+            if "response" in response
+            else None
+        )
+        return Emoji(app=app, **response)

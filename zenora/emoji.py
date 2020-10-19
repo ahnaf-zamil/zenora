@@ -21,6 +21,8 @@
 # SOFTWARE.
 
 import typing
+from .users import User
+from dataclasses import dataclass
 
 
 class Emoji:
@@ -31,56 +33,17 @@ class Emoji:
     :rtype: zenora.Emoji
     """
 
-    __slot__ = ["data", "app"]
+    app: typing.Any
+    id: int
+    name: str
+    roles: typing.Optional[typing.List[dict]] = None
+    user: typing.Optional[User] = None
+    require_colons: typing.Optional[bool] = None
+    managed: typing.Optional[bool] = None
+    animated: typing.Optional[bool] = None
+    available: typing.Optional[bool] = None
 
-    def __init__(self, data: typing.Dict, app):
-        self.data = data
-        self.app = app
-
-    @property
-    def id(self):
-        """Snowflake ID of the emoji"""
-        return int(self.data["id"])
-
-    @property
-    def name(self):
-        """The emoji's name"""
-        return self.data["name"]
-
-    @property
-    def roles(self):
-        """The roles this emoji is whitelisted to"""
-        return self.data["roles"] if "roles" in self.data else None
-
-    @property
-    def user(self):
-        """The user that created this emoji"""
-        return (
-            self.app.get_user(int(self.data["user"]["id"]))
-            if "user" in self.data
-            else None
-        )
-
-    @property
-    def require_colons(self):
-        """Whether this emoji must be wrapped in colons"""
-        return (
-            self.data["require_colons"]
-            if "require_colons" in self.data
-            else None
-        )
-
-    @property
-    def managed(self):
-        """Whether this emoji is managed"""
-        return self.data["managed"] if "managed" in self.data else None
-
-    @property
-    def animated(self):
-        """Whether this emoji is animated"""
-        return self.data["animated"] if "animated" in self.data else None
-
-    def __repr__(self):
+    def __str__(self):
         """String representation of the model."""
         attrs = [
             ("id", self.id),

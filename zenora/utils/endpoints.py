@@ -23,7 +23,7 @@
 
 """Endpoints for the Discord REST API"""
 
-BASE_URL = "https://discord.com/api/v6"
+BASE_URL = "https://discord.com/api/v8"
 CDN_URL = "https://cdn.discordapp.com"
 
 # Channels
