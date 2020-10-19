@@ -35,9 +35,11 @@ from zenora.utils.endpoints import (
     FETCH_MESSAGE,
 )
 from zenora.base.query import Query as QueryBase
-from zenora.errors import GuildError
+from zenora.errors import GuildError, APIError
 from zenora.file import File
 
+
+MODIFICATION_LIST = ['name', 'position', 'topic', 'nsfw', 'rate_limit_per_user', 'bitrate', 'user_limit', 'permission_overwrites', 'parent_id']
 
 class Query(QueryBase):
     __slots__ = ["token", "token_type"]
@@ -133,7 +135,8 @@ class Query(QueryBase):
         error_checker(data)
         return data
 
-    def modify_channel(self, channel_id: int, args: typing.Dict):
+   
+    def modify_channel(self, channel_id: int, *args):
         """Implementation for the REST API query to modify guild channel.
 
         Returns:
@@ -144,13 +147,20 @@ class Query(QueryBase):
                 into objects
 
         """
+        if len(args[0]) > len(MODIFICATION_LIST):
+            raise APIError(f"The maximum number of modification arguments the this function takes is {len(MODIFICATION_LIST)}. You have entered {len(kwargs)} arguments")
+            return
+        for i in args[0]:
+            if i.lower() not in MODIFICATION_LIST:
+                raise APIError(f"{i} is not a valid argument for modifying a channel")
+                return
         data = patch(
             BASE_URL + FETCH_CHANNEL.format(channel_id),
             headers={
                 "Authorization": f"{self.token_type} {self.token}",
                 "Content-Type": "application/json",
             },
-            params=args,
+            params=args[0],
         )
         return data
 

@@ -21,9 +21,10 @@
 # SOFTWARE.
 
 import typing
+from dataclasses import dataclass
 from .utils.endpoints import DEFAULT_AVATAR_URL, CDN_URL, AVATAR_URL
 
-
+@dataclass
 class User:
     """A user object for API response.
 
@@ -31,99 +32,50 @@ class User:
     :rtype: zenora.users.User
     """
 
-    __slots__ = ["data", "app"]
 
-    def __init__(self, data, app) -> None:
-        self.data = data
-        self.app = app
+    app: typing.Any
+    id: int
+    username: str
+    discriminator: int
+    avatar: typing.Optional[str] = None
+    bot: typing.Optional[bool] = None
+    system: typing.Optional[bool] = None
+    mfa_enabled: typing.Optional[bool] = None
+    locale: typing.Optional[str] = None
+    verified: typing.Optional[bool] = None
+    email: typing.Optional[str] = None
+    public_flags: typing.Optional[int] = None
+    flags: typing.Optional[int] = None
 
-    @property
-    def id(self) -> typing.Optional[int]:
-        """Returns The snowflake ID of the user."""
-        return int(self.data["id"])
-
-    @property
-    def username(self) -> typing.Optional[str]:
-        """Returns the username of the user."""
-        return self.data["username"]
-
-    @property
-    def discriminator(self) -> typing.Optional[int]:
-        """Returns the user's discriminator."""
-        return self.data["discriminator"]
 
     @property
-    def avatar_url(self) -> typing.Optional[str]:
+    def avatar_url(self) -> str:
         """Returns the user's avatar url"""
-        if self.data["avatar"] is not None:
-            return CDN_URL + AVATAR_URL.format(self.id, self.data["avatar"])
+        if self.avatar is not None:
+            return CDN_URL + AVATAR_URL.format(self.id, self.avatar)
         return DEFAULT_AVATAR_URL
-
-    @property
-    def flags(self) -> typing.Optional[int]:
-        """Returns the user's public flags """
-        return self.data["public_flags"]
-
+    
     @property
     def mention(self) -> typing.Optional[str]:
         """Returns the user's mention"""
         return f"<@{self.id}>"
 
-    @property
-    def bot(self) -> typing.Optional[bool]:
-        """Returns the user's mention (optional)"""
-        return self.data["bot"] if "bot" in self.data else None
-
-    @property
-    def is_system(self) -> typing.Optional[bool]:
-        """Returns if the user is a Discord System user or not (optional)"""
-        return self.data["system"] if "system" in self.data else None
-
-    @property
-    def mfa_enabled(self) -> typing.Optional[bool]:
-        """Returns whether the user has two factor enabled on their account (optional)"""
-        return self.data["mfa_enabled"] if "mfa_enabled" in self.data else None
-
-    @property
-    def locale(self) -> typing.Optional[str]:
-        """Returns the user's chosen language option (optional)"""
-        return self.data["locale"] if "locale" in self.data else None
-
-    @property
-    def verified(self) -> typing.Optional[bool]:
-        """Returns whether the email on this account has been verified (optional)"""
-        return self.data["verified"] if "verified" in self.data else None
-
-    @property
-    def email(self) -> typing.Optional[str]:
-        """Returns the user's email (optional)"""
-        return self.data["email"] if "email" in self.data else None
-
-    @property
-    def premium_type(self) -> typing.Optional[int]:
-        """Returns the type of Nitro subscription on a user's account (optional)"""
-        return (
-            [None, "Nitro Classic", "Nitro"][self.data["premium_type"]]
-            if "premium_type" in self.data
-            else None
-        )
-
-    def __repr__(self) -> typing.Optional[str]:
+    
+    def __str__(self) -> typing.Optional[str]:
         """String representation of the model."""
         attrs = [
             ("id", self.id),
             ("username", self.username),
             ("discriminator", self.discriminator),
             ("avatar_url", self.avatar_url),
-            ("flags", self.flags),
+            ("public_flags", self.public_flags),
             ("mention", self.mention),
             ("bot", self.bot),
-            ("is_system", self.is_system),
+            ("system", self.system),
             ("mfa_enabled", self.mfa_enabled),
             ("locale", self.locale),
             ("verified", self.verified),
-            ("email", self.email),
-            ("premium_type", self.premium_type),
+            ("email", self.email)
         ]
         return "%s(%s)" % (
             self.__class__.__name__,

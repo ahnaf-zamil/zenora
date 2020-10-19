@@ -80,8 +80,9 @@ class RESTAPI(REST):
             }
         return model_factory.parse_channel(response=response, app=self)
 
+    
     def modify_channel(
-        self, snowflake: int, params: typing.Dict
+        self, snowflake, *args
     ) -> typing.Any:
         """Modify Discord Guild Channel
 
@@ -97,7 +98,7 @@ class RESTAPI(REST):
                 link for all the changes applicable https://discord.com/developers/docs/resources/channel#modify-channel
         """
         response = Query(self.token, self.token_type).modify_channel(
-            snowflake, params
+            snowflake, args[0]
         )
 
         return model_factory.parse_channel(response=response, app=self)

@@ -20,6 +20,13 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+class APIError(Exception):
+    """Raised when user/bot does something unexpected that's not compliant with the Discord API.
+
+    :type Exception: zenora.errors.MissingAccess
+    """
+
+    pass
 
 class MissingAccess(Exception):
     """Raised when user/bot does not have access to specified channel.

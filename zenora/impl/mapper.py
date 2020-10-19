@@ -27,6 +27,7 @@ from zenora.base.mapper import ChannelMapper as BaseChannelMapper
 from zenora.errors import MissingAccess
 from zenora.base.mapper import BaseEmojiMapper
 from zenora.emoji import Emoji
+from zenora.users import User
 
 
 class ChannelMapper(BaseChannelMapper):
@@ -57,11 +58,13 @@ class ChannelMapper(BaseChannelMapper):
             raise MissingAccess("You don't have access to this channel")
 
         if response["type"] == 0:
-            return GuildTextChannel(response, app)
+            return GuildTextChannel(app=app,**response)
         elif response["type"] == 1:
-            return DMTextChannel(response, app)
+            response['recipients'] = [User(app=app, **i) for i in response['recipients']] if 'recipients' in response else None
+            return DMTextChannel(app=app,**response)
         elif response["type"] == 2:
-            return GuildVoiceChannel(response, app)
+            response['app'] = app
+            return GuildVoiceChannel(**response)
 
 
 class EmojiMapper(BaseEmojiMapper):
@@ -83,4 +86,5 @@ class EmojiMapper(BaseEmojiMapper):
         zenora.emojis.Emoji
                 Zenora emoji object
         """
-        return Emoji(response, app)
+        response['app'] = app
+        return Emoji(**response)

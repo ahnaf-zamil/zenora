@@ -68,7 +68,7 @@ class Factory(BaseFactory):
         zenora.users.User
                 Zenora user object
         """
-        return User(response, app)
+        return User(app=app,**response)
 
     def parse_emoji(response, app):
         """

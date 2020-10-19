@@ -22,11 +22,12 @@
 
 
 import typing
+from dataclasses import dataclass
 import datetime
-from zenora.users import User
+from .users import User
 from zenora.messages import Message
 
-
+@dataclass
 class GuildTextChannel:
 
     """A server text channel object
@@ -35,76 +36,27 @@ class GuildTextChannel:
     :rtype: zenora.GuildTextChannel
     """
 
-    __slots__ = ["data", "app"]
+    app: typing.Any
+    id: int
+    type: int = 0
+    name: typing.Optional[str] = None
+    position: typing.Optional[int] = None
+    guild_id: typing.Optional[int] = None
+    topic: typing.Optional[str] = None
+    nsfw: typing.Optional[bool] = None
+    last_message_id: typing.Optional[int] = None
+    rate_limit_per_user: typing.Optional[datetime.timedelta] = None
+    permission_overwrites: typing.Optional[typing.List[dict]] = None
+    parent_id: typing.Optional[int] = None
 
-    def __init__(self, data, app) -> None:
-        self.data = data
-        self.app = app
 
-    @property
-    def id(self) -> typing.Optional[int]:
-        """Returns The snowflake ID of the channel."""
-        return int(self.data["id"])
-
-    @property
-    def name(self) -> typing.Optional[str]:
-        """Returns the name of the channel."""
-        return self.data["name"]
-
-    @property
-    def position(self) -> typing.Optional[int]:
-        """Returns the position of the channel."""
-        return self.data["position"]
-
-    @property
-    def guild_id(self) -> typing.Optional[int]:
-        """Returns the snowflake ID of the channel's guild."""
-        return int(self.data["guild_id"])
-
-    @property
-    def topic(self) -> typing.Optional[str]:
-        """Returns the topic of the channel."""
-        return self.data["topic"]
-
-    @property
-    def is_nsfw(self) -> typing.Optional[bool]:
-        """Returns if the channel is NSFW or not."""
-        return self.data["nsfw"]
-
-    @property
-    def last_message_id(self) -> typing.Optional[int]:
-        """Returns the snowflake ID of the last message of the channel."""
-        return (
-            int(self.data["last_message_id"])
-            if self.data["last_message_id"] is not None
-            else None
-        )
-
-    @property
-    def rate_limit_per_user(self) -> datetime.timedelta:
-        """Returns the rate limit per user of the channel."""
-        return self.data["rate_limit_per_user"]
-
-    @property
-    def permission_overwrites(self) -> datetime.timedelta:
-        """Returns the permission overwrites of the channel."""
-        return self.data["permission_overwrites"]
-
-    @property
-    def category_id(self) -> datetime.timedelta:
-        """Returns the snowflake ID of the parant category of the channel."""
-        return (
-            int(self.data["parent_id"])
-            if self.data["parent_id"] is not None
-            else None
-        )
 
     def get_message(self, id: int) -> typing.Optional[Message]:
         """Returns a channel message according to given ID."""
 
         return self.app.get_channel_message(channel_id=self.id, msg_id=id)
 
-    def modify(self, args) -> typing.Any:
+    def modify(self, **kwargs) -> typing.Any:
         """Modify this channel
 
 
@@ -125,21 +77,21 @@ class GuildTextChannel:
         zenora.DMTextChannel
                 Zenora DM text channel object
         """
-        return self.app.modify_channel(self.id, args)
+        return self.app.modify_channel(self.id, kwargs)
 
     def delete(self) -> typing.Any:
         """Delete this channel"""
         return self.app.delete_channel(self.id)
 
-    def __repr__(self):
+    def __str__(self):
         """String representation of the model."""
         attrs = [
             ("id", self.id),
             ("name", self.name),
             ("position", self.position),
-            ("is_nsfw", self.is_nsfw),
+            ("nsfw", self.nsfw),
             ("permission_overwrites", self.permission_overwrites),
-            ("category_id", self.category_id),
+            ("parent_id", self.parent_id),
             ("guild_id", self.guild_id),
             ("topic", self.topic),
             ("last_message_id", self.last_message_id),
@@ -150,7 +102,7 @@ class GuildTextChannel:
             " ".join("%s=%r," % i for i in attrs),
         )
 
-
+@dataclass
 class DMTextChannel:
     """A DM/Private message text channel object
 
@@ -158,42 +110,19 @@ class DMTextChannel:
     :return: Zenora DM text channel object
     :rtype: zenora.DMTextChannel
     """
-
-    __slots__ = ["data", "app"]
-
-    def __init__(self, data, app) -> None:
-        self.data = data
-        self.app = app
-
-    @property
-    def id(self) -> typing.Optional[int]:
-        """Returns The snowflake ID of the channel."""
-        return int(self.data["id"])
-
-    @property
-    def last_message_id(self) -> typing.Optional[int]:
-        """Returns The last message ID of the channel."""
-        return (
-            int(self.data["last_message_id"])
-            if self.data["last_message_id"] is not None
-            else None
-        )
-
-    @property
-    def recipients(self) -> typing.List[User]:
-        """Returns The recipients of the channel.
-
-        :return: List of Zenora partial user objects
-        :rtype: typing.List[User]
-        """
-        return [User(i, self.app) for i in self.data["recipients"]]
+    
+    app: typing.Any
+    id: int
+    type: int = 1
+    recipients: typing.Optional[typing.List[User]] = None
+    last_message_id: typing.Optional[int] = None
 
     def get_message(self, id: int) -> typing.Optional[Message]:
         """Returns a channel message according to given ID."""
 
         return self.app.get_channel_message(channel_id=self.id, msg_id=id)
 
-    def __repr__(self):
+    def __str__(self):
         """String representation of the model."""
         attrs = [
             ("id", self.id),
@@ -202,10 +131,10 @@ class DMTextChannel:
         ]
         return "%s(%s)" % (
             self.__class__.__name__,
-            " ".join("%s=%r," % i for i in attrs),
+            " ".join("%s=%r," % i for i in attrs if attrs is not None),
         )
 
-
+@dataclass
 class GuildVoiceChannel:
     """A guild voice channel object
 
@@ -214,61 +143,19 @@ class GuildVoiceChannel:
     :rtype: zenora.GuildVoiceChannel
     """
 
-    __slots__ = ["data"]
+    app: typing.Any
+    id: int
+    type: int = 2
+    name: typing.Optional[str] = None
+    position: typing.Optional[int] = None
+    guild_id: typing.Optional[int] = None
+    nsfw: typing.Optional[bool] = None
+    bitrate: typing.Optional[int] = None
+    user_limit: int = None
+    permission_overwrites: typing.Optional[typing.List[dict]] = None
+    parent_id: typing.Optional[int] = None
 
-    def __init__(self, data) -> None:
-        self.data = data
-
-    @property
-    def id(self) -> typing.Optional[int]:
-        """Returns The snowflake ID of the channel."""
-        return self.data["id"]
-
-    @property
-    def name(self) -> typing.Optional[str]:
-        """Returns the name of the channel."""
-        return self.data["name"]
-
-    @property
-    def position(self) -> typing.Optional[int]:
-        """Returns the position of the channel."""
-        return self.data["position"]
-
-    @property
-    def is_nsfw(self) -> typing.Optional[bool]:
-        """Returns if the channel is NSFW or not."""
-        return self.data["nsfw"]
-
-    @property
-    def bitrate(self) -> typing.Optional[int]:
-        """Returns the bitrate of the channel."""
-        return self.data["bitrate"]
-
-    @property
-    def user_limit(self) -> typing.Optional[int]:
-        """Returns the user limit of the channel."""
-        return self.data["nsfw"]
-
-    @property
-    def permission_overwrites(self) -> datetime.timedelta:
-        """Returns the permission overwrites of the channel."""
-        return self.data["permission_overwrites"]
-
-    @property
-    def guild_id(self) -> typing.Optional[int]:
-        """Returns the snowflake ID of the channel's guild."""
-        return int(self.data["guild_id"])
-
-    @property
-    def category_id(self) -> datetime.timedelta:
-        """Returns the snowflake ID of the parant category of the channel."""
-        return (
-            int(self.data["parent_id"])
-            if self.data["parent_id"] is not None
-            else None
-        )
-
-    def modify(self, args) -> typing.Any:
+    def modify(self, **kwargs) -> typing.Any:
         """Modify this channel
 
 
@@ -289,7 +176,7 @@ class GuildVoiceChannel:
         zenora.DMTextChannel
                 Zenora DM text channel object
         """
-        return self.app.modify_channel(self.id, args)
+        return self.app.modify_channel(self.id, kwargs)
 
     def delete(self) -> typing.Any:
         """Delete this channel"""
@@ -301,9 +188,9 @@ class GuildVoiceChannel:
             ("id", self.id),
             ("name", self.name),
             ("position", self.position),
-            ("is_nsfw", self.is_nsfw),
+            ("is_nsfw", self.nsfw),
             ("permission_overwrites", self.permission_overwrites),
-            ("category_id", self.category_id),
+            ("category_id", self.parent_id),
             ("guild_id", self.guild_id),
             ("bitrate", self.bitrate),
             ("user_limit", self.user_limit),
