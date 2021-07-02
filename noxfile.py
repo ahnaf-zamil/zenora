@@ -33,6 +33,6 @@ def lint(session):
 @nox.session(reuse_venv=True)
 def docs(session):
     session.install("sphinx")
-    session.install("sphinx_rtd_dark_mode")
+    session.install("sphinx-rtd-theme")
     os.chdir(os.path.join(cwd, "docs"))
     session.run("make", "html", external=True)

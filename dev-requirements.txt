@@ -3,4 +3,4 @@ flake8
 pytest
 pre-commit
 sphinx
-sphinx_rtd_dark_mode
+sphinx-rtd-theme
