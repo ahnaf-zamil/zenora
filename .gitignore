@@ -1,6 +1,6 @@
 .pytest_cache/
 __pycache__/
 .nox/
-build/
+/build/
 dist/
 Zenora.egg-info/
