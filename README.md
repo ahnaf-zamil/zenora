@@ -19,6 +19,12 @@ Install from Git
 pip install git+https://github.com/ahnaf-zamil/zenora
 ```
 
+or install with pip
+
+```bash
+pip install Zenora
+```
+
 ## Usage
 
 ```python

@@ -2,3 +2,5 @@
 __pycache__/
 .nox/
 build/
+dist/
+Zenora.egg-info/
