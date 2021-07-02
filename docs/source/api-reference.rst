@@ -18,7 +18,7 @@ API Client
 -----
 
 Models
-=====
+======
 
 .. automodule:: zenora.models.snowflake
     :members:
