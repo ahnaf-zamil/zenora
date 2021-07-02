@@ -1,4 +1,7 @@
 import nox
+import os
+
+cwd = os.getcwd()
 
 
 @nox.session(reuse_venv=True)
@@ -25,3 +28,11 @@ def lint(session):
         "--benchmark",
         "--tee",
     )
+
+
+@nox.session(reuse_venv=True)
+def docs(session):
+    session.install("sphinx")
+    session.install("sphinx_rtd_dark_mode")
+    os.chdir(os.path.join(cwd, "docs"))
+    session.run("make", "html", external=True)
