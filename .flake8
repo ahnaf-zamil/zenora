@@ -1,0 +1,18 @@
+[flake8]
+ignore = W605, W291, W503
+
+exclude = 
+    .git,
+    __pycache__,
+    old,
+    build,
+    dist,
+    .nox
+
+max-complexity = 20
+max-function-length = 130
+docstring-convention = google
+max-line-length = 120
+
+per-file-ignores = 
+    zenora/__init__.py: F403, F401
