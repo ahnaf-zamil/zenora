@@ -42,7 +42,7 @@ print(user.username)
 
 ## Documentation
 
-Will be available as soon as possible.
+The latest documentation is currently hosted [here](https://zenora.readthedocs.io/en/latest/).
 
 ## Contributing
 
