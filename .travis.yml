@@ -11,6 +11,7 @@ os:
     - osx
     - windows
 
+# Since bionic is the most used Ubuntu distro, I used bionic here.
 dist:
     - bionic
 
