@@ -23,6 +23,7 @@ from zenora.errors import raise_error_or_return
 import typing
 import requests
 
+
 __all__: typing.Final[typing.List[str]] = ["Request"]
 
 

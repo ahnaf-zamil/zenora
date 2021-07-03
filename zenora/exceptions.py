@@ -25,7 +25,7 @@ __all__: typing.Final[typing.List[str]] = [
     "ZenoraException",
     "APIError",
     "CloudflareException",
-    "RateLimitException"
+    "RateLimitException",
 ]
 
 
@@ -35,6 +35,22 @@ class ZenoraException(Exception):
 
 class APIError(ZenoraException):
     """Raised when an API error occurs"""
+
+
+class CloudflareException(ZenoraException):
+    """Raised when Cloudflare blocks any Zenora API requests (possibly due to rate limits)"""
+
+
+class BadURLException(ZenoraException):
+    """Raised when an invalid URL has been passed"""
+
+
+class AuthenticationError(ZenoraException):
+    """Raised when the Discord API responses with 401 status code"""
+
+
+class BadTokenError(ZenoraException):
+    """Raised when as invalid token is passed to the API constructor"""
 
 
 class RateLimitException(ZenoraException):
@@ -79,11 +95,3 @@ class RateLimitException(ZenoraException):
             str: ID of the rate limit bucket
         """
         return self._payload["X-RateLimit-Bucket"]
-
-
-class CloudflareException(ZenoraException):
-    """Raised when Cloudflare blocks any Zenora API requests (possibly due to rate limits)"""
-
-
-class BadURLException(ZenoraException):
-    """Raised when an invalid URL has been passed"""

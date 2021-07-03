@@ -18,15 +18,18 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+from unittest import mock
+
 import zenora
 
 
 def test_APIClient():
-    client = zenora.APIClient("")
+    with mock.patch.object(zenora.UserAPIImpl, "get_current_user"):
+        client = zenora.APIClient("sdadsd")
 
-    assert client.token == ""
-    client.set_token("abcd")
+        assert client._token == "Bot sdadsd"
+        client.set_token("abcd")
 
-    assert client.token == "abcd"
-    assert hasattr(client, "users")
-    assert isinstance(client.users, zenora.UserAPI)
+        assert client._token == "Bot abcd"
+        assert hasattr(client, "users")
+        assert isinstance(client.users, zenora.UserAPI)

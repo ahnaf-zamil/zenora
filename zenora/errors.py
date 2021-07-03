@@ -18,7 +18,12 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from zenora.exceptions import APIError, CloudflareException, RateLimitException
+from zenora.exceptions import (
+    APIError,
+    AuthenticationError,
+    CloudflareException,
+    RateLimitException,
+)
 
 import json
 import typing
@@ -30,10 +35,11 @@ def raise_error_or_return(r: requests.Response) -> typing.Optional[dict]:
         json_data = r.json()
     except json.decoder.JSONDecodeError:
         raise CloudflareException("Cloudflare blocking API request to Discord")
-
     if not r.ok:
-        if "X-RateLimit-Bucket" in r.headers:
+        if "X-RateLimit-Bucket" in r.headers:  # Rate limited
             handle_rate_limit(r)
+        elif r.status_code == 401:  # Unauthorized
+            raise AuthenticationError(json_data["message"])
         else:
             for x in json_data["errors"]:
                 if "_errors" in json_data["errors"][x]:

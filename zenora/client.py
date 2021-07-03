@@ -18,9 +18,11 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-import typing
+from zenora.exceptions import AuthenticationError, BadTokenError
 from zenora.api.userapi import UserAPI
 from zenora.impl.userapi import UserAPIImpl
+
+import typing
 
 
 __all__: typing.Final[typing.List[str]] = ["APIClient"]
@@ -30,17 +32,20 @@ class APIClient:
     """The API client for accessing the Discord REST API"""
 
     def __init__(self, token: str):
-        self._token = token
+        self._token = f"Bot {token}"
         self._user_client = UserAPIImpl(token, self)
+        self._validate_token()
+
+    def _validate_token(self):
+        try:
+            self.users.get_current_user()
+        except AuthenticationError:
+            raise BadTokenError("Invalid token has been passed")
 
     def set_token(self, token: str):
         """Sets the token for the API client instance"""
-        self._token = token
-
-    @property
-    def token(self) -> str:
-        """Returns the token set for this specific API instance"""
-        return self._token
+        self._token = f"Bot {token}"
+        self._validate_token()
 
     @property
     def users(self) -> UserAPI:

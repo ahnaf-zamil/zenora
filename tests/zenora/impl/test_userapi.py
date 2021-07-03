@@ -30,7 +30,8 @@ import zenora
 
 @pytest.fixture()
 def api():
-    return zenora.APIClient("this token is so pog").users
+    with mock.patch.object(zenora.UserAPIImpl, "get_current_user"):
+        return zenora.APIClient("this token is so pog").users
 
 
 def test_get_current_user(api: zenora.UserAPI):

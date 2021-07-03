@@ -186,7 +186,7 @@
     <span class="s2">&quot;ZenoraException&quot;</span><span class="p">,</span>
     <span class="s2">&quot;APIError&quot;</span><span class="p">,</span>
     <span class="s2">&quot;CloudflareException&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;RateLimitException&quot;</span>
+    <span class="s2">&quot;RateLimitException&quot;</span><span class="p">,</span>
 <span class="p">]</span>
 
 
@@ -196,6 +196,22 @@
 
 <div class="viewcode-block" id="APIError"><a class="viewcode-back" href="../../api-reference.html#zenora.exceptions.APIError">[docs]</a><span class="k">class</span> <span class="nc">APIError</span><span class="p">(</span><span class="n">ZenoraException</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Raised when an API error occurs&quot;&quot;&quot;</span></div>
+
+
+<div class="viewcode-block" id="CloudflareException"><a class="viewcode-back" href="../../api-reference.html#zenora.exceptions.CloudflareException">[docs]</a><span class="k">class</span> <span class="nc">CloudflareException</span><span class="p">(</span><span class="n">ZenoraException</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Raised when Cloudflare blocks any Zenora API requests (possibly due to rate limits)&quot;&quot;&quot;</span></div>
+
+
+<span class="k">class</span> <span class="nc">BadURLException</span><span class="p">(</span><span class="n">ZenoraException</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Raised when an invalid URL has been passed&quot;&quot;&quot;</span>
+
+
+<span class="k">class</span> <span class="nc">AuthenticationError</span><span class="p">(</span><span class="n">ZenoraException</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Raised when the Discord API responses with 401 status code&quot;&quot;&quot;</span>
+
+
+<span class="k">class</span> <span class="nc">BadTokenError</span><span class="p">(</span><span class="n">ZenoraException</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Raised when as invalid token is passed to the API constructor&quot;&quot;&quot;</span>
 
 
 <div class="viewcode-block" id="RateLimitException"><a class="viewcode-back" href="../../api-reference.html#zenora.exceptions.RateLimitException">[docs]</a><span class="k">class</span> <span class="nc">RateLimitException</span><span class="p">(</span><span class="n">ZenoraException</span><span class="p">):</span>
@@ -240,14 +256,6 @@
 <span class="sd">            str: ID of the rate limit bucket</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_payload</span><span class="p">[</span><span class="s2">&quot;X-RateLimit-Bucket&quot;</span><span class="p">]</span></div>
-
-
-<div class="viewcode-block" id="CloudflareException"><a class="viewcode-back" href="../../api-reference.html#zenora.exceptions.CloudflareException">[docs]</a><span class="k">class</span> <span class="nc">CloudflareException</span><span class="p">(</span><span class="n">ZenoraException</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Raised when Cloudflare blocks any Zenora API requests (possibly due to rate limits)&quot;&quot;&quot;</span></div>
-
-
-<span class="k">class</span> <span class="nc">BadURLException</span><span class="p">(</span><span class="n">ZenoraException</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Raised when an invalid URL has been passed&quot;&quot;&quot;</span>
 </pre></div>
 
            </div>
