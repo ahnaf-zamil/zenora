@@ -36,6 +36,50 @@ class APIError(ZenoraException):
     """Raised when an API error occurs"""
 
 
+class RateLimitException(ZenoraException):
+    """Raised when rate limits are hit occurs"""
+
+    def __init__(self, message, payload):
+        super().__init__(message)
+        self._payload = payload
+
+    @property
+    def ratelimit_limit(self) -> int:
+        """The number of times a request can be made to this endpoint in a minute
+
+        Returns:
+            int: Number of times a request can be made to this endpoint in a minute
+        """
+        return self._payload["X-RateLimit-Limit"]
+
+    @property
+    def ratelimit_remaining(self) -> int:
+        """The number of remaining requests that can be made
+
+        Returns:
+            int: Number of requests that can be made
+        """
+        return self._payload["X-RateLimit-Remaining"]
+
+    @property
+    def ratelimit_reset_after(self) -> float:
+        """The total time (in seconds) of when the current rate limit bucket will reset
+
+        Returns:
+            float: Total time (in seconds) of when the current rate limit bucket will reset
+        """
+        return self._payload["X-RateLimit-Reset-After"]
+
+    @property
+    def ratelimit_bucket(self) -> str:
+        """A unique string denoting the rate limit being encountered
+
+        Returns:
+            str: ID of the rate limit bucket
+        """
+        return self._payload["X-RateLimit-Bucket"]
+
+
 class CloudflareException(ZenoraException):
     """Raised when Cloudflare blocks any Zenora API requests (possibly due to rate limits)"""
 

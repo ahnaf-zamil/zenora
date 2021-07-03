@@ -30,10 +30,10 @@ import zenora
 
 @pytest.fixture()
 def api():
-    return zenora.UserAPIImpl("this token is pog")
+    return zenora.APIClient("this token is so pog").users
 
 
-def test_get_current_user(api):
+def test_get_current_user(api: zenora.UserAPI):
     with mock.patch.object(requests, "request") as r:
         current_user = {
             "id": "479287754400989217",
@@ -54,7 +54,7 @@ def test_get_current_user(api):
         assert user.is_verified == current_user["verified"]
 
 
-def test_get_user(api):
+def test_get_user(api: zenora.UserAPI):
     with mock.patch.object(requests, "request") as r:
         testing_user = {
             "id": "514858928983506959",
@@ -77,3 +77,35 @@ def test_get_user(api):
             == f"{CDN_URL}{USER_AVATAR}/{testing_user['id']}/{testing_user['avatar']}.png?size=1024"
         )
         assert user.get_snowflake_id() == Snowflake(testing_user["id"])
+
+
+def test_modify_current_user(api: zenora.UserAPI):
+    with mock.patch.object(requests, "request") as r:
+        old_user = OwnUser(
+            **{
+                "id": "714468017542791228",
+                "username": "DevHyperCoder",
+                "discriminator": "1498",
+                "avatar": "testingtesting",
+            }
+        )
+
+        new_user_payload = r.return_value.json.return_value = {
+            "id": "714468017542791228",
+            "username": "The Normal One",
+            "discriminator": "1498",
+            "avatar": "04a3b7319ce6c53bf24e9ea79e2727c4",
+        }
+
+        r.return_value.status_code = 200
+
+        new_user = api.modify_current_user(
+            username=new_user_payload["username"],
+            avatar=f"https://cdn.discordapp.com/avatars/479287754400989217/{new_user_payload['avatar']}.png",
+        )
+
+        r.assert_called_once()
+
+        assert old_user.username != new_user.username
+        assert old_user.avatar_hash != new_user.avatar_hash
+        assert new_user.username == new_user_payload["username"]

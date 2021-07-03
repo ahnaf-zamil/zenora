@@ -4,3 +4,4 @@ __pycache__/
 /build/
 dist/
 Zenora.egg-info/
+testing.py

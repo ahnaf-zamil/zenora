@@ -18,6 +18,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+from zenora.utils import convert_image_to_data
 from zenora.routes import BASE_URL, GET_CURRENT_USER, GET_USER
 from zenora.request import Request
 from zenora import UserAPI, OwnUser, User, Snowflake
@@ -30,8 +31,9 @@ __all__: typing.Final[typing.List[str]] = ["UserAPIImpl"]
 class UserAPIImpl(UserAPI):
     token: str
 
-    def __init__(self, token: str):
+    def __init__(self, token: str, app):
         self.token = token
+        self.app = app
 
     def get_current_user(self) -> OwnUser:
         url = BASE_URL + GET_CURRENT_USER
@@ -44,3 +46,24 @@ class UserAPIImpl(UserAPI):
         request = Request(self.token, url, "GET")
         payload = request.execute()
         return User(**payload)
+
+    def modify_current_user(
+        self,
+        username: str = None,
+        avatar=None,
+    ) -> OwnUser:
+        url = BASE_URL + GET_CURRENT_USER
+
+        json_payload = {}
+
+        if username:
+            json_payload["username"] = username
+        if avatar:
+            json_payload["avatar"] = convert_image_to_data(avatar)
+
+        request = Request(self.token, url, "PATCH", json_data=json_payload)
+        payload = request.execute()
+        if "token" in payload:
+            self.token = self.app._token = payload["token"]
+            del payload["token"]
+        return OwnUser(**payload)

@@ -30,13 +30,17 @@ class APIClient:
     """The API client for accessing the Discord REST API"""
 
     def __init__(self, token: str):
-        self.token = token
-
-        self._user_client = UserAPIImpl(token)
+        self._token = token
+        self._user_client = UserAPIImpl(token, self)
 
     def set_token(self, token: str):
         """Sets the token for the API client instance"""
-        self.token = token
+        self._token = token
+
+    @property
+    def token(self) -> str:
+        """Returns the token set for this specific API instance"""
+        return self._token
 
     @property
     def users(self) -> UserAPI:

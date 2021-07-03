@@ -43,6 +43,25 @@ class UserAPI(ABC):
     def get_user(self, user_id: typing.Union[str, Snowflake]) -> User:
         """Returns a user with the corresponding ID
 
+        Args:
+            user_id (typing.Union[str, Snowflake]): Snowflake ID of the user
+
         Returns:
             User: An object representing a user on Discord
+        """
+
+    @abstractmethod
+    def modify_current_user(
+        self,
+        username: str = None,
+        avatar: typing.Literal[".png", ".jpg", ".jpeg", ".gif"] = None,
+    ) -> OwnUser:
+        """Modify the current user's username or avatar
+
+        Args:
+            username (str, optional): The user's username. Defaults to None.
+            avatar (typing.Literal[".png", ".jpg", ".jpeg", ".gif"], optional): The user's new avatar link. Defaults to None.
+
+        Returns:
+            OwnUser: [description]
         """

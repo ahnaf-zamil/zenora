@@ -18,11 +18,10 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from zenora.exceptions import APIError, CloudflareException
+from zenora.errors import raise_error_or_return
 
 import typing
 import requests
-import json
 
 __all__: typing.Final[typing.List[str]] = ["Request"]
 
@@ -49,20 +48,11 @@ class Request:
             "User-Agent": "{zenora.__name__} {zenora.__version__}",
             "Authorization": f"Bot {self.token}",
         }
-        if not self.json:
+        if self.json:
             r = requests.request(
                 method=self.method, url=self.url, headers=headers, json=self.json
             )
         else:
             r = requests.request(method=self.method, url=self.url, headers=headers)
 
-        try:
-            json_data = r.json()
-            if r.status_code != 200:
-                raise APIError(
-                    f"API error {json_data['code']}. Message: {json_data['message']}"
-                )
-
-            return json_data
-        except json.decoder.JSONDecodeError:
-            raise CloudflareException("Cloudflare blocking API request to Discord")
+        return raise_error_or_return(r)
