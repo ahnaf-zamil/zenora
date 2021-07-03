@@ -10,7 +10,7 @@ Please note we have a [Code of Conduct](CODE_OF_CONDUCT.md), please follow it in
 We recommend that you make a fork of our GitHub repository in order to contribute. Then you can clone your fork onto your computer
 
 1. Run `pip install -r dev-requirements.txt` to install all the development dependencies.
-2. Run `pre-commit install` to install the pre-commit hooks.
+2. Make your changes.
 3. Ensure any install/build dependencies and test files are in the `.gitignore` file or removed before doing a
    pull request.
 4. Run `nox` to run all the pipelines
