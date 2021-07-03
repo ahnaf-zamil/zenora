@@ -25,6 +25,7 @@ __all__: typing.Final[typing.List[str]] = [
     "ZenoraException",
     "APIError",
     "CloudflareException",
+    "RateLimitException"
 ]
 
 

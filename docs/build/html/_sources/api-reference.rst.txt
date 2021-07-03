@@ -25,3 +25,10 @@ Models
 
 .. automodule:: zenora.models.user
     :members:
+
+-----
+
+Exceptions
+==========
+.. automodule:: zenora.exceptions
+    :members:

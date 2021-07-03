@@ -96,6 +96,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">API Reference</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#module-zenora.client">API Client</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-zenora.models.snowflake">Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-zenora.exceptions">Exceptions</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
@@ -396,6 +397,90 @@
 <dt class="sig sig-object py" id="zenora.models.user.OwnUser.is_verified">
 <em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">is_verified</span></span><em class="property"><span class="pre">:</span> <span class="pre">Optional[bool]</span></em><a class="headerlink" href="#zenora.models.user.OwnUser.is_verified" title="Permalink to this definition">¶</a></dt>
 <dd><p>Whether the E-Mail on this account has been verified</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<hr class="docutils" />
+<div class="section" id="module-zenora.exceptions">
+<span id="exceptions"></span><h2>Exceptions<a class="headerlink" href="#module-zenora.exceptions" title="Permalink to this headline">¶</a></h2>
+<dl class="py exception">
+<dt class="sig sig-object py" id="zenora.exceptions.ZenoraException">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">zenora.exceptions.</span></span><span class="sig-name descname"><span class="pre">ZenoraException</span></span><a class="reference internal" href="_modules/zenora/exceptions.html#ZenoraException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#zenora.exceptions.ZenoraException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base exception for all Zenora exceptions</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="zenora.exceptions.APIError">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">zenora.exceptions.</span></span><span class="sig-name descname"><span class="pre">APIError</span></span><a class="reference internal" href="_modules/zenora/exceptions.html#APIError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#zenora.exceptions.APIError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raised when an API error occurs</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="zenora.exceptions.CloudflareException">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">zenora.exceptions.</span></span><span class="sig-name descname"><span class="pre">CloudflareException</span></span><a class="reference internal" href="_modules/zenora/exceptions.html#CloudflareException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#zenora.exceptions.CloudflareException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raised when Cloudflare blocks any Zenora API requests (possibly due to rate limits)</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="zenora.exceptions.RateLimitException">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">zenora.exceptions.</span></span><span class="sig-name descname"><span class="pre">RateLimitException</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">payload</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/zenora/exceptions.html#RateLimitException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#zenora.exceptions.RateLimitException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raised when rate limits are hit occurs</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="zenora.exceptions.RateLimitException.ratelimit_limit">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">ratelimit_limit</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#zenora.exceptions.RateLimitException.ratelimit_limit" title="Permalink to this definition">¶</a></dt>
+<dd><p>The number of times a request can be made to this endpoint in a minute</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Number of times a request can be made to this endpoint in a minute</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="zenora.exceptions.RateLimitException.ratelimit_remaining">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">ratelimit_remaining</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#zenora.exceptions.RateLimitException.ratelimit_remaining" title="Permalink to this definition">¶</a></dt>
+<dd><p>The number of remaining requests that can be made</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Number of requests that can be made</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="zenora.exceptions.RateLimitException.ratelimit_reset_after">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">ratelimit_reset_after</span></span><em class="property"><span class="pre">:</span> <span class="pre">float</span></em><a class="headerlink" href="#zenora.exceptions.RateLimitException.ratelimit_reset_after" title="Permalink to this definition">¶</a></dt>
+<dd><p>The total time (in seconds) of when the current rate limit bucket will reset</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Total time (in seconds) of when the current rate limit bucket will reset</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="zenora.exceptions.RateLimitException.ratelimit_bucket">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">ratelimit_bucket</span></span><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#zenora.exceptions.RateLimitException.ratelimit_bucket" title="Permalink to this definition">¶</a></dt>
+<dd><p>A unique string denoting the rate limit being encountered</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>ID of the rate limit bucket</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
