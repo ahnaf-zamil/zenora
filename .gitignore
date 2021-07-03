@@ -6,3 +6,4 @@ dist/
 Zenora.egg-info/
 testing.py
 .coverage
+venv/
