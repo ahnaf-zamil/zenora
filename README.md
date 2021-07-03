@@ -42,7 +42,7 @@ print(user.username)
 
 ## Documentation
 
-The latest documentation is currently hosted [here](https://zenora.readthedocs.io/en/latest/).
+The latest documentation is currently hosted [here](https://zenora.netlify.app/).
 
 ## Contributing
 

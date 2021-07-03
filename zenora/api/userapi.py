@@ -63,5 +63,5 @@ class UserAPI(ABC):
             avatar (typing.Literal[".png", ".jpg", ".jpeg", ".gif"], optional): The user's new avatar link. Defaults to None.
 
         Returns:
-            OwnUser: [description]
+            OwnUser: An object representing the current user on Discord
         """
