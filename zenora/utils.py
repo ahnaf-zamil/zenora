@@ -63,7 +63,9 @@ def convert_image_to_data(path: str):
         path = path.split("?")[0]
     mime, _ = mimetypes.guess_type(path)
     if mime not in ["image/jpeg", "image/png", "image/gif"]:
-        raise BadURLException("Invalid file type. File must be jpeg/jpg, png, or gif")
+        raise BadURLException(
+            "Invalid file type. File must be jpeg/jpg, png, or gif"
+        )
 
     if is_valid_url(path):
         data = requests.get(path, timeout=5).content

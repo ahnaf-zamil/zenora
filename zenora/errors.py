@@ -46,7 +46,9 @@ def raise_error_or_return(r: requests.Response) -> typing.Optional[dict]:
                     msg = json_data["errors"][x]["_errors"][0]["message"]
                 else:
                     msg = json_data["errors"][x][0]["message"]
-                raise APIError(f"API error {json_data['code']}. Message: {msg}")
+                raise APIError(
+                    f"API error {json_data['code']}. Message: {msg}"
+                )
     else:
         return json_data
 

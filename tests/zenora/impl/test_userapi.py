@@ -114,7 +114,7 @@ def test_modify_current_user(api: zenora.UserAPI):
 
 
 def test_get_current_user_connections(api: zenora.UserAPI):
-    with mock.patch.object(requests, "request") as r:
+    with mock.patch.object(requests, "request"):
         connections = api.get_current_user_connections()
         for x in connections:
             assert type(x) == type(Connection)

@@ -51,9 +51,14 @@ class Request:
         }
         if self.json:
             r = requests.request(
-                method=self.method, url=self.url, headers=headers, json=self.json
+                method=self.method,
+                url=self.url,
+                headers=headers,
+                json=self.json,
             )
         else:
-            r = requests.request(method=self.method, url=self.url, headers=headers)
+            r = requests.request(
+                method=self.method, url=self.url, headers=headers
+            )
 
         return raise_error_or_return(r)

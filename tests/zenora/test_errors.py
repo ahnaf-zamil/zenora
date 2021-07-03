@@ -39,7 +39,9 @@ def test_handle_rate_limit():
         r.return_value.json.return_value = {
             "errors": {
                 "avatar": {
-                    "_errors": [{"message": "You are changing avatars too fast"}]
+                    "_errors": [
+                        {"message": "You are changing avatars too fast"}
+                    ]
                 }
             }
         }

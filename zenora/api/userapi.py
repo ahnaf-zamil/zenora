@@ -73,4 +73,4 @@ class UserAPI(ABC):
 
         Returns:
             typing.List[Connection]: List of connection objects
-        """             
+        """

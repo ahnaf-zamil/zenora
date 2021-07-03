@@ -35,7 +35,9 @@ from .exceptions import *
 
 __version__ = "0.0.1"
 __author__ = "K.M Ahnaf Zamil"
-__copyright__ = f"Copyright (c) {datetime.now().strftime('%Y')} K.M Ahnaf Zamil"
+__copyright__ = (
+    f"Copyright (c) {datetime.now().strftime('%Y')} K.M Ahnaf Zamil"
+)
 __email__ = "ahnaf@ahnafzamil.com"
 __description__ = (
     "A simple to use synchronous yet functional Discord API wrapper for Python"

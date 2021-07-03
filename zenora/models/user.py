@@ -97,7 +97,9 @@ class User:
 
     def avatar_url_as(
         self,
-        format: typing.Literal[".png", ".jpg", ".jpeg", ".webp", ".gif"] = ".png",
+        format: typing.Literal[
+            ".png", ".jpg", ".jpeg", ".webp", ".gif"
+        ] = ".png",
         size: int = 1024,
     ) -> typing.Optional[str]:
         """Returns the user's avatar URL with a specific file format, only if the avatar hash exists"""

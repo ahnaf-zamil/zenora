@@ -45,9 +45,10 @@ class Connection:
     """Visibility of the connection. 0 = False, 1 = True"""
     visibility: typing.Literal[0, 1] = attr.ib()
 
-    """Array of partial server integrations""" 
-    integrations: typing.Optional[list] = attr.ib(default=None) # Todo: Create server integration object
-
+    """Array of partial server integrations"""
+    integrations: typing.Optional[list] = attr.ib(
+        default=None
+    )  # Todo: Create server integration object
 
     _verified: typing.Optional[bool] = attr.ib(default=None)
 
@@ -56,7 +57,6 @@ class Connection:
     _friend_sync: typing.Optional[bool] = attr.ib(default=None)
 
     _show_activity: typing.Optional[bool] = attr.ib(default=None)
-
 
     @property
     def is_verified(self) -> typing.Optional[bool]:

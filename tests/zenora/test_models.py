@@ -18,7 +18,6 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from re import M
 from zenora.models.connection import Connection
 from zenora.models.user import User
 from datetime import datetime
@@ -33,37 +32,45 @@ def test_snowflake():
     assert snowflake.internal_worker_id == (snowflake_int & 0x3E0000) >> 17
     assert snowflake.internal_process_id == (snowflake_int & 0x1F000) >> 12
     assert snowflake.increment == snowflake_int & 0xFFF
-    assert snowflake.timestamp == datetime.fromtimestamp(
+    assert (
+        snowflake.timestamp
+        == datetime.fromtimestamp(
             ((snowflake_int >> 22) + 1420070400000) / 1000
         ).astimezone()
+    )
+
 
 def test_user():
     user_payload = {
-        'id': 479287754400989217,
-        'username': 'Ahnaf',
-        'discriminator': '4346',
-        'avatar': 'abcdefg',
-        'bio': 'I am pog'
+        "id": 479287754400989217,
+        "username": "Ahnaf",
+        "discriminator": "4346",
+        "avatar": "abcdefg",
+        "bio": "I am pog",
     }
 
     user = User(**user_payload)
 
-    assert user.avatar_url == f"https://cdn.discordapp.com/avatars/{user_payload['id']}/{user_payload['avatar']}.png"
-    assert user.is_bot == None
-    assert user.bio == 'I am pog'
-    assert user.avatar_hash == user_payload['avatar']
+    assert (
+        user.avatar_url
+        == f"https://cdn.discordapp.com/avatars/{user_payload['id']}/{user_payload['avatar']}.png"
+    )
+    assert user.is_bot is None
+    assert user.bio == "I am pog"
+    assert user.avatar_hash == user_payload["avatar"]
+
 
 def test_connection():
     connection_payload = {
-        'id': '12345',
-        'name': 'DevGuyAhnaf',
-        'type': 'YouTube',
-        'visibility': 0
+        "id": "12345",
+        "name": "DevGuyAhnaf",
+        "type": "YouTube",
+        "visibility": 0,
     }
 
     connection = Connection(**connection_payload)
 
-    assert connection.id == connection_payload['id']
-    assert connection.name == connection_payload['name']
-    assert connection.type == connection_payload['type']
-    assert connection.visibility == connection_payload['visibility']
+    assert connection.id == connection_payload["id"]
+    assert connection.name == connection_payload["name"]
+    assert connection.type == connection_payload["type"]
+    assert connection.visibility == connection_payload["visibility"]

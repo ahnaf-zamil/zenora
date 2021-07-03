@@ -19,7 +19,12 @@
 # SOFTWARE.
 
 from zenora.utils import convert_image_to_data
-from zenora.routes import BASE_URL, GET_CURRENT_USER, GET_USER, GET_USER_CONNECTIONS
+from zenora.routes import (
+    BASE_URL,
+    GET_CURRENT_USER,
+    GET_USER,
+    GET_USER_CONNECTIONS,
+)
 from zenora.request import Request
 from zenora import OwnUser, User, Snowflake, Connection, UserAPI
 
@@ -77,5 +82,5 @@ class UserAPIImpl(UserAPI):
         return_data = []
         for x in payload:
             return_data.append(Connection(**x))
-            
+
         return return_data
