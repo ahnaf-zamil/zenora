@@ -18,6 +18,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+from zenora.models.connection import Connection
 from zenora.routes import CDN_URL, USER_AVATAR
 from zenora.models.snowflake import Snowflake
 from zenora.models.user import OwnUser, User
@@ -110,3 +111,10 @@ def test_modify_current_user(api: zenora.UserAPI):
         assert old_user.username != new_user.username
         assert old_user.avatar_hash != new_user.avatar_hash
         assert new_user.username == new_user_payload["username"]
+
+
+def test_get_current_user_connections(api: zenora.UserAPI):
+    with mock.patch.object(requests, "request") as r:
+        connections = api.get_current_user_connections()
+        for x in connections:
+            assert type(x) == type(Connection)

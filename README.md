@@ -7,6 +7,7 @@
 [![Python package](https://github.com/ahnaf-zamil/zenora/actions/workflows/python-package.yml/badge.svg?branch=master)](https://github.com/ahnaf-zamil/zenora/actions/workflows/python-package.yml)
 [![Pypi](https://img.shields.io/pypi/v/zenora.svg)](https://pypi.org/project/zenora/)
 [![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/ahnaf-zamil/zenora?include_prereleases)](https://github.com/ahnaf-zamil/zenora/releases)
+[![Maintainability](https://api.codeclimate.com/v1/badges/e556bee232469ff28415/maintainability)](https://codeclimate.com/github/ahnaf-zamil/zenora/maintainability)
 [![issues](https://img.shields.io/github/issues-raw/ahnaf-zamil/zenora?color=blueviolet)](https://github.com/ahnaf-zamil/zenora/issues)
 [![CodeQL](https://github.com/ahnaf-zamil/zenora/actions/workflows/codeql-analysis.yml/badge.svg?branch=master)](https://github.com/ahnaf-zamil/zenora/actions/workflows/codeql-analysis.yml)
 

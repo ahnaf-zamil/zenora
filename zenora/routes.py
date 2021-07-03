@@ -27,3 +27,4 @@ USER_AVATAR = "/avatars"
 # Users
 GET_CURRENT_USER = "/users/@me"
 GET_USER = "/users/{}"
+GET_USER_CONNECTIONS = "/users/@me/connections"

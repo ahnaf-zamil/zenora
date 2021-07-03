@@ -19,9 +19,9 @@
 # SOFTWARE.
 
 from zenora.utils import convert_image_to_data
-from zenora.routes import BASE_URL, GET_CURRENT_USER, GET_USER
+from zenora.routes import BASE_URL, GET_CURRENT_USER, GET_USER, GET_USER_CONNECTIONS
 from zenora.request import Request
-from zenora import UserAPI, OwnUser, User, Snowflake
+from zenora import OwnUser, User, Snowflake, Connection, UserAPI
 
 import typing
 
@@ -67,3 +67,15 @@ class UserAPIImpl(UserAPI):
             self.token = self.app._token = payload["token"]
             del payload["token"]
         return OwnUser(**payload)
+
+    def get_current_user_connections(self) -> typing.List[Connection]:
+        url = BASE_URL + GET_USER_CONNECTIONS
+
+        request = Request(self.token, url, "GET")
+        payload = request.execute()
+
+        return_data = []
+        for x in payload:
+            return_data.append(Connection(**x))
+            
+        return return_data

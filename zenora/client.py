@@ -19,8 +19,7 @@
 # SOFTWARE.
 
 from zenora.exceptions import AuthenticationError, BadTokenError
-from zenora.api.userapi import UserAPI
-from zenora.impl.userapi import UserAPIImpl
+from zenora import UserAPI, UserAPIImpl
 
 import typing
 

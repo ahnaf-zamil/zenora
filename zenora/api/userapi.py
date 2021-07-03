@@ -18,11 +18,12 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+from zenora.models.connection import Connection
+from zenora import Snowflake
+from zenora import OwnUser, User
 from abc import ABC, abstractmethod
 
 import typing
-from zenora.models.snowflake import Snowflake
-from zenora import OwnUser, User
 
 
 __all__: typing.Final[typing.List[str]] = ["UserAPI"]
@@ -65,3 +66,11 @@ class UserAPI(ABC):
         Returns:
             OwnUser: An object representing the current user on Discord
         """
+
+    @abstractmethod
+    def get_current_user_connections(self) -> typing.List[Connection]:
+        """Returns a list of connection objects for current user
+
+        Returns:
+            typing.List[Connection]: List of connection objects
+        """             

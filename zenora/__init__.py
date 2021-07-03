@@ -22,8 +22,11 @@ from datetime import datetime
 
 from .models.snowflake import *
 from .models.user import *
+from .models.connection import *
+
 from .api.userapi import *
 from .impl.userapi import *
+
 from .client import *
 from .request import *
 from .utils import *
