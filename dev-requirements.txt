@@ -1,6 +1,6 @@
-black
-flake8
-pytest
+black==21.6b0
+flake8==3.9.0
+pytest==6.2.3
 pre-commit
-sphinx
+sphinx==4.0.1
 sphinx-rtd-theme

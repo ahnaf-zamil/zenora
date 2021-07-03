@@ -1,6 +1,4 @@
-[pytest]
-filterwarnings =
-    ignore::DeprecationWarning
+
 
 [tool.black]
 line-length = 79
