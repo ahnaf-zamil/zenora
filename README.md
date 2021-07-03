@@ -1,9 +1,14 @@
 # Zenora
 
-![License: MIT](https://img.shields.io/badge/License-MIT-pink.svg)[![prs](https://img.shields.io/github/issues-pr/ahnaf-zamil/zenora)](https://github.com/ahnaf-zamil/zenora/pulls)
-![Pypi](https://img.shields.io/pypi/v/zenora.svg)
-![Code Style: Black](https://img.shields.io/badge/Code%20Style-Black-black)[![pyvers](https://img.shields.io/badge/python-3.8%20%7C%203.9-blue)](https://pypi.org/project/zenora)
-![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/ahnaf-zamil/zenora?include_prereleases)[![issues](https://img.shields.io/github/issues-raw/ahnaf-zamil/zenora)](https://github.com/ahnaf-zamil/zenora/issues)
+[![License: MIT](https://img.shields.io/badge/License-MIT-lightgrey.svg)](https://opensource.org/licenses/MIT)
+[![prs](https://img.shields.io/github/issues-pr/ahnaf-zamil/zenora?color=red)](https://github.com/ahnaf-zamil/zenora/pulls)
+[![Code Style: Black](https://img.shields.io/badge/Code%20Style-Black-black)](https://github.com/psf/black)
+[![pyvers](https://img.shields.io/badge/python-3.8%20%7C%203.9-blue)](https://pypi.org/project/zenora)
+[![Python package](https://github.com/ahnaf-zamil/zenora/actions/workflows/python-package.yml/badge.svg?branch=master)](https://github.com/ahnaf-zamil/zenora/actions/workflows/python-package.yml)
+[![Pypi](https://img.shields.io/pypi/v/zenora.svg)](https://pypi.org/project/zenora/)
+[![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/ahnaf-zamil/zenora?include_prereleases)](https://github.com/ahnaf-zamil/zenora/releases)
+[![issues](https://img.shields.io/github/issues-raw/ahnaf-zamil/zenora?color=blueviolet)](https://github.com/ahnaf-zamil/zenora/issues)
+[![CodeQL](https://github.com/ahnaf-zamil/zenora/actions/workflows/codeql-analysis.yml/badge.svg?branch=master)](https://github.com/ahnaf-zamil/zenora/actions/workflows/codeql-analysis.yml)
 
 A simple to use synchronous yet functional Discord REST API wrapper for Python
 
