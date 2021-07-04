@@ -36,4 +36,3 @@ def docs(session):
     session.install("sphinx-rtd-theme")
     os.chdir(os.path.join(cwd, "docs"))
     session.run("make", "html", external=True)
-

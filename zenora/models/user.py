@@ -35,7 +35,7 @@ class User:
     __str__ = get__str__
 
     """A user's unique snowflake ID (in string format)"""
-    id: str = attr.ib()
+    id: Snowflake = attr.ib(converter=Snowflake)
 
     """The user's username, not unique across Discord"""
     username: str = attr.ib()
@@ -90,10 +90,6 @@ class User:
             return None
 
         return f"{CDN_URL}{USER_AVATAR}/{self.id}/{self._avatar}.png"
-
-    def get_snowflake_id(self) -> Snowflake:
-        """Get the user's unique ID in Snowflake format"""
-        return Snowflake(self.id)
 
     def avatar_url_as(
         self,

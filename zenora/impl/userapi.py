@@ -18,15 +18,16 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from zenora.utils import convert_image_to_data
+from zenora.utils import convert_image_to_data, extract_snowflake_from_object
 from zenora.routes import (
     BASE_URL,
     GET_CURRENT_USER,
     GET_USER,
     GET_USER_CONNECTIONS,
+    DM_URL,
 )
 from zenora.request import Request
-from zenora import OwnUser, User, Snowflake, Connection, UserAPI
+from zenora import OwnUser, User, Snowflake, Connection, UserAPI, SnowflakeOr
 
 import typing
 
@@ -84,3 +85,15 @@ class UserAPIImpl(UserAPI):
             return_data.append(Connection(**x))
 
         return return_data
+
+    def create_dm(self, user: typing.Union[SnowflakeOr, User]) -> dict:
+        url = BASE_URL + DM_URL
+        request = Request(
+            self.token,
+            url,
+            "POST",
+            json_data={"recipient_id": extract_snowflake_from_object(user)},
+        )
+        payload = request.execute()
+
+        return payload

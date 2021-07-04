@@ -50,7 +50,7 @@ def test_get_current_user(api: zenora.UserAPI):
         r.assert_called_once()
 
         assert type(user) == OwnUser
-        assert user.id == current_user["id"]
+        assert str(user.id) == current_user["id"]
         assert user.username == current_user["username"]
         assert user.discriminator == current_user["discriminator"]
         assert user.is_verified == current_user["verified"]
@@ -71,14 +71,14 @@ def test_get_user(api: zenora.UserAPI):
         r.assert_called_once()
 
         assert type(user) == User
-        assert user.id == testing_user["id"]
+        assert str(user.id) == testing_user["id"]
         assert user.username == testing_user["username"]
         assert user.discriminator == testing_user["discriminator"]
         assert (
             user.avatar_url_as(format=".png", size=1024)
             == f"{CDN_URL}{USER_AVATAR}/{testing_user['id']}/{testing_user['avatar']}.png?size=1024"
         )
-        assert user.get_snowflake_id() == Snowflake(testing_user["id"])
+        assert user.id == Snowflake(testing_user["id"])
 
 
 def test_modify_current_user(api: zenora.UserAPI):

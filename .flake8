@@ -9,6 +9,7 @@ exclude =
     dist,
     .nox
     testing.py
+    .venv
 
 max-complexity = 20
 max-function-length = 130

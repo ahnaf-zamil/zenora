@@ -19,7 +19,13 @@
 # SOFTWARE.
 
 from zenora.exceptions import BadURLException
-from zenora.utils import convert_image_to_data, is_valid_url
+from zenora.utils import (
+    convert_image_to_data,
+    is_valid_url,
+    extract_snowflake_from_object,
+)
+from zenora import Snowflake, User
+
 import zenora
 import pytest
 
@@ -84,3 +90,28 @@ def test_convert_image_to_data():
 
     with pytest.raises(BadURLException):
         convert_image_to_data("https://website.com/file")
+
+
+def test_extract_snowflake_from_object():
+    # With normal snowflake
+    obj = Snowflake(479287754400989217)
+    assert extract_snowflake_from_object(obj) == str(obj)
+
+    # With int
+    obj = 479287754400989217
+    assert extract_snowflake_from_object(obj) == str(obj)
+
+    # With an object that has an id property
+    testing_user = {
+        "id": "514858928983506959",
+        "username": "shab",
+        "discriminator": "1753",
+        "avatar": "testingtesting",
+    }
+    obj = User(**testing_user)
+    assert extract_snowflake_from_object(obj) == testing_user["id"]
+
+    # With invalid string
+    obj = "sdajoafguiufgns"
+    with pytest.raises(AttributeError):
+        extract_snowflake_from_object(obj)

@@ -23,7 +23,7 @@ from datetime import datetime
 import typing
 
 
-__all__: typing.Final[typing.List[str]] = ["Snowflake"]
+__all__: typing.Final[typing.List[str]] = ["Snowflake", "SnowflakeOr"]
 
 
 class Snowflake(int):
@@ -51,5 +51,5 @@ class Snowflake(int):
         """For every ID that is generated on that process, this number is incremented"""
         return self & 0xFFF
 
-    def __str__(self):
-        return str(self)
+
+SnowflakeOr = typing.Union[Snowflake, int]

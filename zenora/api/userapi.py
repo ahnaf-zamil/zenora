@@ -19,7 +19,7 @@
 # SOFTWARE.
 
 from zenora.models.connection import Connection
-from zenora import Snowflake
+from zenora import Snowflake, SnowflakeOr
 from zenora import OwnUser, User
 from abc import ABC, abstractmethod
 
@@ -55,7 +55,7 @@ class UserAPI(ABC):
     def modify_current_user(
         self,
         username: str = None,
-        avatar: typing.Literal[".png", ".jpg", ".jpeg", ".gif"] = None,
+        avatar: str = None,
     ) -> OwnUser:
         """Modify the current user's username or avatar
 
@@ -73,4 +73,16 @@ class UserAPI(ABC):
 
         Returns:
             typing.List[Connection]: List of connection objects
+        """
+
+    @abstractmethod
+    def create_dm(
+        self, user: typing.Union[SnowflakeOr, User]
+    ) -> dict:  # Todo: Create DM channel object
+        """Creates a DM with a user
+
+        Args:
+            user: typing.Union[SnowflakeOr, User]
+        Returns:
+            dict: DM channel dictionary. Todo: Create DM channel object
         """

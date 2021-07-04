@@ -73,3 +73,10 @@ def convert_image_to_data(path: str):
         return "data:%s;base64,%s" % (mime, encoded_body.decode())
     else:
         raise BadURLException(f"Invalid URL: {path}")
+
+
+def extract_snowflake_from_object(obj: typing.Any):
+    if isinstance(obj, int):
+        return str(obj)
+    else:
+        return str(int(obj.id))
