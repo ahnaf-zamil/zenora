@@ -37,18 +37,25 @@ class Request:
         method: str,
         *,
         json_data: typing.Optional[dict] = None,
+        headers: typing.Optional[dict] = None,
+        form_data: typing.Optional[dict] = None,
     ):
         self.token = token
         self.url = url
         self.method = method
         self.json = json_data
+        self.headers = headers
+        self.form_data = form_data
 
     def execute(self):
         """Executes the API request"""
         headers = {
             "User-Agent": "{zenora.__name__} {zenora.__version__}",
-            "Authorization": f"Bot {self.token}",
+            "Authorization": f"{self.token}",
         }
+        if self.headers:
+            headers = self.headers
+
         if self.json:
             r = requests.request(
                 method=self.method,
@@ -58,7 +65,10 @@ class Request:
             )
         else:
             r = requests.request(
-                method=self.method, url=self.url, headers=headers
+                method=self.method,
+                url=self.url,
+                headers=headers,
+                data=self.form_data,
             )
 
         return raise_error_or_return(r)

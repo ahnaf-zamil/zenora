@@ -18,17 +18,34 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-CDN_URL = "https://cdn.discordapp.com"
-BASE_URL = "https://discord.com/api/v9"
+from abc import abstractmethod, ABC
+from zenora.models.oauth import OauthResponse
 
-# CDN Endpoints
-USER_AVATAR = "/avatars"
+import typing
 
-# Oauth
-OAUTH_TOKEN_URL = "/oauth2/token"
 
-# Users
-GET_CURRENT_USER = "/users/@me"
-GET_USER = "/users/{}"
-GET_USER_CONNECTIONS = GET_CURRENT_USER + "/connections"
-DM_URL = GET_CURRENT_USER + "/channels"
+__all__: typing.Final[typing.List[str]] = ["OauthAPI"]
+
+
+class OauthAPI(ABC):
+    """A client for accessing Oauth features of the DIscord API"""
+
+    @abstractmethod
+    def get_access_token(
+        self, code: str, redirect_uri: str
+    ) -> typing.Optional[OauthResponse]:
+        """Returns an access token using an Oauth code
+
+        Returns:
+            typing.Optional[OauthReponse]: An object containing Oauth data from the Discord API
+        """
+
+    @abstractmethod
+    def refresh_access_token(
+        self, refresh_token: str
+    ) -> typing.Optional[OauthResponse]:
+        """Refreshes the access token if it expires
+
+        Returns:
+            typing.Optional[OauthReponse]: An object containing Oauth data from the Discord API
+        """

@@ -40,9 +40,10 @@ already exists for your bug or feature.
 **Index:**
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 4
 
    getting-started
+   using-oauth
    api-reference
    changelog
    

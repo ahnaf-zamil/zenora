@@ -18,17 +18,28 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-CDN_URL = "https://cdn.discordapp.com"
-BASE_URL = "https://discord.com/api/v9"
+import typing
+import attr
 
-# CDN Endpoints
-USER_AVATAR = "/avatars"
 
-# Oauth
-OAUTH_TOKEN_URL = "/oauth2/token"
+__all__: typing.Final[typing.List[str]] = ["OauthResponse"]
 
-# Users
-GET_CURRENT_USER = "/users/@me"
-GET_USER = "/users/{}"
-GET_USER_CONNECTIONS = GET_CURRENT_USER + "/connections"
-DM_URL = GET_CURRENT_USER + "/channels"
+
+@attr.s(slots=True)
+class OauthResponse:
+    """An object representing an Oauth API response from the Discord API"""
+
+    """The access token returned by the API"""
+    access_token: str = attr.ib()
+
+    """Type of the token"""
+    token_type: str = attr.ib()
+
+    """Oauth scopes for which the token has been provided"""
+    scope: str = attr.ib()
+
+    """Amount of time it expires after"""
+    expires_in: int = attr.ib(default=None)
+
+    """A refresh token for getting another token just in case the current one expires"""
+    refresh_token: str = attr.ib(default=None)

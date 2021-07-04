@@ -15,6 +15,10 @@ API Client
     :members:
     :member-order: groupwise
 
+.. automodule:: zenora.api.oauthapi
+    :members:
+    :member-order: groupwise
+
 -----
 
 Models

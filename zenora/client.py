@@ -19,7 +19,7 @@
 # SOFTWARE.
 
 from zenora.exceptions import AuthenticationError, BadTokenError
-from zenora import UserAPI, UserAPIImpl
+from zenora import UserAPI, UserAPIImpl, OauthAPI, OauthAPIImpl
 
 import typing
 
@@ -28,12 +28,34 @@ __all__: typing.Final[typing.List[str]] = ["APIClient"]
 
 
 class APIClient:
-    """The API client for accessing the Discord REST API"""
+    """The API client for accessing the Discord REST API
 
-    def __init__(self, token: str):
-        self._token = f"Bot {token}"
-        self._user_client = UserAPIImpl(token, self)
-        self._validate_token()
+    Args:
+        token (str): Token for the bot/user
+        validate_token (bool, optional): Whether the token should be validated during API instantiation. Defaults to True.
+        client_secret ([type], optional): Client secret for bot, especially if you are using Oauth. Defaults to None.
+        bearer (bool, optional): Enable bearer tokens, necessary when you are using Oauth. Defaults to False.
+    """
+
+    def __init__(
+        self,
+        token: str,
+        *,
+        validate_token: bool = True,
+        client_secret=None,
+        bearer=False,
+    ):
+        self._token_prefix = "Bot" if not bearer else "Bearer"
+        self._token = f"{self._token_prefix} {token}"
+        self._client_secret = client_secret
+        self._user_client = UserAPIImpl(self)
+        self._oauth_client = None
+
+        if client_secret:
+            self._oauth_client = OauthAPIImpl(self, client_secret)
+
+        if validate_token:
+            self._validate_token()
 
     def _validate_token(self):
         try:
@@ -43,10 +65,15 @@ class APIClient:
 
     def set_token(self, token: str):
         """Sets the token for the API client instance"""
-        self._token = f"Bot {token}"
+        self._token = f"{self._token_prefix} {token}"
         self._validate_token()
 
     @property
     def users(self) -> UserAPI:
         """Returns an instance of the UserAPI class"""
         return self._user_client
+
+    @property
+    def oauth(self) -> typing.Optional[OauthAPI]:
+        """Returns an instance of the OauthAPI class"""
+        return self._oauth_client

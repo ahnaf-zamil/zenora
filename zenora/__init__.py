@@ -25,7 +25,10 @@ from .models.user import *
 from .models.connection import *
 
 from .api.userapi import *
+from .api.oauthapi import *
+
 from .impl.userapi import *
+from .impl.oauthapi import *
 
 from .client import *
 from .request import *

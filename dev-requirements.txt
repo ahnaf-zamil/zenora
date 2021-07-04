@@ -3,3 +3,4 @@ flake8==3.9.0
 pytest==6.2.3
 sphinx==4.0.1
 sphinx-rtd-theme
+nox

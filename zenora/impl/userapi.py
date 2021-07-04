@@ -35,21 +35,21 @@ __all__: typing.Final[typing.List[str]] = ["UserAPIImpl"]
 
 
 class UserAPIImpl(UserAPI):
-    token: str
+    _token: str
 
-    def __init__(self, token: str, app):
-        self.token = token
-        self.app = app
+    def __init__(self, app):
+        self._token = app._token
+        self._app = app
 
     def get_current_user(self) -> OwnUser:
         url = BASE_URL + GET_CURRENT_USER
-        request = Request(self.token, url, "GET")
+        request = Request(self._token, url, "GET")
         payload = request.execute()
         return OwnUser(**payload)
 
     def get_user(self, user_id: typing.Union[str, Snowflake]) -> User:
         url = BASE_URL + GET_USER.format(user_id)
-        request = Request(self.token, url, "GET")
+        request = Request(self._token, url, "GET")
         payload = request.execute()
         return User(**payload)
 
@@ -67,17 +67,17 @@ class UserAPIImpl(UserAPI):
         if avatar:
             json_payload["avatar"] = convert_image_to_data(avatar)
 
-        request = Request(self.token, url, "PATCH", json_data=json_payload)
+        request = Request(self._token, url, "PATCH", json_data=json_payload)
         payload = request.execute()
         if "token" in payload:
-            self.token = self.app._token = payload["token"]
+            self._token = self._app._token = payload["token"]
             del payload["token"]
         return OwnUser(**payload)
 
     def get_current_user_connections(self) -> typing.List[Connection]:
         url = BASE_URL + GET_USER_CONNECTIONS
 
-        request = Request(self.token, url, "GET")
+        request = Request(self._token, url, "GET")
         payload = request.execute()
 
         return_data = []
@@ -89,7 +89,7 @@ class UserAPIImpl(UserAPI):
     def create_dm(self, user: typing.Union[SnowflakeOr, User]) -> dict:
         url = BASE_URL + DM_URL
         request = Request(
-            self.token,
+            self._token,
             url,
             "POST",
             json_data={"recipient_id": extract_snowflake_from_object(user)},
