@@ -18,32 +18,22 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from datetime import datetime
+from .models.user import User
+from .models.integration import Integration
+from .models.snowflake import Snowflake
 
-from .models.snowflake import *
-from .models.user import *
-from .models.connection import *
-from .models.integration import *
+import typing
 
-from .api.userapi import *
-from .api.oauthapi import *
-
-from .impl.userapi import *
-from .impl.oauthapi import *
-
-from .client import *
-from .request import *
-from .utils import *
-from .exceptions import *
+__all__: typing.Final[typing.List[str]] = ["deserialize_server_integration"]
 
 
-__version__ = "0.0.1"
-__author__ = "K.M Ahnaf Zamil"
-__copyright__ = (
-    f"Copyright (c) {datetime.now().strftime('%Y')} K.M Ahnaf Zamil"
-)
-__email__ = "ahnaf@ahnafzamil.com"
-__description__ = (
-    "A simple to use synchronous yet functional Discord API wrapper for Python"
-)
-__github__ = "https://github.com/ahnaf-zamil/zenora"
+def deserialize_server_integration(payload):
+    integrations = []
+
+    for x in payload:
+        if "user" in x:
+            x["user"] = User(**x["user"])
+        if "role_id" in x:
+            x["role_id"] = Snowflake(x["role_id"])
+        integrations.append(Integration(**payload))
+    return integrations

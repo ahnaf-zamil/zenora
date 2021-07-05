@@ -84,5 +84,5 @@ class UserAPI(ABC):
         Args:
             user: typing.Union[SnowflakeOr, User]
         Returns:
-            dict: DM channel dictionary. Todo: Create DM channel object
+            dict: DM channel dictionary.
         """

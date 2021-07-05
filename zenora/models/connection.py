@@ -18,7 +18,9 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+from zenora.deserializers import deserialize_server_integration
 from zenora.utils import get__str__
+from .integration import Integration
 
 import typing
 import attr
@@ -46,9 +48,12 @@ class Connection:
     visibility: typing.Literal[0, 1] = attr.ib()
 
     """Array of partial server integrations"""
-    integrations: typing.Optional[list] = attr.ib(
-        default=None
-    )  # Todo: Create server integration object
+    integrations: typing.Optional[Integration] = attr.ib(
+        default=None, converter=deserialize_server_integration
+    )
+
+    """Access token for the integration"""
+    access_token: typing.Optional[str] = attr.ib(default=None)
 
     _verified: typing.Optional[bool] = attr.ib(default=None)
 

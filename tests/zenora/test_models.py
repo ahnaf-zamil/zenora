@@ -66,6 +66,7 @@ def test_connection():
         "name": "DevGuyAhnaf",
         "type": "YouTube",
         "visibility": 0,
+        "integrations": [],
     }
 
     connection = Connection(**connection_payload)
