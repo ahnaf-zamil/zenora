@@ -4,8 +4,7 @@
 [![prs](https://img.shields.io/github/issues-pr/ahnaf-zamil/zenora?color=red&style=flat-square)](https://github.com/ahnaf-zamil/zenora/pulls)
 [![Code Style: Black](https://img.shields.io/badge/Code%20Style-Black-black?style=flat-square)](https://github.com/psf/black)
 [![pyvers](https://img.shields.io/badge/python-3.8%20%7C%203.9-blue?style=flat-square)](https://pypi.org/project/zenora)
-[![Build](https://img.shields.io/github/workflow/status/ahnaf-zamil/zenora/Python%20package?logo=GitHub&style=flat-square&label=Build)](https://github.com/ahnaf-zamil/zenora/actions/workflows/python-package.yml)
-
+[![Build](https://img.shields.io/github/workflow/status/ahnaf-zamil/zenora/Python%20package?logo=GitHub&style=flat-square&label=Build)](https://github.com/ahnaf-zamil/zenora/actions/workflows/python-package.yml)<br/>
 [![Pypi](https://img.shields.io/pypi/v/zenora.svg?style=flat-square)](https://pypi.org/project/zenora/)
 [![Docs](https://img.shields.io/netlify/368341f1-066a-43e9-9a30-dcbc2ac3e61e?color=green&label=Docs&style=flat-square)](https://zenora.netlify.app/)
 [![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/ahnaf-zamil/zenora?include_prereleases&style=flat-square)](https://github.com/ahnaf-zamil/zenora/releases)
