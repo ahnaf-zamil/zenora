@@ -46,4 +46,5 @@ __email__ = "ahnaf@ahnafzamil.com"
 __description__ = (
     "A simple to use synchronous yet functional Discord API wrapper for Python"
 )
+__license__ = "MIT"
 __github__ = "https://github.com/ahnaf-zamil/zenora"

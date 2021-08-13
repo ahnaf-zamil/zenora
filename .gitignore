@@ -9,3 +9,4 @@ testing.py
 .venv/
 .idea/
 .vim/
+.vscode/

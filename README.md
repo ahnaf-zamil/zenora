@@ -55,7 +55,7 @@ avoided as Zenora depends on that code in order to get the access token).
 
 Link: https://discord.com/developers/docs/topics/oauth2#authorization-code-grant
 
-Once you have the authorization code, Zenora will do the rest of the work for you. Just call some functions and you will get your 
+Once you have the authorization code, Zenora will do the rest of the work for you. Just call some functions and you will get your
 access token and will be able to use that to with the Discord API.
 
 Example:
@@ -63,10 +63,9 @@ Example:
 ```py
 from zenora import APIClient
 
-token = "Your bot's token"
+TOKEN = "Your bot's token"
 client = APIClient(
-    token,
-    validate_token=False,
+    TOKEN,
     client_secret="Your bot's client secret",
 )
 
@@ -82,15 +81,13 @@ access_token = client.oauth.get_access_token(
 
 
 # Setting it to bearer because we are using Oauth here
-bearer_client = APIClient(access_token, bearer=True) 
+bearer_client = APIClient(access_token, bearer=True)
 
 # Query the user object that has used your Oauth application
 user = bearer_client.get_current_user()
 
 print(user) # Prints it out :)
-``` 
-
-
+```
 
 ## Documentation
 
