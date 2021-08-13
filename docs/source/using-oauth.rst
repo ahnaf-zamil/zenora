@@ -2,7 +2,7 @@
 Using Oauth
 ===============
 
-Zenora has can be used for accessing the Discord Oauth API. It is very simple to use, and reduces a lot
+Zenora can be used for accessing the Discord Oauth API. It is very simple to use, and reduces a lot
 of the hassle for implementing Discord Oauth in your application. But before you do try out Zenora, you need to
 know how to use get the authorization code from the Discord API in order to use it (this is mandatory and cannot be
 avoided as Zenora depends on that code in order to get the access token).
@@ -44,4 +44,4 @@ Usage
     print(user) # Prints it out :)
     
 
-
+If you want to know how to use Oauth with a specific web framework, check out the `Examples section <https://github.com/ahnaf-zamil/zenora/tree/master/examples>`_ of the repository.

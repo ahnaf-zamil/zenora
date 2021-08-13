@@ -89,6 +89,8 @@ user = bearer_client.users.get_current_user()
 print(user) # Prints it out :)
 ```
 
+If you want to know how to use Oauth with a specific web framework, check out the [**Examples** section](https://github.com/ahnaf-zamil/zenora/tree/master/examples) of the repository.
+
 ## Documentation
 
 The latest documentation is currently hosted [here](https://zenora.netlify.app/).
