@@ -19,11 +19,11 @@ sys.path.insert(0, os.path.abspath("../../"))
 # -- Project information -----------------------------------------------------
 
 project = "Zenora"
-copyright = "2021, K.M Ahnaf Zamil"
-author = "K.M Ahnaf Zamil"
+copyright = "2021, DevGuyAhnaf"
+author = "DevGuyAhnaf"
 
 # The full version, including alpha/beta/rc tags
-release = "0.0.1"
+release = "0.0.2"
 version = release
 default_dark_mode = True
 

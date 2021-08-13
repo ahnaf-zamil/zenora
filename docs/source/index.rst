@@ -12,7 +12,7 @@
 
 | 
 Zenora
-==================================
+======
 
 Zenora is a synchronous library for accessing the Discord REST API. 
 

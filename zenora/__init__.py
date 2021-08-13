@@ -1,4 +1,4 @@
-# Copyright (c) 2021 K.M Ahnaf Zamil
+# Copyright (c) 2021 DevGuyAhnaf
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -37,11 +37,9 @@ from .utils import *
 from .exceptions import *
 
 
-__version__ = "0.0.1"
-__author__ = "K.M Ahnaf Zamil"
-__copyright__ = (
-    f"Copyright (c) {datetime.now().strftime('%Y')} K.M Ahnaf Zamil"
-)
+__version__ = "0.0.2"
+__author__ = "DevGuyAhnaf"
+__copyright__ = f"Copyright (c) {datetime.now().strftime('%Y')} DevGuyAhnaf"
 __email__ = "ahnaf@ahnafzamil.com"
 __description__ = (
     "A simple to use synchronous yet functional Discord API wrapper for Python"

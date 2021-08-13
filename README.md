@@ -84,7 +84,7 @@ access_token = client.oauth.get_access_token(
 bearer_client = APIClient(access_token, bearer=True)
 
 # Query the user object that has used your Oauth application
-user = bearer_client.get_current_user()
+user = bearer_client.users.get_current_user()
 
 print(user) # Prints it out :)
 ```
@@ -105,7 +105,7 @@ Before contributing, please check out our [CONTRIBUTING.md](CONTRIBUTING.md) and
 
 [MIT](https://choosealicense.com/licenses/mit/) License
 
-Copyright (c) 2021 K.M Ahnaf Zamil
+Copyright (c) 2021 DevGuyAhnaf
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
