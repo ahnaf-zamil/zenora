@@ -10,6 +10,7 @@ exclude =
     .nox
     testing.py
     .venv
+    examples
 
 max-complexity = 20
 max-function-length = 130

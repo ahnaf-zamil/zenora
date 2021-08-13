@@ -49,6 +49,9 @@ class User:
     """The user's banner colour"""
     banner_color: str = attr.ib(default=None)
 
+    """The user's accent colour"""
+    accent_color: str = attr.ib(default=None)
+
     """The user's public flags"""
     public_flags: typing.Optional[int] = attr.ib(default=None)
 
