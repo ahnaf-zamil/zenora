@@ -18,10 +18,9 @@ Usage
 
     from zenora import APIClient
 
-    token = "Your bot's token"
+    TOKEN = "Your bot's token"
     client = APIClient(
-        token,
-        validate_token=False,
+        TOKEN,
         client_secret="Your bot's client secret",
     )
 
