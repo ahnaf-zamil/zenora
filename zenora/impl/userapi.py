@@ -18,6 +18,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+from zenora.deserializers import deserialize_model
 from zenora.utils import convert_image_to_data, extract_snowflake_from_object
 from zenora.routes import (
     BASE_URL,
@@ -45,13 +46,14 @@ class UserAPIImpl(UserAPI):
         url = BASE_URL + GET_CURRENT_USER
         request = Request(self._token, url, "GET")
         payload = request.execute()
-        return OwnUser(**payload)
+
+        return deserialize_model(OwnUser, payload)
 
     def get_user(self, user_id: typing.Union[str, Snowflake]) -> User:
         url = BASE_URL + GET_USER.format(user_id)
         request = Request(self._token, url, "GET")
         payload = request.execute()
-        return User(**payload)
+        return deserialize_model(User, payload)
 
     def modify_current_user(
         self,
@@ -72,7 +74,7 @@ class UserAPIImpl(UserAPI):
         if "token" in payload:
             self._token = self._app._token = payload["token"]
             del payload["token"]
-        return OwnUser(**payload)
+        return deserialize_model(OwnUser, payload)
 
     def get_current_user_connections(self) -> typing.List[Connection]:
         url = BASE_URL + GET_USER_CONNECTIONS
@@ -82,7 +84,7 @@ class UserAPIImpl(UserAPI):
 
         return_data = []
         for x in payload:
-            return_data.append(Connection(**x))
+            return_data.append(deserialize_model(Connection, x))
 
         return return_data
 
@@ -96,4 +98,4 @@ class UserAPIImpl(UserAPI):
         )
         payload = request.execute()
 
-        return payload
+        return payload  # To do, create DM object
