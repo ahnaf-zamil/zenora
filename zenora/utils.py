@@ -43,7 +43,7 @@ regex = re.compile(
 )
 
 
-def get__str__(obj) -> str:
+def get__str__(obj: object) -> str:
     attributes = ", ".join(
         [
             f'{atr}="{getattr(obj, atr)}"'
@@ -54,11 +54,11 @@ def get__str__(obj) -> str:
     return f"{obj.__class__.__name__}({attributes})"
 
 
-def is_valid_url(url) -> bool:
+def is_valid_url(url: str) -> bool:
     return re.match(regex, url) is not None
 
 
-def convert_image_to_data(path: str):
+def convert_image_to_data(path: str) -> typing.Optional[str]:
     if "?" in path:
         path = path.split("?")[0]
     mime, _ = mimetypes.guess_type(path)
@@ -75,7 +75,7 @@ def convert_image_to_data(path: str):
         raise BadURLException(f"Invalid URL: {path}")
 
 
-def extract_snowflake_from_object(obj: typing.Any):
+def extract_snowflake_from_object(obj: typing.Any) -> str:
     if isinstance(obj, int):
         return str(obj)
     else:

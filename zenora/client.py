@@ -1,3 +1,5 @@
+# type: ignore[attr-defined]
+
 # Copyright (c) 2021 DevGuyAhnaf
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -19,7 +21,7 @@
 # SOFTWARE.
 
 from zenora.exceptions import AuthenticationError, BadTokenError
-from zenora import UserAPI, UserAPIImpl, OauthAPI, OauthAPIImpl
+from zenora import UserAPI, OauthAPI, UserAPIImpl, OauthAPIImpl
 
 import typing
 
@@ -33,7 +35,7 @@ class APIClient:
     Args:
         token (str): Token for the bot/user
         validate_token (bool, optional): Whether the token should be validated during API instantiation. Defaults to True.
-        client_secret ([type], optional): Client secret for bot, especially if you are using Oauth. Defaults to None.
+        client_secret (str, optional): Client secret for bot, especially if you are using Oauth. Defaults to None.
         bearer (bool, optional): Enable bearer tokens, necessary when you are using Oauth. Defaults to False.
     """
 
@@ -42,9 +44,9 @@ class APIClient:
         token: str,
         *,
         validate_token: bool = True,
-        client_secret=None,
-        bearer=False,
-    ):
+        client_secret: typing.Optional[str] = None,
+        bearer: typing.Optional[bool] = False,
+    ) -> None:
         self._token_prefix = "Bot" if not bearer else "Bearer"
         self._token = f"{self._token_prefix} {token}"
         self._client_secret = client_secret
@@ -57,13 +59,13 @@ class APIClient:
         if validate_token:
             self._validate_token()
 
-    def _validate_token(self):
+    def _validate_token(self) -> None:
         try:
             self.users.get_current_user()
         except AuthenticationError:
             raise BadTokenError("Invalid token has been passed")
 
-    def set_token(self, token: str):
+    def set_token(self, token: str) -> None:
         """Sets the token for the API client instance"""
         self._token = f"{self._token_prefix} {token}"
         self._validate_token()

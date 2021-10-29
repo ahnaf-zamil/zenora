@@ -31,14 +31,16 @@ import typing
 import requests
 
 
-def raise_error_or_return(r: requests.Response) -> typing.Optional[dict]:
+def raise_error_or_return(
+    r: requests.Response,
+) -> typing.Optional[typing.Dict[str, typing.Any]]:
     try:
         json_data = r.json()
     except json.decoder.JSONDecodeError:
         raise CloudflareException("Cloudflare blocking API request to Discord")
     if not r.ok:
         if "X-RateLimit-Bucket" in r.headers:  # Rate limited
-            throw_rate_limit_error(r)
+            return throw_rate_limit_error(r)
         elif r.status_code == 401:  # Unauthorized
             raise AuthenticationError(json_data["message"])
         else:
@@ -50,11 +52,12 @@ def raise_error_or_return(r: requests.Response) -> typing.Optional[dict]:
                 else:
                     msg = json_data["errors"][x][0]["message"]
                 raise APIError(f"Code {json_data['code']}. Message: {msg}")
+            return None  # Just so that mypy doesnt scream
     else:
         return json_data
 
 
-def throw_rate_limit_error(r: requests.Response):
+def throw_rate_limit_error(r: requests.Response) -> typing.NoReturn:
     data = r.json()
 
     if data.get("global"):
