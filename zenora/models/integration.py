@@ -23,7 +23,7 @@ from zenora import Snowflake, User
 import attr
 import typing
 
-__all__: typing.Final[typing.List[str]] = ["Integration"]
+__all__: typing.Final[typing.List[str]] = ["Integration", "IntegrationAccount"]
 
 
 @attr.s(slots=True)
@@ -36,47 +36,47 @@ class IntegrationAccount:
 class Integration:
     """An object representing a server integration"""
 
-    """ID of the integration"""
-    id: Snowflake = attr.ib(converter=Snowflake)
-
-    """Name of the integration"""
-    name: str = attr.ib(kw_only=True)
-
-    """Type of the integration"""
-    type: str = attr.ib()
-
     _enabled: bool = attr.ib()
 
-    """ID of the role that this integration uses"""
+    id: Snowflake = attr.ib(converter=Snowflake)
+    """ID of the integration"""
+
+    name: str = attr.ib(kw_only=True)
+    """Name of the integration"""
+
+    type: str = attr.ib()
+    """Type of the integration"""
+
     role_id: Snowflake = attr.ib(default=None)
+    """ID of the role that this integration uses"""
 
-    """Whether emoticons should be synced for this integration (Twitch only currently)"""
     enable_emoticons: typing.Optional[bool] = attr.ib(default=None)
+    """Whether emoticons should be synced for this integration (Twitch only currently)"""
 
-    """The behaviour of expiring subscribers"""
     expire_behaviour: typing.Optional[typing.Literal[0, 1]] = attr.ib(
         default=None
     )
+    """The behaviour of expiring subscribers"""
 
-    """The grace period (in days) before expiring subscribers"""
     expire_grace_period: typing.Optional[int] = attr.ib(default=None)
+    """The grace period (in days) before expiring subscribers"""
 
-    """User for this integration"""
     user: typing.Optional[User] = attr.ib(default=None)
+    """User for this integration"""
 
-    """Integration account information"""
     account: typing.Optional[IntegrationAccount] = attr.ib(
         default=None, converter=IntegrationAccount
     )
+    """Integration account information"""
 
-    """Last synced at (ISO8601 timestamp)"""
     synced_at: typing.Optional[str] = attr.ib(default=None)
+    """Last synced at (ISO8601 timestamp)"""
 
-    """How many subscribers this integration has"""
     subscriber_count: typing.Optional[int] = attr.ib(default=None)
+    """How many subscribers this integration has"""
 
-    """Bot application for Integrations"""
     application: typing.Optional[dict] = attr.ib(default=None)
+    """Bot application for Integrations"""
 
     _syncing: typing.Optional[bool] = attr.ib(default=None)
 

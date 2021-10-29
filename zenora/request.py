@@ -72,3 +72,8 @@ class Request:
             )
 
         return raise_error_or_return(r)
+
+    @classmethod
+    def make_request(cls, *args, **kwargs):
+        req = cls(*args, **kwargs)
+        return req.execute()

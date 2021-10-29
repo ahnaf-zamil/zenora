@@ -9,13 +9,13 @@ exclude =
     dist,
     .nox
     testing.py
-    .venv
+    venv
     examples
 
 max-complexity = 20
 max-function-length = 130
 docstring-convention = google
-max-line-length = 130
+max-line-length = 150
 
 per-file-ignores = 
     zenora/__init__.py: F403, F401

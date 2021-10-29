@@ -52,4 +52,6 @@ class Snowflake(int):
         return self & 0xFFF
 
 
-SnowflakeOr = typing.Union[Snowflake, int]
+T = typing.TypeVar("T")
+
+SnowflakeOr = typing.Union[Snowflake, T]

@@ -31,6 +31,7 @@ default_dark_mode = True
 # -- General configuration ---------------------------------------------------
 
 autodoc_member_order = "bysource"
+autodoc_typehints = "signature"
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom

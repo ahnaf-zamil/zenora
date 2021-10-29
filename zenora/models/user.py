@@ -34,29 +34,29 @@ class User:
 
     __str__ = get__str__
 
-    """A user's unique snowflake ID (in string format)"""
     id: Snowflake = attr.ib(converter=Snowflake)
+    """A user's unique snowflake ID (in string format)"""
 
-    """The user's username, not unique across Discord"""
     username: str = attr.ib()
+    """The user's username, not unique across Discord"""
 
-    """The user's 4 digit Discord tag"""
     discriminator: int = attr.ib()
+    """The user's 4 digit Discord tag"""
 
-    """The user's banner"""
     banner: str = attr.ib(default=None)
+    """The user's banner"""
 
-    """The user's banner colour"""
     banner_color: str = attr.ib(default=None)
+    """The user's banner colour"""
 
-    """The user's accent colour"""
     accent_color: str = attr.ib(default=None)
+    """The user's accent colour"""
 
-    """The user's public flags"""
     public_flags: typing.Optional[int] = attr.ib(default=None)
+    """The user's public flags"""
 
-    """The user's bio"""
     bio: str = attr.ib(default=None)
+    """The user's bio"""
 
     _avatar: typing.Optional[str] = attr.ib(default=None)
 
@@ -118,17 +118,17 @@ class User:
 class OwnUser(User):
     """An object representing the current user on Discord"""
 
-    """The user's chosen language option"""
     locale: typing.Optional[str] = attr.ib(default=None)
+    """The user's chosen language option"""
 
-    """The user's E-Mail"""
     email: typing.Optional[str] = attr.ib(default=None)
+    """The user's E-Mail"""
 
-    """The user's flags"""
     flags: typing.Optional[int] = attr.ib(default=None)
+    """The user's flags"""
 
-    """The type of Discord Nitro subscription on a user's account"""
     premium_type: typing.Optional[int] = attr.ib(default=None)
+    """The type of Discord Nitro subscription on a user's account"""
 
     _verified: typing.Optional[bool] = attr.ib(default=None)
 

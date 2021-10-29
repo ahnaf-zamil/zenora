@@ -26,6 +26,8 @@ __all__: typing.Final[typing.List[str]] = [
     "APIError",
     "CloudflareException",
     "RateLimitException",
+    "AuthenticationError",
+    "BadTokenError",
 ]
 
 

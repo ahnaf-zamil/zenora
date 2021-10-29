@@ -24,6 +24,7 @@ from zenora.exceptions import (
     CloudflareException,
     RateLimitException,
 )
+from zenora.routes import BASE_URL
 
 import json
 import typing
@@ -37,7 +38,7 @@ def raise_error_or_return(r: requests.Response) -> typing.Optional[dict]:
         raise CloudflareException("Cloudflare blocking API request to Discord")
     if not r.ok:
         if "X-RateLimit-Bucket" in r.headers:  # Rate limited
-            handle_rate_limit(r)
+            throw_rate_limit_error(r)
         elif r.status_code == 401:  # Unauthorized
             raise AuthenticationError(json_data["message"])
         else:
@@ -53,11 +54,16 @@ def raise_error_or_return(r: requests.Response) -> typing.Optional[dict]:
         return json_data
 
 
-def handle_rate_limit(r: requests.Response):
-    json_data = r.json()
-    for x in json_data["errors"]:
+def throw_rate_limit_error(r: requests.Response):
+    data = r.json()
+
+    if data.get("global"):
         raise RateLimitException(
-            f"Being rate limited, will reset after {r.headers['x-ratelimit-reset-after']}s."
-            + f" Message: {json_data['errors'][x]['_errors'][0]['message']}",
+            f"Being rate limited globally, will reset after {data['retry_after']}s.",
             r.headers,
         )
+
+    raise RateLimitException(
+        f"Being rate limited on {r.url.replace(BASE_URL, '')}, will reset after {data['retry_after']}s. Bucket: {r.headers['X-RateLimit-Bucket']}",
+        r.headers,
+    )

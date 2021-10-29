@@ -29,17 +29,17 @@ __all__: typing.Final[typing.List[str]] = ["OauthResponse"]
 class OauthResponse:
     """An object representing an Oauth API response from the Discord API"""
 
-    """The access token returned by the API"""
     access_token: str = attr.ib()
+    """The access token returned by the API"""
 
-    """Type of the token"""
     token_type: str = attr.ib()
+    """Type of the token"""
 
-    """Oauth scopes for which the token has been provided"""
     scope: str = attr.ib()
+    """Oauth scopes for which the token has been provided"""
 
-    """Amount of time it expires after"""
     expires_in: int = attr.ib(default=None)
+    """Amount of time it expires after"""
 
-    """A refresh token for getting another token just in case the current one expires"""
     refresh_token: str = attr.ib(default=None)
+    """A refresh token for getting another token just in case the current one expires"""

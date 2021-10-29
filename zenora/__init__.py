@@ -24,6 +24,7 @@ from .models.snowflake import *
 from .models.user import *
 from .models.connection import *
 from .models.integration import *
+from .models.channel import *
 
 from .api.userapi import *
 from .api.oauthapi import *

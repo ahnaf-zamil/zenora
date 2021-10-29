@@ -23,26 +23,25 @@ from zenora import OwnUser
 
 import pytest
 
+
 def test_deserialize_model():
-    data = {
-       "id": 12345,
-       "username": "poggere",
-       "discriminator": 1234 
-    }
+    data = {"id": 12345, "username": "poggere", "discriminator": 1234}
 
     user = deserialize_model(OwnUser, data)
 
     assert type(user) == OwnUser
-    assert user.id == data['id']
+    assert user.id == data["id"]
 
     data = {
-       "id": 12345,
-       "username": "poggere",
-       "discriminator": 1234 ,
-       "blah_blah": "blah"
+        "id": 12345,
+        "username": "poggere",
+        "discriminator": 1234,
+        "blah_blah": "blah",
     }
 
-    user = deserialize_model(OwnUser, data) # Should not include the blah_blah in the object
+    user = deserialize_model(
+        OwnUser, data
+    )  # Should not include the blah_blah in the object
     assert type(user) == OwnUser
     assert not hasattr(user, "blah_blah")
 
