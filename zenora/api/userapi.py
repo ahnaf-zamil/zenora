@@ -79,7 +79,7 @@ class UserAPI(ABC):
     @abstractmethod
     def create_dm(
         self, user: SnowflakeOr[User]
-    ) -> DMChannel:  # Todo: Create DM channel object
+    ) -> DMChannel:
         """Creates a DM with a user
 
         Args:
