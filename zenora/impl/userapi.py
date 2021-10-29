@@ -103,4 +103,4 @@ class UserAPIImpl(UserAPI):
             json_data={"recipient_id": extract_snowflake_from_object(user)},
         )
 
-        return deserialize_model(DMChannel, payload)  # To do, create DM object
+        return deserialize_model(DMChannel, payload)
