@@ -1,3 +1,5 @@
+# type: ignore[attr-defined]
+
 # Copyright (c) 2021 DevGuyAhnaf
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -46,7 +48,7 @@ __all__: typing.Final[typing.List[str]] = ["UserAPIImpl"]
 class UserAPIImpl(UserAPI):
     _token: str
 
-    def __init__(self, app):
+    def __init__(self, app) -> None:
         self._token = app._token
         self._app = app
 

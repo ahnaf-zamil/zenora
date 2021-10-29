@@ -18,6 +18,8 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+from requests.structures import CaseInsensitiveDict
+
 import typing
 
 
@@ -58,7 +60,13 @@ class BadTokenError(ZenoraException):
 class RateLimitException(ZenoraException):
     """Raised when rate limits are hit occurs"""
 
-    def __init__(self, message, payload):
+    def __init__(
+        self,
+        message: str,
+        payload: typing.Union[
+            CaseInsensitiveDict[str], CaseInsensitiveDict[str]
+        ],
+    ) -> None:
         super().__init__(message)
         self._payload = payload
 
@@ -69,7 +77,7 @@ class RateLimitException(ZenoraException):
         Returns:
             int: Number of times a request can be made to this endpoint in a minute
         """
-        return self._payload["X-RateLimit-Limit"]
+        return int(self._payload["X-RateLimit-Limit"])
 
     @property
     def ratelimit_remaining(self) -> int:
@@ -78,7 +86,7 @@ class RateLimitException(ZenoraException):
         Returns:
             int: Number of requests that can be made
         """
-        return self._payload["X-RateLimit-Remaining"]
+        return int(self._payload["X-RateLimit-Remaining"])
 
     @property
     def ratelimit_reset_after(self) -> float:
@@ -87,7 +95,7 @@ class RateLimitException(ZenoraException):
         Returns:
             float: Total time (in seconds) of when the current rate limit bucket will reset
         """
-        return self._payload["X-RateLimit-Reset-After"]
+        return float(self._payload["X-RateLimit-Reset-After"])
 
     @property
     def ratelimit_bucket(self) -> str:

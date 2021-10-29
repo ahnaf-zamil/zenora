@@ -30,7 +30,8 @@ __all__: typing.Final[typing.List[str]] = ["OauthAPIImpl"]
 
 
 class OauthAPIImpl(OauthAPI):
-    def __init__(self, app, client_secret):
+    def __init__(self, app: typing.Any, client_secret: str) -> None:
+        # Using Any type on 'app' to not get circular import err
         self._app = app
         self._token = app._token
         self._client_secret = client_secret
@@ -40,7 +41,7 @@ class OauthAPIImpl(OauthAPI):
     ) -> typing.Optional[OauthResponse]:
         url = BASE_URL + OAUTH_TOKEN_URL
 
-        current_user = self._app.users.get_current_user()
+        current_user = self._app.users.get_current_user
 
         data = {
             "client_id": current_user.id,
@@ -62,7 +63,7 @@ class OauthAPIImpl(OauthAPI):
     ) -> typing.Optional[OauthResponse]:
         url = BASE_URL + OAUTH_TOKEN_URL
 
-        current_user = self._app.users.get_current_user()
+        current_user = self._app.users.get_current_user
 
         data = {
             "client_id": current_user.id,

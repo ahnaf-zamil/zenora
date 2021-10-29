@@ -1,3 +1,5 @@
+# type: ignore[attr-defined]
+
 # Copyright (c) 2021 DevGuyAhnaf
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -19,15 +21,21 @@
 # SOFTWARE.
 
 from .models.user import User
-from .models.integration import Integration
 from .models.snowflake import Snowflake
+from .models.integration import Integration
 
 import typing
 
-__all__: typing.Final[typing.List[str]] = ["deserialize_server_integration"]
+__all__: typing.Final[typing.List[str]] = [
+    "deserialize_model",
+    "deserialize_server_integration",
+]
 
 
-def deserialize_model(cls, payload):
+def deserialize_model(
+    cls: typing.Type[typing.Any],
+    payload: typing.Dict[str, typing.Any],
+) -> object:
     """A deserializer used for most model classes
 
     By default, attrs throws errors if it gets some properties from the API which do not
@@ -52,7 +60,9 @@ def deserialize_model(cls, payload):
     return cls(**data)
 
 
-def deserialize_server_integration(payload):
+def deserialize_server_integration(
+    payload: typing.List[typing.Dict[str, typing.Any]]
+) -> typing.List[Integration]:
     integrations = []
 
     for x in payload:
@@ -60,5 +70,5 @@ def deserialize_server_integration(payload):
             x["user"] = deserialize_model(User, x["user"])
         if "role_id" in x:
             x["role_id"] = Snowflake(x["role_id"])
-        integrations.append(Integration(**payload))
+        integrations.append(Integration(**x))
     return integrations

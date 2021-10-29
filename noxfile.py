@@ -13,6 +13,14 @@ def tests(session):
 
 
 @nox.session(reuse_venv=True)
+def mypy(session):
+    session.install("mypy")
+    session.install("types-attrs")
+    session.install("types-requests")
+    session.run("mypy", "zenora")
+
+
+@nox.session(reuse_venv=True)
 def formatting(session):
     session.install("black")
     session.run("black", "./")

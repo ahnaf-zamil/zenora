@@ -39,3 +39,8 @@ jobs:
             - name: Test with pytest
               run: |
                   pytest
+            - name: Type checks with mypy
+              run: |
+                  pip install mypy types-attrs types-requests
+                  mypy zenora
+

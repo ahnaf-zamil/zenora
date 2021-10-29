@@ -36,9 +36,9 @@ class Request:
         url: str,
         method: str,
         *,
-        json_data: typing.Optional[dict] = None,
-        headers: typing.Optional[dict] = None,
-        form_data: typing.Optional[dict] = None,
+        json_data: typing.Any = None,
+        headers: typing.Any = None,
+        form_data: typing.Any = None,
     ):
         self.token = token
         self.url = url
@@ -47,7 +47,7 @@ class Request:
         self.headers = headers
         self.form_data = form_data
 
-    def execute(self):
+    def execute(self) -> typing.Dict[str, typing.Any]:
         """Executes the API request"""
         headers = {
             "User-Agent": "{zenora.__name__} {zenora.__version__}",
@@ -71,9 +71,13 @@ class Request:
                 data=self.form_data,
             )
 
-        return raise_error_or_return(r)
+        return raise_error_or_return(r)  # type: ignore[return-value]
 
     @classmethod
-    def make_request(cls, *args, **kwargs):
+    def make_request(
+        cls,
+        *args: typing.Any,
+        **kwargs: typing.Any,
+    ) -> typing.Dict[str, typing.Any]:
         req = cls(*args, **kwargs)
         return req.execute()

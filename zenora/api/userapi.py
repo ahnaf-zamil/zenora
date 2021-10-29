@@ -1,3 +1,5 @@
+# type: ignore[attr-defined]
+
 # Copyright (c) 2021 DevGuyAhnaf
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -77,9 +79,7 @@ class UserAPI(ABC):
         """
 
     @abstractmethod
-    def create_dm(
-        self, user: SnowflakeOr[User]
-    ) -> DMChannel:
+    def create_dm(self, user: SnowflakeOr[User]) -> DMChannel:
         """Creates a DM with a user
 
         Args:

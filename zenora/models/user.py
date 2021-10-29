@@ -1,3 +1,5 @@
+# type: ignore[misc]
+
 # Copyright (c) 2021 DevGuyAhnaf
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
