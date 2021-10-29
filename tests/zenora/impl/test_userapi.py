@@ -18,6 +18,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+from zenora.models.channel import DMChannel, ChannelTypes
 from zenora.models.connection import Connection
 from zenora.routes import CDN_URL, USER_AVATAR
 from zenora.models.snowflake import Snowflake
@@ -117,3 +118,29 @@ def test_get_current_user_connections(api: zenora.UserAPI):
         connections = api.get_current_user_connections()
         for x in connections:
             assert type(x) == type(Connection)
+
+
+def get_create_dm(api: zenora.UserAPI):
+    with mock.patch.object(requests, "request") as r:
+        dm = api.create_dm(479287754400989217)
+
+        r.return_value.json.return_value = {
+            "id": "861174997804384256",
+            "type": 1,
+            "last_message_id": "865440153790578699",
+            "recipients": [
+                {
+                    "id": "479287754400989217",
+                    "username": "Ahnaf",
+                    "avatar": "67e53a8b462231843eb9d93471b5e18e",
+                    "discriminator": "4346",
+                    "public_flags": 256,
+                }
+            ],
+        }
+
+        r.return_value.status_code = 200
+
+        assert type(dm) == type(DMChannel)
+        assert type(dm.type) == ChannelTypes.DM
+        assert type(dm.recipients) == list

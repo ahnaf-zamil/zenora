@@ -19,6 +19,7 @@
 # SOFTWARE.
 
 from zenora.models.connection import Connection
+from zenora.models.channel import DMChannel
 from zenora import Snowflake, SnowflakeOr
 from zenora import OwnUser, User
 from abc import ABC, abstractmethod
@@ -77,8 +78,8 @@ class UserAPI(ABC):
 
     @abstractmethod
     def create_dm(
-        self, user: typing.Union[SnowflakeOr, User]
-    ) -> dict:  # Todo: Create DM channel object
+        self, user: SnowflakeOr[User]
+    ) -> DMChannel:
         """Creates a DM with a user
 
         Args:

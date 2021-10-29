@@ -28,7 +28,15 @@ from zenora.routes import (
     DM_URL,
 )
 from zenora.request import Request
-from zenora import OwnUser, User, Snowflake, Connection, UserAPI, SnowflakeOr
+from zenora import (
+    OwnUser,
+    User,
+    Snowflake,
+    Connection,
+    UserAPI,
+    SnowflakeOr,
+    DMChannel,
+)
 
 import typing
 
@@ -44,15 +52,13 @@ class UserAPIImpl(UserAPI):
 
     def get_current_user(self) -> OwnUser:
         url = BASE_URL + GET_CURRENT_USER
-        request = Request(self._token, url, "GET")
-        payload = request.execute()
+        payload = Request.make_request(self._token, url, "GET")
 
         return deserialize_model(OwnUser, payload)
 
     def get_user(self, user_id: typing.Union[str, Snowflake]) -> User:
         url = BASE_URL + GET_USER.format(user_id)
-        request = Request(self._token, url, "GET")
-        payload = request.execute()
+        payload = Request.make_request(self._token, url, "GET")
         return deserialize_model(User, payload)
 
     def modify_current_user(
@@ -69,8 +75,9 @@ class UserAPIImpl(UserAPI):
         if avatar:
             json_payload["avatar"] = convert_image_to_data(avatar)
 
-        request = Request(self._token, url, "PATCH", json_data=json_payload)
-        payload = request.execute()
+        payload = Request.make_request(
+            self._token, url, "PATCH", json_data=json_payload
+        )
         if "token" in payload:
             self._token = self._app._token = payload["token"]
             del payload["token"]
@@ -79,8 +86,7 @@ class UserAPIImpl(UserAPI):
     def get_current_user_connections(self) -> typing.List[Connection]:
         url = BASE_URL + GET_USER_CONNECTIONS
 
-        request = Request(self._token, url, "GET")
-        payload = request.execute()
+        payload = Request.make_request(self._token, url, "GET")
 
         return_data = []
         for x in payload:
@@ -88,14 +94,13 @@ class UserAPIImpl(UserAPI):
 
         return return_data
 
-    def create_dm(self, user: typing.Union[SnowflakeOr, User]) -> dict:
+    def create_dm(self, user: SnowflakeOr[User]) -> DMChannel:
         url = BASE_URL + DM_URL
-        request = Request(
+        payload = Request.make_request(
             self._token,
             url,
             "POST",
             json_data={"recipient_id": extract_snowflake_from_object(user)},
         )
-        payload = request.execute()
 
-        return payload  # To do, create DM object
+        return deserialize_model(DMChannel, payload)

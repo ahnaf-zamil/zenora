@@ -52,10 +52,9 @@ class OauthAPIImpl(OauthAPI):
 
         headers = {"Content-Type": "application/x-www-form-urlencoded"}
 
-        request = Request(
+        payload = Request.make_request(
             self._token, url, "POST", form_data=data, headers=headers
         )
-        payload = request.execute()
         return OauthResponse(**payload)
 
     def refresh_access_token(
@@ -74,8 +73,7 @@ class OauthAPIImpl(OauthAPI):
 
         headers = {"Content-Type": "application/x-www-form-urlencoded"}
 
-        request = Request(
+        payload = Request.make_request(
             self._token, url, "POST", form_data=data, headers=headers
         )
-        payload = request.execute()
         return OauthResponse(**payload)

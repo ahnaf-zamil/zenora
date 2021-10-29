@@ -35,25 +35,25 @@ class Connection:
 
     __str__ = get__str__
 
-    """ID of the connection account"""
     id: str = attr.ib()
+    """ID of the connection account"""
 
-    """The username of the connection account"""
     name: str = attr.ib()
+    """The username of the connection account"""
 
-    """The service type of the connection e.g YouTube, Facebook, Steam, etc."""
     type: str = attr.ib()
+    """The service type of the connection e.g YouTube, Facebook, Steam, etc."""
 
-    """Visibility of the connection. 0 = False, 1 = True"""
     visibility: typing.Literal[0, 1] = attr.ib()
+    """Visibility of the connection. 0 = False, 1 = True"""
 
-    """Array of partial server integrations"""
     integrations: typing.Optional[Integration] = attr.ib(
         default=None, converter=deserialize_server_integration
     )
+    """Array of partial server integrations"""
 
-    """Access token for the integration"""
     access_token: typing.Optional[str] = attr.ib(default=None)
+    """Access token for the integration"""
 
     _verified: typing.Optional[bool] = attr.ib(default=None)
 

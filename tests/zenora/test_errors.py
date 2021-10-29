@@ -37,17 +37,12 @@ def test_handle_rate_limit():
         }
         r.return_value.ok = False
         r.return_value.json.return_value = {
-            "errors": {
-                "avatar": {
-                    "_errors": [
-                        {"message": "You are changing avatars too fast"}
-                    ]
-                }
-            }
+            "message": "You are being rate limited.",
+            "retry_after": 64.57,
+            "global": True,
         }
-        with pytest.raises(RateLimitException) as e:
+        with pytest.raises(RateLimitException):
             raise_error_or_return(r())
-            assert e.message == "You are changing avatars too fast"
 
 
 def test_handle_error():

@@ -11,11 +11,11 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/e556bee232469ff28415/maintainability?style=flat-square)](https://codeclimate.com/github/ahnaf-zamil/zenora/maintainability)
 [![issues](https://img.shields.io/github/issues-raw/ahnaf-zamil/zenora?color=blueviolet&style=flat-square)](https://github.com/ahnaf-zamil/zenora/issues) [![CodeQL](https://img.shields.io/github/workflow/status/ahnaf-zamil/zenora/CodeQL?logo=GitHub&style=flat-square&label=CodeQL)](https://github.com/ahnaf-zamil/zenora/actions/workflows/codeql-analysis.yml)
 
-A simple to use synchronous yet functional Discord REST API wrapper for Python
+A simple to use API wrapper for the Discord REST API in Python
 
 ## What is Zenora
 
-Zenora is a synchronous library for accessing the Discord REST API. It allows you to access the API without async/await. And also gives you REST-only API access, not the gateway. Pretty useful for making bot web dashboards, or desktop applications, etc. Oauth and other features will be added soon.
+Zenora is a synchronous library for accessing the Discord REST API. It allows you to access the API without async/await. And also gives you REST-only API access, not the gateway. Pretty useful for making bot web dashboards, or desktop applications, etc. There's some Oauth features as well
 
 ## Installation
 

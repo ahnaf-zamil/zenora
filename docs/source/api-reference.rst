@@ -30,6 +30,18 @@ Models
 .. automodule:: zenora.models.user
     :members:
 
+.. automodule:: zenora.models.channel
+    :members:
+
+.. automodule:: zenora.models.integration
+    :members:
+
+.. automodule:: zenora.models.oauth
+    :members:
+
+.. automodule:: zenora.models.connection
+    :members:
+
 -----
 
 Exceptions
