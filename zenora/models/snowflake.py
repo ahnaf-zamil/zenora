@@ -1,4 +1,4 @@
-# Copyright (c) 2021 DevGuyAhnaf
+# Copyright (c) 2022 DevGuyAhnaf
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -19,11 +19,10 @@
 # SOFTWARE.
 
 from datetime import datetime
+from typing import Final, List, TypeVar, Any, Union
 
-import typing
 
-
-__all__: typing.Final[typing.List[str]] = ["Snowflake", "SnowflakeOr"]
+__all__: Final[List[str]] = ["Snowflake", "SnowflakeOr"]
 
 
 class Snowflake(int):
@@ -52,6 +51,13 @@ class Snowflake(int):
         return self & 0xFFF
 
 
-T = typing.TypeVar("T")
+T = TypeVar("T")
 
-SnowflakeOr = typing.Union[Snowflake, T]
+SnowflakeOr = Union[Snowflake, T]
+
+
+def convert_snowflake(arg: Any) -> Union[Snowflake, Any]:
+    if not isinstance(arg, (int, str)):
+        return arg
+    else:
+        return Snowflake(arg)

@@ -1,4 +1,4 @@
-# Copyright (c) 2021 DevGuyAhnaf
+# Copyright (c) 2022 DevGuyAhnaf
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -32,7 +32,7 @@ def test_handle_rate_limit():
         r.return_value.headers = {
             "X-RateLimit-Remaining": 0,
             "X-RateLimit-Reset": 1470173023,
-            "x-ratelimit-reset-after": 1234.23414,
+            "X-RateLimit-Reset-After": 1234.23414,
             "X-RateLimit-Bucket": "abcd1234",
         }
         r.return_value.ok = False

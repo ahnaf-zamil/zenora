@@ -1,6 +1,4 @@
-# type: ignore[attr-defined]
-
-# Copyright (c) 2021 DevGuyAhnaf
+# Copyright (c) 2022 DevGuyAhnaf
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -22,11 +20,10 @@
 
 from zenora.exceptions import AuthenticationError, BadTokenError
 from zenora import UserAPI, OauthAPI, UserAPIImpl, OauthAPIImpl
+from typing import Final, List, Optional
 
-import typing
 
-
-__all__: typing.Final[typing.List[str]] = ["APIClient"]
+__all__: Final[List[str]] = ["APIClient"]
 
 
 class APIClient:
@@ -44,8 +41,8 @@ class APIClient:
         token: str,
         *,
         validate_token: bool = True,
-        client_secret: typing.Optional[str] = None,
-        bearer: typing.Optional[bool] = False,
+        client_secret: Optional[str] = None,
+        bearer: Optional[bool] = False,
     ) -> None:
         self._token_prefix = "Bot" if not bearer else "Bearer"
         self._token = f"{self._token_prefix} {token}"
@@ -76,6 +73,6 @@ class APIClient:
         return self._user_client
 
     @property
-    def oauth(self) -> typing.Optional[OauthAPI]:
+    def oauth(self) -> Optional[OauthAPI]:
         """Returns an instance of the OauthAPI class"""
         return self._oauth_client

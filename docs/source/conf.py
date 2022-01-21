@@ -19,7 +19,7 @@ sys.path.insert(0, os.path.abspath("../../"))
 # -- Project information -----------------------------------------------------
 
 project = "Zenora"
-copyright = "2021, DevGuyAhnaf"
+copyright = "2022, DevGuyAhnaf"
 author = "DevGuyAhnaf"
 
 # The full version, including alpha/beta/rc tags

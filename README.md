@@ -107,7 +107,7 @@ Before contributing, please check out our [CONTRIBUTING.md](CONTRIBUTING.md) and
 
 [MIT](https://choosealicense.com/licenses/mit/) License
 
-Copyright (c) 2021 DevGuyAhnaf
+Copyright (c) 2022 DevGuyAhnaf
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
