@@ -1,4 +1,4 @@
-# Copyright (c) 2021 DevGuyAhnaf
+# Copyright (c) 2022 DevGuyAhnaf
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -18,11 +18,12 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-import typing
+from typing import Final, List
+
 import attr
 
 
-__all__: typing.Final[typing.List[str]] = ["OauthResponse"]
+__all__: Final[List[str]] = ["OauthResponse"]
 
 
 @attr.s(slots=True)

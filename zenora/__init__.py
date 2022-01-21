@@ -1,4 +1,4 @@
-# Copyright (c) 2021 DevGuyAhnaf
+# Copyright (c) 2022 DevGuyAhnaf
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -18,6 +18,10 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+"""
+.. include:: ../docs/index.md
+"""
+
 from datetime import datetime
 
 from .models.snowflake import *
@@ -25,6 +29,8 @@ from .models.user import *
 from .models.connection import *
 from .models.integration import *
 from .models.channel import *
+from .models.oauth import *
+from .models.guild import *
 
 from .api.userapi import *
 from .api.oauthapi import *
@@ -36,7 +42,6 @@ from .client import *
 from .request import *
 from .utils import *
 from .exceptions import *
-
 
 __version__ = "0.0.2"
 __author__ = "DevGuyAhnaf"

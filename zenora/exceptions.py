@@ -1,4 +1,4 @@
-# Copyright (c) 2021 DevGuyAhnaf
+# Copyright (c) 2022 DevGuyAhnaf
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -18,10 +18,11 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-import typing
+
+from typing import Final, List, Any
 
 
-__all__: typing.Final[typing.List[str]] = [
+__all__: Final[List[str]] = [
     "ZenoraException",
     "APIError",
     "CloudflareException",
@@ -61,7 +62,7 @@ class RateLimitException(ZenoraException):
     def __init__(
         self,
         message: str,
-        payload: typing.Any,
+        payload: Any,
     ) -> None:
         super().__init__(message)
         self._payload = payload

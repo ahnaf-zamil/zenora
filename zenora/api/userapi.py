@@ -1,6 +1,4 @@
-# type: ignore[attr-defined]
-
-# Copyright (c) 2021 DevGuyAhnaf
+# Copyright (c) 2022 DevGuyAhnaf
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -20,16 +18,12 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from zenora.models.connection import Connection
-from zenora.models.channel import DMChannel
-from zenora import Snowflake, SnowflakeOr
-from zenora import OwnUser, User
+from zenora import Connection, DMChannel, Guild, SnowflakeOr, OwnUser, User  # type: ignore[attr-defined]
 from abc import ABC, abstractmethod
+from typing import Final, List, Optional
 
-import typing
 
-
-__all__: typing.Final[typing.List[str]] = ["UserAPI"]
+__all__: Final[List[str]] = ["UserAPI"]
 
 
 class UserAPI(ABC):
@@ -44,11 +38,11 @@ class UserAPI(ABC):
         """
 
     @abstractmethod
-    def get_user(self, user_id: typing.Union[str, Snowflake]) -> User:
+    def get_user(self, user_id: SnowflakeOr[str]) -> User:
         """Returns a user with the corresponding ID
 
         Args:
-            user_id (typing.Union[str, Snowflake]): Snowflake ID of the user
+            user_id (Union[str, Snowflake]): Snowflake ID of the user
 
         Returns:
             User: An object representing a user on Discord
@@ -57,25 +51,25 @@ class UserAPI(ABC):
     @abstractmethod
     def modify_current_user(
         self,
-        username: str = None,
-        avatar: str = None,
+        username: Optional[str] = None,
+        avatar: Optional[str] = None,
     ) -> OwnUser:
         """Modify the current user's username or avatar
 
         Args:
             username (str, optional): The user's username. Defaults to None.
-            avatar (typing.Literal[".png", ".jpg", ".jpeg", ".gif"], optional): The user's new avatar link. Defaults to None.
+            avatar (Literal[".png", ".jpg", ".jpeg", ".gif"], optional): The user's new avatar link. Defaults to None.
 
         Returns:
             OwnUser: An object representing the current user on Discord
         """
 
     @abstractmethod
-    def get_current_user_connections(self) -> typing.List[Connection]:
+    def get_current_user_connections(self) -> List[Connection]:
         """Returns a list of connection objects for current user
 
         Returns:
-            typing.List[Connection]: List of connection objects
+            List[Connection]: List of connection objects
         """
 
     @abstractmethod
@@ -83,7 +77,15 @@ class UserAPI(ABC):
         """Creates a DM with a user
 
         Args:
-            user: typing.Union[SnowflakeOr, User]
+            user: Union[SnowflakeOr, User]
         Returns:
-            dict: DM channel dictionary.
+            DMChannel: DM channel dictionary.
+        """
+
+    @abstractmethod
+    def get_my_guilds(self) -> List[Guild]:
+        """Returns you the user's joined guilds
+
+        Returns:
+            List[Guild]: List of guild objects
         """

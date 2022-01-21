@@ -1,4 +1,4 @@
-# Copyright (c) 2021 DevGuyAhnaf
+# Copyright (c) 2022 DevGuyAhnaf
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -18,19 +18,17 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from zenora import OauthAPI
+from zenora import OauthAPI, OauthResponse
 from zenora.request import Request
 from zenora.routes import BASE_URL, OAUTH_TOKEN_URL
-from ..models.oauth import OauthResponse
-
-import typing
+from typing import Final, List, Optional, Any
 
 
-__all__: typing.Final[typing.List[str]] = ["OauthAPIImpl"]
+__all__: Final[List[str]] = ["OauthAPIImpl"]
 
 
 class OauthAPIImpl(OauthAPI):
-    def __init__(self, app: typing.Any, client_secret: str) -> None:
+    def __init__(self, app: Any, client_secret: str) -> None:
         # Using Any type on 'app' to not get circular import err
         self._app = app
         self._token = app._token
@@ -38,10 +36,10 @@ class OauthAPIImpl(OauthAPI):
 
     def get_access_token(
         self, code: str, redirect_uri: str
-    ) -> typing.Optional[OauthResponse]:
+    ) -> Optional[OauthResponse]:
         url = BASE_URL + OAUTH_TOKEN_URL
 
-        current_user = self._app.users.get_current_user
+        current_user = self._app.users.get_current_user()
 
         data = {
             "client_id": current_user.id,
@@ -60,7 +58,7 @@ class OauthAPIImpl(OauthAPI):
 
     def refresh_access_token(
         self, refresh_token: str
-    ) -> typing.Optional[OauthResponse]:
+    ) -> Optional[OauthResponse]:
         url = BASE_URL + OAUTH_TOKEN_URL
 
         current_user = self._app.users.get_current_user
