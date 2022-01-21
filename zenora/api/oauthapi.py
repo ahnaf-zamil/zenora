@@ -1,4 +1,4 @@
-# Copyright (c) 2021 DevGuyAhnaf
+# Copyright (c) 2022 DevGuyAhnaf
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -19,12 +19,11 @@
 # SOFTWARE.
 
 from abc import abstractmethod, ABC
-from zenora.models.oauth import OauthResponse
+from zenora import OauthResponse
+from typing import Final, List, Optional
 
-import typing
 
-
-__all__: typing.Final[typing.List[str]] = ["OauthAPI"]
+__all__: Final[List[str]] = ["OauthAPI"]
 
 
 class OauthAPI(ABC):
@@ -33,19 +32,19 @@ class OauthAPI(ABC):
     @abstractmethod
     def get_access_token(
         self, code: str, redirect_uri: str
-    ) -> typing.Optional[OauthResponse]:
+    ) -> Optional[OauthResponse]:
         """Returns an access token using an Oauth code
 
         Returns:
-            typing.Optional[OauthReponse]: An object containing Oauth data from the Discord API
+            Optional[OauthReponse]: An object containing Oauth data from the Discord API
         """
 
     @abstractmethod
     def refresh_access_token(
         self, refresh_token: str
-    ) -> typing.Optional[OauthResponse]:
+    ) -> Optional[OauthResponse]:
         """Refreshes the access token if it expires
 
         Returns:
-            typing.Optional[OauthReponse]: An object containing Oauth data from the Discord API
+            Optional[OauthReponse]: An object containing Oauth data from the Discord API
         """

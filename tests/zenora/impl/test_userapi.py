@@ -1,4 +1,4 @@
-# Copyright (c) 2021 DevGuyAhnaf
+# Copyright (c) 2022 DevGuyAhnaf
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -18,11 +18,17 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from zenora.models.channel import DMChannel, ChannelTypes
-from zenora.models.connection import Connection
+from zenora import (
+    DMChannel,
+    ChannelTypes,
+    Snowflake,
+    OwnUser,
+    User,
+    Connection,
+    Guild,
+)
 from zenora.routes import CDN_URL, USER_AVATAR
-from zenora.models.snowflake import Snowflake
-from zenora.models.user import OwnUser, User
+
 from unittest import mock
 
 import pytest
@@ -120,9 +126,8 @@ def test_get_current_user_connections(api: zenora.UserAPI):
             assert type(x) == type(Connection)
 
 
-def get_create_dm(api: zenora.UserAPI):
+def test_get_create_dm(api: zenora.UserAPI):
     with mock.patch.object(requests, "request") as r:
-        dm = api.create_dm(479287754400989217)
 
         r.return_value.json.return_value = {
             "id": "861174997804384256",
@@ -141,6 +146,32 @@ def get_create_dm(api: zenora.UserAPI):
 
         r.return_value.status_code = 200
 
-        assert type(dm) == type(DMChannel)
-        assert type(dm.type) == ChannelTypes.DM
+        dm = api.create_dm(479287754400989217)
+        assert isinstance(dm, DMChannel)
+        assert dm.type.value == ChannelTypes.DM.value
         assert type(dm.recipients) == list
+
+
+def test_get_my_guilds(api: zenora.UserAPI):
+    with mock.patch.object(requests, "request") as r:
+        test_guild = {
+            "id": "81384788765712384",
+            "name": "Discord API",
+            "icon": "a363a84e969bcbe1353eb2fdfb2e50e6",
+            "owner": False,
+            "permissions": "966471831232",
+            "features": [
+                "MEMBER_VERIFICATION_GATE_ENABLED",
+            ],
+        }
+
+        r.return_value.json.return_value = [test_guild]
+        r.return_value.status_code = 200
+
+        guilds = api.get_my_guilds()
+
+        assert type(guilds) == list
+        assert type(guilds[0]) == Guild
+        assert str(guilds[0].id) == test_guild["id"]
+        assert guilds[0].icon == test_guild["icon"]
+        assert guilds[0].splash == None

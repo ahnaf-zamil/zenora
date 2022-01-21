@@ -1,6 +1,4 @@
-# type: ignore[attr-defined]
-
-# Copyright (c) 2021 DevGuyAhnaf
+# Copyright (c) 2022 DevGuyAhnaf
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -28,27 +26,27 @@ from zenora.routes import (
     GET_USER,
     GET_USER_CONNECTIONS,
     DM_URL,
+    GET_USER_GUILDS,
 )
 from zenora.request import Request
 from zenora import (
     OwnUser,
     User,
-    Snowflake,
     Connection,
     UserAPI,
     SnowflakeOr,
     DMChannel,
+    Guild,
 )
+from typing import List, Final, Optional
 
-import typing
-
-__all__: typing.Final[typing.List[str]] = ["UserAPIImpl"]
+__all__: Final[List[str]] = ["UserAPIImpl"]
 
 
 class UserAPIImpl(UserAPI):
     _token: str
 
-    def __init__(self, app) -> None:
+    def __init__(self, app) -> None:  # type: ignore[no-untyped-def]
         self._token = app._token
         self._app = app
 
@@ -58,15 +56,15 @@ class UserAPIImpl(UserAPI):
 
         return deserialize_model(OwnUser, payload)
 
-    def get_user(self, user_id: typing.Union[str, Snowflake]) -> User:
+    def get_user(self, user_id: SnowflakeOr[str]) -> User:
         url = BASE_URL + GET_USER.format(user_id)
         payload = Request.make_request(self._token, url, "GET")
         return deserialize_model(User, payload)
 
     def modify_current_user(
         self,
-        username: str = None,
-        avatar=None,
+        username: Optional[str] = None,
+        avatar: Optional[str] = None,
     ) -> OwnUser:
         url = BASE_URL + GET_CURRENT_USER
 
@@ -85,12 +83,12 @@ class UserAPIImpl(UserAPI):
             del payload["token"]
         return deserialize_model(OwnUser, payload)
 
-    def get_current_user_connections(self) -> typing.List[Connection]:
+    def get_current_user_connections(self) -> List[Connection]:
         url = BASE_URL + GET_USER_CONNECTIONS
 
         payload = Request.make_request(self._token, url, "GET")
 
-        return_data = []
+        return_data: list = []
         for x in payload:
             return_data.append(deserialize_model(Connection, x))
 
@@ -101,8 +99,16 @@ class UserAPIImpl(UserAPI):
         payload = Request.make_request(
             self._token,
             url,
-            "POST",
-            json_data={"recipient_id": extract_snowflake_from_object(user)},
+            extract_snowflake_from_object(user),
         )
 
         return deserialize_model(DMChannel, payload)
+
+    def get_my_guilds(self) -> List[Guild]:
+        url = BASE_URL + GET_USER_GUILDS
+        payload = Request.make_request(
+            self._token,
+            url,
+            "GET",
+        )
+        return [deserialize_model(Guild, i) for i in payload]  # type: ignore[misc]

@@ -1,6 +1,6 @@
 # type: ignore[misc]
 
-# Copyright (c) 2021 DevGuyAhnaf
+# Copyright (c) 2022 DevGuyAhnaf
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -23,11 +23,13 @@
 from zenora.routes import CDN_URL, USER_AVATAR
 from zenora.utils import get__str__
 from zenora import Snowflake
-import typing
+from typing import Optional, Final, List, Literal
+from zenora.models.snowflake import convert_snowflake
+
 import attr
 
 
-__all__: typing.Final[typing.List[str]] = ["User", "OwnUser"]
+__all__: Final[List[str]] = ["User", "OwnUser"]
 
 
 @attr.s(slots=True)
@@ -36,7 +38,7 @@ class User:
 
     __str__ = get__str__
 
-    id: Snowflake = attr.ib(converter=Snowflake)
+    id: Snowflake = attr.ib(converter=convert_snowflake)
     """A user's unique snowflake ID (in string format)"""
 
     username: str = attr.ib()
@@ -54,42 +56,42 @@ class User:
     accent_color: str = attr.ib(default=None)
     """The user's accent colour"""
 
-    public_flags: typing.Optional[int] = attr.ib(default=None)
+    public_flags: Optional[int] = attr.ib(default=None)
     """The user's public flags"""
 
     bio: str = attr.ib(default=None)
     """The user's bio"""
 
-    _avatar: typing.Optional[str] = attr.ib(default=None)
+    _avatar: Optional[str] = attr.ib(default=None)
 
-    _bot: typing.Optional[bool] = attr.ib(default=None)
+    _bot: Optional[bool] = attr.ib(default=None)
 
-    _system: typing.Optional[bool] = attr.ib(default=None)
+    _system: Optional[bool] = attr.ib(default=None)
 
-    _mfa_enabled: typing.Optional[bool] = attr.ib(default=None)
+    _mfa_enabled: Optional[bool] = attr.ib(default=None)
 
     @property
-    def avatar_hash(self) -> typing.Optional[str]:
+    def avatar_hash(self) -> Optional[str]:
         """The user's avatar hash"""
         return self._avatar
 
     @property
-    def is_bot(self) -> typing.Optional[bool]:
+    def is_bot(self) -> Optional[bool]:
         """Whether the user is a bot or human"""
         return self._bot
 
     @property
-    def is_system(self) -> typing.Optional[bool]:
+    def is_system(self) -> Optional[bool]:
         """Whether the user is an Official Discord System user or not"""
         return self._system
 
     @property
-    def has_mfa_enabled(self) -> typing.Optional[bool]:
+    def has_mfa_enabled(self) -> Optional[bool]:
         """Whether the user has two factor enabled on their account"""
         return self._mfa_enabled
 
     @property
-    def avatar_url(self) -> typing.Optional[str]:
+    def avatar_url(self) -> Optional[str]:
         """Returns the user's avatar URL, only if the avatar hash exists"""
         if not self._avatar:
             return None
@@ -98,11 +100,9 @@ class User:
 
     def avatar_url_as(
         self,
-        format: typing.Literal[
-            ".png", ".jpg", ".jpeg", ".webp", ".gif"
-        ] = ".png",
+        format: Literal[".png", ".jpg", ".jpeg", ".webp", ".gif"] = ".png",
         size: int = 1024,
-    ) -> typing.Optional[str]:
+    ) -> Optional[str]:
         """Returns the user's avatar URL with a specific file format, only if the avatar hash exists"""
         if not self._avatar:
             return None
@@ -120,21 +120,21 @@ class User:
 class OwnUser(User):
     """An object representing the current user on Discord"""
 
-    locale: typing.Optional[str] = attr.ib(default=None)
+    locale: Optional[str] = attr.ib(default=None)
     """The user's chosen language option"""
 
-    email: typing.Optional[str] = attr.ib(default=None)
+    email: Optional[str] = attr.ib(default=None)
     """The user's E-Mail"""
 
-    flags: typing.Optional[int] = attr.ib(default=None)
+    flags: Optional[int] = attr.ib(default=None)
     """The user's flags"""
 
-    premium_type: typing.Optional[int] = attr.ib(default=None)
+    premium_type: Optional[int] = attr.ib(default=None)
     """The type of Discord Nitro subscription on a user's account"""
 
-    _verified: typing.Optional[bool] = attr.ib(default=None)
+    _verified: Optional[bool] = attr.ib(default=None)
 
     @property
-    def is_verified(self) -> typing.Optional[bool]:
+    def is_verified(self) -> Optional[bool]:
         """Whether the E-Mail on this account has been verified"""
         return self._verified

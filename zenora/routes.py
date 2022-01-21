@@ -1,4 +1,4 @@
-# Copyright (c) 2021 DevGuyAhnaf
+# Copyright (c) 2022 DevGuyAhnaf
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -23,6 +23,7 @@ BASE_URL = "https://discord.com/api/v9"
 
 # CDN Endpoints
 USER_AVATAR = "/avatars"
+GUILD_ICON = "/icons"
 
 # Oauth
 OAUTH_TOKEN_URL = "/oauth2/token"
@@ -31,4 +32,5 @@ OAUTH_TOKEN_URL = "/oauth2/token"
 GET_CURRENT_USER = "/users/@me"
 GET_USER = "/users/{}"
 GET_USER_CONNECTIONS = GET_CURRENT_USER + "/connections"
+GET_USER_GUILDS = GET_CURRENT_USER + "/guilds"
 DM_URL = GET_CURRENT_USER + "/channels"

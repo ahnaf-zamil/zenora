@@ -1,6 +1,4 @@
-# type: ignore[attr-defined]
-
-# Copyright (c) 2021 DevGuyAhnaf
+# Copyright (c) 2022 DevGuyAhnaf
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -20,21 +18,20 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from .models.user import User
-from .models.snowflake import Snowflake
-from .models.integration import Integration
+from zenora import Snowflake, User  # type: ignore[attr-defined]
+from .models.integration import Integration  # type: ignore[attr-defined]
+from typing import Final, Type, List, Dict, Any
 
-import typing
 
-__all__: typing.Final[typing.List[str]] = [
+__all__: Final[List[str]] = [
     "deserialize_model",
     "deserialize_server_integration",
 ]
 
 
 def deserialize_model(
-    cls: typing.Type[typing.Any],
-    payload: typing.Dict[str, typing.Any],
+    cls: Type[Any],
+    payload: Dict[str, Any],
 ) -> object:
     """A deserializer used for most model classes
 
@@ -61,8 +58,8 @@ def deserialize_model(
 
 
 def deserialize_server_integration(
-    payload: typing.List[typing.Dict[str, typing.Any]]
-) -> typing.List[Integration]:
+    payload: List[Dict[str, Any]]
+) -> List[Integration]:
     integrations = []
 
     for x in payload:

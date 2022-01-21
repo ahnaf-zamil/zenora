@@ -1,4 +1,4 @@
-# Copyright (c) 2021 DevGuyAhnaf
+# Copyright (c) 2022 DevGuyAhnaf
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -19,14 +19,14 @@
 # SOFTWARE.
 
 from zenora.exceptions import BadURLException
+from typing import Final, List, Any
 
 import re
 import base64
 import mimetypes
-import typing
 import requests
 
-__all__: typing.Final[typing.List[str]] = [
+__all__: Final[List[str]] = [
     "get__str__",
     "is_valid_url",
     "convert_image_to_data",
@@ -58,7 +58,7 @@ def is_valid_url(url: str) -> bool:
     return re.match(regex, url) is not None
 
 
-def convert_image_to_data(path: str) -> typing.Optional[str]:
+def convert_image_to_data(path: str) -> str:
     if "?" in path:
         path = path.split("?")[0]
     mime, _ = mimetypes.guess_type(path)
@@ -75,7 +75,7 @@ def convert_image_to_data(path: str) -> typing.Optional[str]:
         raise BadURLException(f"Invalid URL: {path}")
 
 
-def extract_snowflake_from_object(obj: typing.Any) -> str:
+def extract_snowflake_from_object(obj: Any) -> str:
     if isinstance(obj, int):
         return str(obj)
     else:

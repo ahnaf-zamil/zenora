@@ -1,4 +1,4 @@
-# Copyright (c) 2021 DevGuyAhnaf
+# Copyright (c) 2022 DevGuyAhnaf
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -25,15 +25,15 @@ from zenora.exceptions import (
     RateLimitException,
 )
 from zenora.routes import BASE_URL
+from typing import Optional, Dict, Any, NoReturn
 
 import json
-import typing
 import requests
 
 
 def raise_error_or_return(
     r: requests.Response,
-) -> typing.Optional[typing.Dict[str, typing.Any]]:
+) -> Optional[Dict[str, Any]]:
     try:
         json_data = r.json()
     except json.decoder.JSONDecodeError:
@@ -57,16 +57,20 @@ def raise_error_or_return(
         return json_data
 
 
-def throw_rate_limit_error(r: requests.Response) -> typing.NoReturn:
-    data = r.json()
+def throw_rate_limit_error(r: requests.Response) -> NoReturn:
+    headers = r.headers
 
-    if data.get("global"):
+    if headers.get("X-RateLimit-Global"):
         raise RateLimitException(
-            f"Being rate limited globally, will reset after {data['retry_after']}s.",
+            f"Being rate limited globally, will reset after {headers['X-RateLimit-Reset-After']}s.",
             r.headers,
         )
 
     raise RateLimitException(
-        f"Being rate limited on {r.url.replace(BASE_URL, '')}, will reset after {data['retry_after']}s. Bucket: {r.headers['X-RateLimit-Bucket']}",
+        "Being rate limited on {}, will reset after {}s. Bucket: {}".format(
+            r.url.replace(BASE_URL, ""),
+            headers["X-RateLimit-Reset-After"],
+            r.headers["X-RateLimit-Bucket"],
+        ),
         r.headers,
     )

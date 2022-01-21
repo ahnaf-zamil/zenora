@@ -1,6 +1,6 @@
 # type: ignore[misc]
 
-# Copyright (c) 2021 DevGuyAhnaf
+# Copyright (c) 2022 DevGuyAhnaf
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -24,10 +24,13 @@
 from zenora import Snowflake, User
 from zenora.utils import get__str__
 from zenora.deserializers import deserialize_model
+from typing import Final, List, Optional
+from zenora.models.snowflake import convert_snowflake
 
-import typing
 import attr
 import enum
+
+__all__: Final[List[str]] = ["ChannelTypes", "DMChannel"]
 
 
 class ChannelTypes(enum.Enum):
@@ -74,7 +77,7 @@ class BaseChannel:
 
     __str__ = get__str__
 
-    id: Snowflake = attr.ib(converter=Snowflake)
+    id: Snowflake = attr.ib(converter=convert_snowflake)
     """A user's unique snowflake ID (in string format)"""
 
     type: ChannelTypes = attr.ib(converter=ChannelTypes)
@@ -85,10 +88,10 @@ class BaseChannel:
 class DMChannel(BaseChannel):
     """A model representing a DM/private channel on Discord"""
 
-    last_message_id: typing.Optional[Snowflake] = attr.ib()
+    last_message_id: Optional[Snowflake] = attr.ib()
     """Snowflake ID of the last message in the DM channel"""
 
-    recipients: typing.List[User] = attr.ib(
+    recipients: List[User] = attr.ib(
         converter=lambda x: [deserialize_model(User, i) for i in x]
     )
     """Recipients in the DM channel"""

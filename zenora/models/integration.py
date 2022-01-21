@@ -1,6 +1,6 @@
 # type: ignore[misc]
 
-# Copyright (c) 2021 DevGuyAhnaf
+# Copyright (c) 2022 DevGuyAhnaf
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -21,11 +21,15 @@
 # SOFTWARE.
 
 from zenora import Snowflake, User
+from typing import Final, List, Optional, Literal
+from zenora.models.snowflake import convert_snowflake
 
 import attr
-import typing
 
-__all__: typing.Final[typing.List[str]] = ["Integration", "IntegrationAccount"]
+__all__: Final[List[str]] = [
+    "Integration",
+    "IntegrationAccount",
+]
 
 
 @attr.s(slots=True)
@@ -40,7 +44,7 @@ class Integration:
 
     _enabled: bool = attr.ib()
 
-    id: Snowflake = attr.ib(converter=Snowflake)
+    id: Snowflake = attr.ib(converter=convert_snowflake)
     """ID of the integration"""
 
     name: str = attr.ib(kw_only=True)
@@ -52,37 +56,35 @@ class Integration:
     role_id: Snowflake = attr.ib(default=None)
     """ID of the role that this integration uses"""
 
-    enable_emoticons: typing.Optional[bool] = attr.ib(default=None)
+    enable_emoticons: Optional[bool] = attr.ib(default=None)
     """Whether emoticons should be synced for this integration (Twitch only currently)"""
 
-    expire_behaviour: typing.Optional[typing.Literal[0, 1]] = attr.ib(
-        default=None
-    )
+    expire_behaviour: Optional[Literal[0, 1]] = attr.ib(default=None)
     """The behaviour of expiring subscribers"""
 
-    expire_grace_period: typing.Optional[int] = attr.ib(default=None)
+    expire_grace_period: Optional[int] = attr.ib(default=None)
     """The grace period (in days) before expiring subscribers"""
 
-    user: typing.Optional[User] = attr.ib(default=None)
+    user: Optional[User] = attr.ib(default=None)
     """User for this integration"""
 
-    account: typing.Optional[IntegrationAccount] = attr.ib(
+    account: Optional[IntegrationAccount] = attr.ib(
         default=None, converter=IntegrationAccount
     )
     """Integration account information"""
 
-    synced_at: typing.Optional[str] = attr.ib(default=None)
+    synced_at: Optional[str] = attr.ib(default=None)
     """Last synced at (ISO8601 timestamp)"""
 
-    subscriber_count: typing.Optional[int] = attr.ib(default=None)
+    subscriber_count: Optional[int] = attr.ib(default=None)
     """How many subscribers this integration has"""
 
-    application: typing.Optional[dict] = attr.ib(default=None)
+    application: Optional[dict] = attr.ib(default=None)
     """Bot application for Integrations"""
 
-    _syncing: typing.Optional[bool] = attr.ib(default=None)
+    _syncing: Optional[bool] = attr.ib(default=None)
 
-    _revoked: typing.Optional[bool] = attr.ib(default=None)
+    _revoked: Optional[bool] = attr.ib(default=None)
 
     @property
     def is_enabled(self) -> bool:
@@ -90,11 +92,11 @@ class Integration:
         return self._enabled
 
     @property
-    def is_syncing(self) -> typing.Optional[bool]:
+    def is_syncing(self) -> Optional[bool]:
         """Whether the integration is syncing"""
         return self._syncing
 
     @property
-    def is_revoked(self) -> typing.Optional[bool]:
+    def is_revoked(self) -> Optional[bool]:
         """Has this integration been revoked"""
         return self._revoked

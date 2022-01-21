@@ -1,4 +1,4 @@
-# Copyright (c) 2021 DevGuyAhnaf
+# Copyright (c) 2022 DevGuyAhnaf
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -19,12 +19,12 @@
 # SOFTWARE.
 
 from zenora.errors import raise_error_or_return
+from typing import Final, List, Any, Dict
 
-import typing
 import requests
 
 
-__all__: typing.Final[typing.List[str]] = ["Request"]
+__all__: Final[List[str]] = ["Request"]
 
 
 class Request:
@@ -36,9 +36,9 @@ class Request:
         url: str,
         method: str,
         *,
-        json_data: typing.Any = None,
-        headers: typing.Any = None,
-        form_data: typing.Any = None,
+        json_data: Any = None,
+        headers: Any = None,
+        form_data: Any = None,
     ):
         self.token = token
         self.url = url
@@ -47,7 +47,7 @@ class Request:
         self.headers = headers
         self.form_data = form_data
 
-    def execute(self) -> typing.Dict[str, typing.Any]:
+    def execute(self) -> Dict[str, Any]:
         """Executes the API request"""
         headers = {
             "User-Agent": "{zenora.__name__} {zenora.__version__}",
@@ -76,8 +76,8 @@ class Request:
     @classmethod
     def make_request(
         cls,
-        *args: typing.Any,
-        **kwargs: typing.Any,
-    ) -> typing.Dict[str, typing.Any]:
+        *args: Any,
+        **kwargs: Any,
+    ) -> Dict[Any, Any]:
         req = cls(*args, **kwargs)
         return req.execute()
