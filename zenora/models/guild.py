@@ -26,7 +26,12 @@ from typing import Final, Optional, List, Literal
 
 import attr
 
-__all__: Final[List[str]] = ["GuildPreview", "Guild"]
+__all__: Final[List[str]] = [
+    "GuildPreview",
+    "GuildOptional",
+    "Guild",
+    "GuildBase",
+]
 
 
 @attr.s(slots=True, kw_only=True)
@@ -95,7 +100,7 @@ class GuildPreview(GuildBase):
 
 
 @attr.s
-class _OptionalValues:
+class GuildOptional:
     owner: Optional[bool] = attr.ib(default=None)
     """Whether the user is the guild's owner or not"""
 
@@ -144,7 +149,7 @@ class _OptionalValues:
 
 
 @attr.s(slots=True, kw_only=True)
-class Guild(GuildPreview, _OptionalValues):
+class Guild(GuildPreview, GuildOptional):
     """An object representing a guild/server on Discord"""
 
     owner_id: Optional[Snowflake] = attr.ib(

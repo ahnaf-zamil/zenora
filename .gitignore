@@ -5,9 +5,9 @@ build/
 dist/
 Zenora.egg-info/
 testing.py
-man_tests/
 .coverage
 venv/
 .idea/
 .vim/
 .vscode/
+html/
