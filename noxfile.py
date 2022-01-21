@@ -42,8 +42,6 @@ def lint(session):
 def docs(session):
     session.install("attrs")
     session.install("requests")
-    session.install("sphinx")
-    session.install("sphinx-rtd-theme")
+    session.install("pdoc3")
 
-    os.chdir(os.path.join(cwd, "docs"))
-    session.run("make", "html", external=True)
+    session.run("pdoc", "--html", "zenora", "--force", external=True)
