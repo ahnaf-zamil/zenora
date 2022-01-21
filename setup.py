@@ -30,6 +30,7 @@ setup(
     author=zenora.__author__,
     author_email=zenora.__email__,
     version=zenora.__version__,
+    description=zenora.__description__,
     long_description=long_description,
     long_description_content_type="text/markdown",
     license=zenora.__license__,
