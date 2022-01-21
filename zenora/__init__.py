@@ -43,12 +43,12 @@ from .request import *
 from .utils import *
 from .exceptions import *
 
-__version__ = "0.0.2"
+__version__ = "0.0.3"
 __author__ = "DevGuyAhnaf"
 __copyright__ = f"Copyright (c) {datetime.now().strftime('%Y')} DevGuyAhnaf"
 __email__ = "ahnaf@ahnafzamil.com"
 __description__ = (
-    "A simple to use synchronous yet functional Discord API wrapper for Python"
+    "A simple to use synchronous Discord REST API wrapper for Python"
 )
 __license__ = "MIT"
 __github__ = "https://github.com/ahnaf-zamil/zenora"
