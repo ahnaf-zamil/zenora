@@ -174,4 +174,4 @@ def test_get_my_guilds(api: zenora.UserAPI):
         assert type(guilds[0]) == Guild
         assert str(guilds[0].id) == test_guild["id"]
         assert guilds[0].icon == test_guild["icon"]
-        assert guilds[0].splash == None
+        assert guilds[0].splash is None

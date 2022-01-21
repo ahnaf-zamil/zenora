@@ -19,7 +19,7 @@
 # SOFTWARE.
 
 from datetime import datetime
-from typing import Final, List, Union, TypeVar, Any, Union
+from typing import Final, List, TypeVar, Any, Union
 
 
 __all__: Final[List[str]] = ["Snowflake", "SnowflakeOr"]
