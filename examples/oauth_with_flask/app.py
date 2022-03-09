@@ -18,10 +18,10 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from flask import Flask, render_template, request, abort, redirect, session
+from flask import Flask, render_template, request, redirect, session
 from zenora import APIClient
 
-from config import BOT_TOKEN, CLIENT_SECRET, PORT, OAUTH_URL, REDIRECT_URI
+from .config import BOT_TOKEN, CLIENT_SECRET, OAUTH_URL, REDIRECT_URI
 
 app = Flask(__name__)
 client = APIClient(BOT_TOKEN, client_secret=CLIENT_SECRET)
@@ -62,7 +62,3 @@ def oauth_callback():
     session["access_token"] = access_token
 
     return redirect("/")
-
-
-if __name__ == "__main__":
-    app.run(debug=True, host="0.0.0.0", port=PORT)
