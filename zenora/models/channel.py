@@ -1,5 +1,3 @@
-# type: ignore[misc]
-
 # Copyright (c) 2022 DevGuyAhnaf
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -85,13 +83,13 @@ class BaseChannel:
 
 
 @attr.s(slots=True)
-class DMChannel(BaseChannel):
+class DMChannel(BaseChannel):  # type: ignore[no-untyped-def]
     """A model representing a DM/private channel on Discord"""
 
     last_message_id: Optional[Snowflake] = attr.ib()
     """Snowflake ID of the last message in the DM channel"""
 
-    recipients: List[User] = attr.ib(
+    recipients: List[User] = attr.ib(  # type: ignore[var-annotated]
         converter=lambda x: [deserialize_model(User, i) for i in x]
     )
     """Recipients in the DM channel"""

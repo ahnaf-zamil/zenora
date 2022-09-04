@@ -1,5 +1,3 @@
-# type: ignore[misc]
-
 # Copyright (c) 2022 DevGuyAhnaf
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -69,7 +67,7 @@ class Integration:
     """User for this integration"""
 
     account: Optional[IntegrationAccount] = attr.ib(
-        default=None, converter=IntegrationAccount
+        default=None, converter=IntegrationAccount  # type: ignore[arg-type]
     )
     """Integration account information"""
 

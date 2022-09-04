@@ -20,7 +20,7 @@
 
 from zenora.deserializers import deserialize_server_integration
 from zenora.utils import get__str__
-from .integration import Integration  # type: ignore[attr-defined]
+from .integration import Integration
 from typing import Final, List, Literal, Optional
 
 import attr
@@ -47,7 +47,7 @@ class Connection:
     visibility: Literal[0, 1] = attr.ib()
     """Visibility of the connection. 0 = False, 1 = True"""
 
-    integrations: Optional[List[Integration]] = attr.ib(  # type: ignore[misc]
+    integrations: Optional[List[Integration]] = attr.ib(
         default=None, converter=deserialize_server_integration
     )
     """Array of partial server integrations"""

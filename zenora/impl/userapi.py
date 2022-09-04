@@ -111,4 +111,4 @@ class UserAPIImpl(UserAPI):
             url,
             "GET",
         )
-        return [deserialize_model(Guild, i) for i in payload]  # type: ignore[misc]
+        return [deserialize_model(Guild, i) for i in payload]
