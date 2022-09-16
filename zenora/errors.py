@@ -30,6 +30,30 @@ from typing import Optional, Dict, Any, NoReturn
 import json
 import requests
 
+_401_msg = {"invalid_client": "Invalid Client Secret has been passed"}
+
+
+def _handle_401(data: dict) -> None:
+    if data.get("message"):
+        raise AuthenticationError(data["message"])
+    else:
+        msg = _401_msg.get(data["error"])
+        raise AuthenticationError(
+            msg if msg else f"Unknown 401 exception `{data['error']}`"
+        )
+
+
+def _handle_other_err(data: dict) -> None:
+    if "error" in data:
+        raise APIError(f"{data['error_description']}")
+    for x in data["errors"]:
+        err = data["errors"][x]
+        if "_errors" in err:
+            msg = err["_errors"][0]["message"]
+        else:
+            msg = data["message"]
+        raise APIError(f"Code {data['code']}. Message: {msg}")
+
 
 def raise_error_or_return(
     r: requests.Response,
@@ -38,26 +62,20 @@ def raise_error_or_return(
         json_data = r.json()
     except json.decoder.JSONDecodeError:
         raise CloudflareException("Cloudflare blocking API request to Discord")
+
     if not r.ok:
         if "X-RateLimit-Bucket" in r.headers:  # Rate limited
-            return throw_rate_limit_error(r)
+            return _handle_rate_limit(r)
         elif r.status_code == 401:  # Unauthorized
-            raise AuthenticationError(json_data["message"])
+            _handle_401(json_data)
         else:
-            if "error" in json_data:
-                raise APIError(f"{json_data['error_description']}")
-            for x in json_data["errors"]:
-                if "_errors" in json_data["errors"][x]:
-                    msg = json_data["errors"][x]["_errors"][0]["message"]
-                else:
-                    msg = json_data["errors"][x][0]["message"]
-                raise APIError(f"Code {json_data['code']}. Message: {msg}")
-            return None  # Just so that mypy doesnt scream
+            _handle_other_err(json_data)
+        return None  # Just so that MyPy doesn't yell at me
     else:
         return json_data
 
 
-def throw_rate_limit_error(r: requests.Response) -> NoReturn:
+def _handle_rate_limit(r: requests.Response) -> NoReturn:
     headers = r.headers
 
     if headers.get("X-RateLimit-Global"):
