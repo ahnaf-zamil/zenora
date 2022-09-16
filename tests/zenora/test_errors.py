@@ -19,7 +19,7 @@
 # SOFTWARE.
 
 from unittest import mock
-from zenora.exceptions import APIError, RateLimitException
+from zenora.exceptions import APIError, RateLimitException, AuthenticationError
 from zenora.errors import raise_error_or_return
 
 import pytest
@@ -45,18 +45,90 @@ def test_handle_rate_limit():
             raise_error_or_return(r())
 
 
-def test_handle_error():
+def test_handle_request_err():
     with mock.patch.object(requests, "request") as r:
         # Exception should be raised
         r.return_value.ok = False
         r.return_value.json.return_value = {
-            "code": 12345,
-            "errors": {"avatar": [{"message": "Invalid form body"}]},
+            "code": 50035,
+            "message": "Invalid Form Body",
+            "errors": {
+                "_errors": [
+                    {
+                        "code": "APPLICATION_COMMAND_TOO_LARGE",
+                        "message": "Command exceeds maximum size (4000)",
+                    }
+                ]
+            },
         }
         with pytest.raises(APIError) as e:
             raise_error_or_return(r())
             assert e.message == "Invalid form body"
 
+
+def test_handle_array_err():
+    with mock.patch.object(requests, "request") as r:
+        # Exception should be raised
+        r.return_value.ok = False
+        r.return_value.json.return_value = {
+            "code": 50035,
+            "errors": {
+                "activities": {
+                    "0": {
+                        "platform": {
+                            "_errors": [
+                                {
+                                    "code": "BASE_TYPE_CHOICES",
+                                    "message": "Value must be one of ('desktop', 'android', 'ios').",
+                                }
+                            ]
+                        }
+                    }
+                }
+            },
+            "message": "Invalid Form Body",
+        }
+        with pytest.raises(APIError) as e:
+            raise_error_or_return(r())
+            assert e.message == "Invalid form body"
+
+
+def test_handle_obj_err():
+    with mock.patch.object(requests, "request") as r:
+        # Exception should be raised
+        r.return_value.ok = False
+        r.return_value.json.return_value = {
+            "code": 50035,
+            "errors": {
+                "access_token": {
+                    "_errors": [
+                        {
+                            "code": "BASE_TYPE_REQUIRED",
+                            "message": "This field is required",
+                        }
+                    ]
+                }
+            },
+            "message": "Invalid Form Body",
+        }
+        with pytest.raises(APIError) as e:
+            raise_error_or_return(r())
+            assert e.message == "Invalid form body"
+
+
+def test_oauth_invalid_client_err():
+    with mock.patch.object(requests, "request") as r:
+        # Exception should be raised
+        r.return_value.ok = False
+        r.return_value.status_code = 401
+        r.return_value.json.return_value = {"error": "invalid_client"}
+        with pytest.raises(AuthenticationError) as e:
+            raise_error_or_return(r())
+            assert e.message == "Invalid Client Secret has been passed"
+
+
+def test_handle_no_err():
+    with mock.patch.object(requests, "request") as r:
         # No error should be raised
         r.return_value.ok = True
         r.return_value.json.return_value = {"test": 123}

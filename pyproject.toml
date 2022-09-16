@@ -5,7 +5,7 @@ exclude = '''
 /(
     \.git
   | \.nox
-  | \venv
+  | venv
   | _build
   | buck-out
   | build

@@ -18,8 +18,8 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from zenora import Snowflake, User  # type: ignore[attr-defined]
-from .models.integration import Integration  # type: ignore[attr-defined]
+from zenora import Snowflake, User
+from .models.integration import Integration
 from typing import Final, Type, List, Dict, Any
 
 
@@ -32,7 +32,7 @@ __all__: Final[List[str]] = [
 def deserialize_model(
     cls: Type[Any],
     payload: Dict[str, Any],
-) -> object:
+) -> Any:
     """A deserializer used for most model classes
 
     By default, attrs throws errors if it gets some properties from the API which do not

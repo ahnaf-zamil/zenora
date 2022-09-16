@@ -18,7 +18,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from zenora import Connection, DMChannel, Guild, SnowflakeOr, OwnUser, User  # type: ignore[attr-defined]
+from zenora import Connection, DMChannel, Guild, SnowflakeOr, OwnUser, User
 from abc import ABC, abstractmethod
 from typing import Final, List, Optional
 
