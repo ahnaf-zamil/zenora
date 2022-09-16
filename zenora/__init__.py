@@ -43,7 +43,7 @@ from .request import *
 from .utils import *
 from .exceptions import *
 
-__version__ = "0.0.3"
+__version__ = "0.0.3_p1"
 __author__ = "DevGuyAhnaf"
 __copyright__ = f"Copyright (c) {datetime.now().strftime('%Y')} DevGuyAhnaf"
 __email__ = "ahnaf@ahnafzamil.com"
