@@ -2,6 +2,7 @@ stages:          # List of stages for jobs, and their order of execution
   - type-check
   - tests
   - lint
+  - docs
 
 type-check-job:       # This job runs in the build stage, which runs first.
   stage: type-check
@@ -28,3 +29,28 @@ run-linting:
   script:
     - flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
     - flake8 . --count --exit-zero --statistics
+
+build-docs:
+  stage: docs
+  image: python:3.9
+  only:
+    - master
+  before_script:
+    - pip install -r requirements.txt
+    - pip install pdoc3
+  script:
+    - pdoc --html zenora --force
+  artifacts:
+    untracked: true 
+
+deploy-docs:
+  stage: docs
+  image: python:3.9
+  only:
+    - master
+  needs: ["build-docs"]
+  dependencies:
+    - build-docs
+  script:
+    - ls
+    - ls html
