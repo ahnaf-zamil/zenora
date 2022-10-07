@@ -7,7 +7,7 @@ type-check-job:       # This job runs in the build stage, which runs first.
   stage: type-check
   image: python:3.9
   before_script: 
-    - pip install mypy types-attr types-requests
+    - pip install mypy types-attrs types-requests
   script:
     - mypy zenora
 
