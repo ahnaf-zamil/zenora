@@ -45,7 +45,7 @@ deploy-docs:
   stage: docs
   image: node:14-buster
   only:
-    - master
+    - release
   needs: ["build-docs"]
   dependencies:
     - build-docs
