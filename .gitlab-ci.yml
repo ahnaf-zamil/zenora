@@ -33,8 +33,6 @@ run-linting:
 build-docs:
   stage: docs
   image: python:3.9
-  only:
-    - master
   before_script:
     - pip install -r requirements.txt
     - pip install pdoc3
@@ -45,12 +43,13 @@ build-docs:
 
 deploy-docs:
   stage: docs
-  image: python:3.9
+  image: node:14-buster
   only:
     - master
   needs: ["build-docs"]
   dependencies:
     - build-docs
+  before_script:
+    - npm install -g netlify-cli --unsafe-perm=true
   script:
-    - ls
-    - ls html
+    - netlify deploy --site $NETLIFY_SITE_ID --auth $NETLIFY_AUTH_TOKEN --dir html/zenora --prod
