@@ -1,15 +1,13 @@
 # Zenora
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-lightgrey.svg?style=flat-square)](https://opensource.org/licenses/MIT)
-[![prs](https://img.shields.io/github/issues-pr/ahnaf-zamil/zenora?color=red&style=flat-square)](https://github.com/ahnaf-zamil/zenora/pulls)
+[![prs](https://img.shields.io/github/issues-pr/ahnaf-zamil/zenora?color=red&style=flat-square)](https://gitlab.com/ahnaf-zamil/zenora/-/merge_requests)
 [![Code Style: Black](https://img.shields.io/badge/Code%20Style-Black-black?style=flat-square)](https://github.com/psf/black)
 [![pyvers](https://img.shields.io/badge/python-3.8%20%7C%203.9-blue?style=flat-square)](https://pypi.org/project/zenora)
-[![Build](https://img.shields.io/github/workflow/status/ahnaf-zamil/zenora/Python%20package?logo=GitHub&style=flat-square&label=Build)](https://github.com/ahnaf-zamil/zenora/actions/workflows/python-package.yml)<br/>
+[![pipeline status](https://gitlab.com/ahnaf-zamil/zenora/badges/master/pipeline.svg)](https://gitlab.com/ahnaf-zamil/zenora/-/commits/master)<br/>
 [![Pypi](https://img.shields.io/pypi/v/zenora.svg?style=flat-square)](https://pypi.org/project/zenora/)
 [![Docs](https://img.shields.io/netlify/368341f1-066a-43e9-9a30-dcbc2ac3e61e?color=green&label=Docs&style=flat-square)](https://zenora.netlify.app/)
-[![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/ahnaf-zamil/zenora?include_prereleases&style=flat-square)](https://github.com/ahnaf-zamil/zenora/releases)
-[![Maintainability](https://api.codeclimate.com/v1/badges/e556bee232469ff28415/maintainability?style=flat-square)](https://codeclimate.com/github/ahnaf-zamil/zenora/maintainability)
-[![issues](https://img.shields.io/github/issues-raw/ahnaf-zamil/zenora?color=blueviolet&style=flat-square)](https://github.com/ahnaf-zamil/zenora/issues) [![CodeQL](https://img.shields.io/github/workflow/status/ahnaf-zamil/zenora/CodeQL?logo=GitHub&style=flat-square&label=CodeQL)](https://github.com/ahnaf-zamil/zenora/actions/workflows/codeql-analysis.yml)
+[![Latest release (latest by date including pre-releases)](https://gitlab.com/ahnaf-zamil/zenora/-/badges/release.svg)](https://gitlab.com/ahnaf-zamil/zenora/-/releases)
 
 A simple to use API wrapper for the Discord REST API in Python
 
@@ -22,7 +20,7 @@ Zenora is a synchronous library for accessing the Discord REST API. It allows yo
 Install from Git
 
 ```bash
-pip install git+https://github.com/ahnaf-zamil/zenora
+pip install git+https://gitlab.com/ahnaf-zamil/zenora
 ```
 
 or install with pip

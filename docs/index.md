@@ -1,9 +1,8 @@
 ![](https://img.shields.io/badge/License-MIT-lightgrey.svg?style=flat-square)
 ![](https://img.shields.io/badge/Code%20Style-Black-black?style=flat-square)
 ![](https://img.shields.io/badge/python-3.8%20%7C%203.9-blue?style=flat-square)
-![](https://img.shields.io/github/workflow/status/ahnaf-zamil/zenora/Python%20package?logo=GitHub&style=flat-square&label=Build)
+![](https://gitlab.com/ahnaf-zamil/zenora/badges/master/pipeline.svg)]
 ![](https://img.shields.io/pypi/v/zenora.svg?style=flat-square)
-![](https://api.codeclimate.com/v1/badges/e556bee232469ff28415/maintainability?style=flat-square)
 
 # Introduction
 
