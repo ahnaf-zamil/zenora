@@ -61,7 +61,7 @@ class OauthAPIImpl(OauthAPI):
     ) -> Optional[OauthResponse]:
         url = BASE_URL + OAUTH_TOKEN_URL
 
-        current_user = self._app.users.get_current_user
+        current_user = self._app.users.get_current_user()
 
         data = {
             "client_id": current_user.id,
