@@ -1,0 +1,55 @@
+stages:          # List of stages for jobs, and their order of execution
+  - type-check
+  - tests
+  - lint
+  - docs
+
+type-check-job:       # This job runs in the build stage, which runs first.
+  stage: type-check
+  image: python:3.9
+  before_script: 
+    - pip install mypy types-attrs types-requests
+  script:
+    - mypy zenora
+
+run-tests:
+  stage: tests
+  image: python:3.9
+  before_script:
+    - pip install -r requirements.txt
+    - pip install pytest
+  script:
+    - pytest
+
+run-linting:
+  stage: lint
+  image: python:3.9
+  before_script:
+    - pip install flake8
+  script:
+    - flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+    - flake8 . --count --exit-zero --statistics
+
+build-docs:
+  stage: docs
+  image: python:3.9
+  before_script:
+    - pip install -r requirements.txt
+    - pip install pdoc3
+  script:
+    - pdoc --html zenora --force
+  artifacts:
+    untracked: true 
+
+deploy-docs:
+  stage: docs
+  image: node:14-buster
+  only:
+    - release
+  needs: ["build-docs"]
+  dependencies:
+    - build-docs
+  before_script:
+    - npm install -g netlify-cli --unsafe-perm=true
+  script:
+    - netlify deploy --site $NETLIFY_SITE_ID --auth $NETLIFY_AUTH_TOKEN --dir html/zenora --prod
